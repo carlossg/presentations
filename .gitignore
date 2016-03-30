@@ -31,3 +31,8 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# reveal
+.sass-cache
+reveal.min.css
+reveal.min.js
