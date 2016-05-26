@@ -256,7 +256,7 @@ Jenkins masters need persistent storage, slaves (_typically_) don't
 
 Supporting EBS (AWS) and external NFS
 
-----
+<!--
 
 ## Castle
 
@@ -267,7 +267,6 @@ Supporting EBS (AWS) and external NFS
  * EBS volumes from snapshots
  * Directories in NFS backend
 
-----
 
 ## Castle
 
@@ -276,7 +275,6 @@ Supporting EBS (AWS) and external NFS
  * NFS is mounted directly in container
 * Listens to Docker event stream for killed containers
 
-----
 
 ## Castle: backups and cleanup
 
@@ -285,6 +283,8 @@ Periodically takes S3 snapshots from EBS volumes in AWS
 Cleanups happening at different stages and periodically
 
 ### Embrace failure!
+
+-->
 
 ----
 
@@ -296,19 +296,21 @@ Container user id != host user id
 
 i.e. `jenkins` user in container is always 1000 but matches `ubuntu` user in host
 
-----
+---
+
+<!--
 
 ## Caveats
 
-Only a limited number of EBS volumes can be mounted <!-- .element: class="fragment" -->
+Only a limited number of EBS volumes can be mounted <!-\- .element: class="fragment" -\->
 
 <p class="fragment">Docs say `/dev/sd[f-p]`, but `/dev/sd[q-z]` seem to work too</p>
 
-Sometimes the device gets corrupt and no more EBS volumes can be mounted there <!-- .element: class="fragment" -->
+Sometimes the device gets corrupt and no more EBS volumes can be mounted there <!-\- .element: class="fragment" -\->
 
-NFS users must be centralized and match in cluster and NFS server <!-- .element: class="fragment" -->
+NFS users must be centralized and match in cluster and NFS server <!-\- .element: class="fragment" -\->
 
----
+-->
 
 
 
@@ -362,49 +364,6 @@ Your container goes over CPU limits
 Totally different from memory
 
 Mesos/Kubernetes CPU translates into Docker [`--cpu-shares`](https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources)
-
----
-
-
-
-# Other considerations
-
-----
-
-## Zombie reaping problem
-
-![](../assets/adoption.png)
-
-Zombie processes are processes that have terminated but have not (yet) been waited for by their parent processes.
-
-The init process -- PID 1 -- task is to "adopt" orphaned child processes
-
-<!-- [source](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/) -->
-
-----
-
-### This is a problem in Docker
-
-Jenkins slaves run multiple processes
-
-But Jenkins masters too, and they are long running
-
-----
-
-### [`tini`](https://github.com/krallin/tini)
-
-Systemd or SysV init is too heavyweight for containers
-
-> All Tini does is spawn a single child (Tini is meant to be run in a container),
-> and wait for it to exit all the while reaping zombies and performing signal forwarding.
-
-<!--
-## process reaping
-
-Docker 1.9 gave us trouble at scale, rolled back to 1.8
-
-Lots of _defunct_ processes
--->
 
 ---
 
@@ -585,7 +544,7 @@ Immutable infrastructure
 
 ---
 
-# Thanks
+# Ačiū
 
 [csanchez.org](http://csanchez.org)
 
