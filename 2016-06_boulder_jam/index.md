@@ -7,8 +7,6 @@
 
 [csanchez.org](http://csanchez.org) / [@csanchez](http://twitter.com/csanchez)
 
-<span style="font-size:0.5em">[See online at http://carlossg.github.io/presentations](http://carlossg.github.io/presentations)</span>
-
 ---
 
 
@@ -129,12 +127,6 @@ Memory and CPU limits
 
 ![](../assets/dockerhub-jenkins-slave.png)
 -->
-
-----
-
-> How would you design your infrastructure if you couldn't login? Ever.
-
-> Kelsey Hightower
 
 ----
 

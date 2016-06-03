@@ -7,8 +7,6 @@
 
 [csanchez.org](http://csanchez.org) / [@csanchez](http://twitter.com/csanchez)
 
-<span style="font-size:0.5em">[See online at http://carlossg.github.io/presentations](http://carlossg.github.io/presentations)</span>
-
 ---
 
 
