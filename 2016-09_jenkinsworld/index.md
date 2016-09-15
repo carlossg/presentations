@@ -17,9 +17,13 @@
 
 # About me
 
-Engineer @ CloudBees
+Engineer @ CloudBees, Private SaaS Edition Team
 
-Contributor to the Jenkins Mesos plugin and the Java Marathon client, Jenkins and Maven official Docker images,...
+Contributor to 
+
+Jenkins Mesos plugin
+
+Jenkins and Maven official Docker images
 
 Author of Jenkins Kubernetes plugin
 
@@ -190,7 +194,15 @@ Covered by CloudBees Jenkins Operations Center and CloudBees Jenkins Platform Pr
 
 ----
 
-# Scaling with Docker
+<img height="100%" width="100%" data-src="../assets/devops_borat.png">
+
+----
+
+> If you haven't automatically destroyed something by mistake, you are not automating enough
+
+----
+
+# Running in Docker
 
 ![](../assets/dockerhub-jenkins.png)
 
@@ -237,7 +249,7 @@ Example:
   <tbody>
     <tr>
       <td>Mesos</td>
-      <td>Does not support grouping yet</td>
+      <td>In progress [MESOS-2449](https://issues.apache.org/jira/browse/MESOS-2449)</td>
     </tr>
     <tr>
       <td>Swarm</td>
@@ -297,9 +309,6 @@ Your container goes over memory quota?
 ----
 
 ### What about the JVM?
-
-
-----
 
 ### What about the child processes?
 
@@ -426,24 +435,11 @@ Allows getting one IP per container
 </table>
 
 
-----
-
-## It is not trivial
-
-![](../assets/bad-containers.jpeg)
-
-<!--
-![](../assets/microservices-shit.jpg)
--->
-
 ---
 
+# Jenkins Plugins
 
-
-
-# Jenkins plugins
-
-----
+---
 
 ## Jenkins Docker Plugins
 
@@ -452,9 +448,21 @@ Allows getting one IP per container
 * Agent image needs to include Java, downloads slave jar from Jenkins master
 * Multiple plugins for different tasks
   * Docker build and publish
+  * Docker build step plugin
+  * CloudBees Docker Hub/Registry Notification
+  * CloudBees Docker Traceability
 * Great pipeline support
 
 ----
+
+![](docker-plugin-global-config.png)
+
+----
+
+![](docker-plugin-image-config.png)
+
+----
+
 
 ### Jenkins Docker Pipeline
 
@@ -477,11 +485,51 @@ Allows getting one IP per container
 
 ----
 
+### [Jenkins Docker Slaves Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Docker+Slaves+Plugin)
+
+Use any Docker image, no need for Java
+
+Definition in pipeline
+
+Can have side containers
+
+Just released!
+
+----
+
+![](docker-slaves-plugin.png)
+
+----
+
+Building Maven
+
+    dockerNode("maven:3.3.3-jdk-8") {
+      sh "mvn -version"
+    }
+
+
+
+
+
+---
+
 ## Jenkins Mesos Plugin
 
 * Dynamic Jenkins agents, both Docker and isolated processes
 * Agent image needs to include Java, grabs slave jar from Mesos sandbox
 * Can run Docker commands on the host, outside of Mesos
+
+----
+
+![](mesos-plugin1.png)
+
+----
+
+![](mesos-plugin2.png)
+
+----
+
+![](mesos-plugin3.png)
 
 ----
 
@@ -518,9 +566,13 @@ Can use Docker pipelines with some tricks
         }
     }
 
-----
 
-## Jenkins Kubernetes Plugin
+
+
+
+---
+
+## [Jenkins Kubernetes Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin)
 
 * Dynamic Jenkins agents, running as Pods
 * Multiple container support
@@ -531,11 +583,36 @@ Can use Docker pipelines with some tricks
 
 ### Jenkins Kubernetes Pipeline
 
-TODO
+    podTemplate(label: 'mypod', containers: [
+            [name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine', args: '${computer.jnlpmac} ${computer.name}'],
+            [name: 'maven', image: 'maven:3-jdk-8', ttyEnabled: true, command: 'cat'],
+            [name: 'golang', image: 'golang:1.6', ttyEnabled: true, command: 'cat'],
+        ]) {
+
+        node ('mypod') {
+            stage 'Get a Maven project'
+            git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+            container('maven') {
+                stage 'Build a Maven project'
+                sh 'mvn clean install'
+            }
+
+            stage 'Get a Golang project'
+            git url: 'https://github.com/hashicorp/terraform.git'
+            container('golang') {
+                stage 'Build a Go project'
+                sh """
+                mkdir -p /go/src/github.com/hashicorp
+                ln -s `pwd` /go/src/github.com/hashicorp/terraform
+                cd /go/src/github.com/hashicorp/terraform && make core-dev
+                """
+            }
+        }
+    }
 
 ----
 
-# Jenkins Plugins recap
+## Jenkins Plugins Recap
 
 * Dynamic Jenkins agent creation
 * Using JNLP slave jar
@@ -547,7 +624,7 @@ TODO
 
 ----
 
-# Jenkins One Shot Executor
+## Jenkins One Shot Executor
 
 Improved API to handle one off agents
 
@@ -568,6 +645,6 @@ Plugins need to support it
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png"> [csanchez](http://twitter.com/csanchez)
 
-<img height="64px" style="vertical-align:middle" data-src="../assets/github-logo.png"> [carlossg](https://github.com/carlossg)
+<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 
 [<img height="150px" data-src="../assets/CloudBees_official_logo.png" alt="CloudBees logo" style="background:white;">](http://cloudbees.com)
