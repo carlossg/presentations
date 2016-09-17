@@ -3,11 +3,12 @@
 ### Scaling Jenkins with Docker
 ## Swarm, Kubernetes or Mesos?
 
-[Carlos Sanchez](http://csanchez.org)
-
+[Carlos Sanchez](http://csanchez.org) /
 [csanchez.org](http://csanchez.org) / [@csanchez](http://twitter.com/csanchez)
 
-<a href="http://cloudbees.com/jenkinsworld"><img width="150" data-src="jenkinsworld-2016.png" alt="Jenkins World logo" style="background:white; position:fixed; bottom:0px; right:0px;"></a>
+<a href="http://cloudbees.com/jenkinsworld"><img width="150" data-src="jenkinsworld-2016.png" alt="Jenkins World logo" style="background:white;"></a>
+
+<small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small>
 
 ---
 
