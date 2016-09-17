@@ -1,4 +1,4 @@
-<img width="600" data-src="../assets/CloudBees_official_logo.png" alt="CloudBees logo" style="background:white;">
+<img width="600" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo">
 
 ## From Monolith to Docker Distributed Applications
 
@@ -6,7 +6,13 @@
 
 [@csanchez](http://twitter.com/csanchez)
 
+<small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small>
+
 ---
+
+
+
+
 
 
 
@@ -21,25 +27,20 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 ---
 
+
+
+## Docker Docker Docker
+
 ![](../assets/docker-logo.png)
 
-Linux containers
-
-Filesystem
-
-Users
-
-Processes
-
-Network
 
 ----
 
+<!--
 ## But it is not trivial
 
 ![](../assets/bad-containers.jpeg)
-
-----
+-->
 
 ![](../assets/microservices-shit.jpg)
 
@@ -55,14 +56,41 @@ Scaling Jenkins
 
 <small>Your mileage may vary</small>
 
+----
+
+![](pse-2000-dashboard.png)
+
+----
+
+![](pse-2000-dots.png)
+
+----
+
+![](pse-dots-failure.png)
+
+----
+
+## A 2000 Jenkins Masters Cluster
+
+* 3 Mesos masters (m3.xlarge: 4 vCPU, 15GB, 2x40 SSD)
+* 317 Mesos slaves (c3.2xlarge, m3.xlarge, m4.4xlarge)
+* 7 Mesos slaves dedicated to ElasticSearch: (c3.8xlarge: 32 vCPU, 60GB)
+
+**2.2TB - 2758 cores**
+
+Running 2000 masters and ~8000 concurrent jobs
+
 ---
+
+
+
 
 
 
 
 # Architecture
 
-Docker Docker Docker
+----
 
 <img width="200%" data-src="../assets/lstoll.png">
 
@@ -76,37 +104,24 @@ Memory and CPU limits
 
 ----
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PivpCKEiQOQ?rel=0&start=15" frameborder="0" allowfullscreen></iframe>
-
-----
-
-<img width="200%" data-src="../assets/fuhrer-docker.gif">
-
-----
-
-![](../assets/fuhrer-windows10.png)
-
-----
-
 ![](../assets/dockerhub-jenkins.png)
 
 ----
 
 ![](../assets/dockerhub-jenkins-slave.png)
 
-----
 
+<!-- 
 > How would you design your infrastructure if you couldn't login? Ever.
 
 > Kelsey Hightower
-
-----
-
-## Embrace failure!
-
-![](../assets/disaster-girl.jpg)
+ -->
 
 ---
+
+
+
+
 
 # Cluster Scheduling
 
@@ -151,12 +166,6 @@ Docker Swarm / Kubernetes
 
 ----
 
-## Apache Zookeeper
-
-<img data-src="../assets/zookeeper-logo.png">
-
-----
-
 ## Terraform
 
 <img width="50%" data-src="../assets/terraform-logo.png">
@@ -197,7 +206,27 @@ Docker Swarm / Kubernetes
 
 <img height="100%" width="100%" data-src="../assets/devops_borat.png">
 
+----
+
+## If you haven't automatically destroyed something by mistake,
+## you are not automating enough
+
+
+----
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PivpCKEiQOQ?rel=0&start=15" frameborder="0" allowfullscreen></iframe>
+
+----
+
+<img width="200%" data-src="../assets/fuhrer-docker.gif">
+
+----
+
+![](../assets/fuhrer-windows10.png)
+
 ---
+
+
 
 
 
@@ -220,10 +249,10 @@ And they can move when they are restarted
 
 ----
 
+<!-- 
 ![](../assets/flocker.jpg)
 
-
-----
+ -->
 
 ## Kubernetes
 
@@ -251,7 +280,7 @@ A lot of magic happening with `nsenter`
 
 ## In our case
 
-Sidekick container (_castle_ service)
+Sidekick container
 
 Jenkins masters need persistent storage, build agents (_typically_) don't
 
@@ -297,7 +326,10 @@ Container user id != host user id
 
 i.e. `jenkins` user in container is always 1000 but matches `ubuntu` user in host
 
----
+
+
+
+
 
 <!--
 
@@ -314,6 +346,7 @@ NFS users must be centralized and match in cluster and NFS server <!-\- .element
 -->
 
 
+---
 
 # Memory
 
@@ -337,12 +370,13 @@ Your container goes over memory quota?
 
 ## What about the JVM?
 
-
-----
-
 ## What about the child processes?
 
 ---
+
+
+
+
 
 
 
@@ -369,6 +403,10 @@ Mesos/Kubernetes CPU translates into Docker [`--cpu-shares`](https://docs.docker
 ---
 
 
+
+
+
+
 # Networking
 
 Multiple services running in the same ports
@@ -387,23 +425,6 @@ DNS is not great, caching can happen at multiple levels
 
 A typical `nginx` reverse proxy is also easy to setup
 
-There are more complete solutions like Consul
-
-----
-
-## Networking: security
-
-Prevent/Allow
-
-
-| from | to ||
-|---|---|---|
-| container | host | `iptables` |
-| container | container | `--icc=false` + `--link`, `docker0` bridge device tricks |
-| container | another host | `--ip-forward=false`, `iptables ` |
-| container | container in another host | `iptables` |
-
-
 ----
 
 ## Networking: Software Defined Networks
@@ -411,8 +432,6 @@ Prevent/Allow
 Create new custom networks on top of physical networks
 
 Allow grouping containers in subnets
-
-Not trivial to setup
 
 ----
 
@@ -422,18 +441,18 @@ Not trivial to setup
 
 [http://chunqi.li/2015/11/15/Battlefield-Calico-Flannel-Weave-and-Docker-Overlay-Network/](http://chunqi.li/2015/11/15/Battlefield-Calico-Flannel-Weave-and-Docker-Overlay-Network/)
 
-----
+
+<!--
 
 ### Docker Overlay
 
 Docker networking with default `overlay` driver, using VxLAN
 
     # On the Swarm master
-    docker network create --driver overlay --subnet=10.0.9.0/24 my-net
+    docker network create -\-driver overlay -\-subnet=10.0.9.0/24 my-net
 
 Uses Consul, etcd or ZooKeeper as key-value stores
 
-<!--
 
 ### Weave
 
@@ -482,23 +501,13 @@ Only supported by GCE or using CoreOS `flannel`
 
 
 
+
+
+
+
 # Scaling
 
 New and interesting problems
-
-----
-
-## A 2000 Jenkins Masters Cluster
-
-* 3 Mesos masters (m3.xlarge: 4 vCPU, 15GB, 2x40 SSD)
-* 80 Mesos slaves (m3.xlarge)
-* 7 Mesos slaves dedicated to ElasticSearch: (r3.2xlarge: 8 vCPU, 61GB, 1x160 SSD)
-
-**Total: 1.5TB 376 CPUs**
-
-Running 300 masters and ~3 concurrent jobs per master
-
-Masters: 2GB 0.1 CPU / Build agents: 512MB 0.1 CPU
 
 ----
 
@@ -524,6 +533,12 @@ Retrying is your friend, but with exponential backoff <!-- .element: class="frag
 
 ----
 
+## Embrace failure!
+
+![](../assets/disaster-girl.jpg)
+
+----
+
 ## OpenStack
 
 Custom flavors
@@ -535,6 +550,10 @@ Different CLI commands
 There are not two OpenStack installations that are the same
 
 ---
+
+
+
+
 
 
 # Upgrades / Maintenance
@@ -552,12 +571,16 @@ Immutable infrastructure
 
 ---
 
+
+
+
+
 # Thanks
 
 [csanchez.org](http://csanchez.org)
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png"> [csanchez](http://twitter.com/csanchez)
 
-<img height="64px" style="vertical-align:middle" data-src="../assets/github-logo.png"> [carlossg](https://github.com/carlossg)
+<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 
-[<img height="150px" data-src="../assets/CloudBees_official_logo.png" alt="CloudBees logo" style="background:white;">](http://cloudbees.com)
+[<img width="600" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo">](http://cloudbees.com)
