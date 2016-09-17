@@ -66,6 +66,10 @@ Scaling Jenkins
 
 ----
 
+![](pse-2000-mesos.png)
+
+----
+
 ![](pse-dots-failure.png)
 
 ----
@@ -76,7 +80,7 @@ Scaling Jenkins
 * 317 Mesos slaves (c3.2xlarge, m3.xlarge, m4.4xlarge)
 * 7 Mesos slaves dedicated to ElasticSearch: (c3.8xlarge: 32 vCPU, 60GB)
 
-**2.2TB - 2758 cores**
+**12.5 TB - 3748 CPU**
 
 Running 2000 masters and ~8000 concurrent jobs
 
