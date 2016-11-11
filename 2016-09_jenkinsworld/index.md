@@ -456,11 +456,11 @@ Allows getting one IP per container
 
 ----
 
-![](docker-plugin-global-config.png)
+![](../assets/docker-plugin-global-config.png)
 
 ----
 
-![](docker-plugin-image-config.png)
+![](../assets/docker-plugin-image-config.png)
 
 ----
 
@@ -498,7 +498,7 @@ Just released!
 
 ----
 
-![](docker-slaves-plugin.png)
+![](../assets/docker-slaves-plugin.png)
 
 ----
 
@@ -522,15 +522,15 @@ Building Maven
 
 ----
 
-![](mesos-plugin1.png)
+![](../assets/mesos-plugin1.png)
 
 ----
 
-![](mesos-plugin2.png)
+![](../assets/mesos-plugin2.png)
 
 ----
 
-![](mesos-plugin3.png)
+![](../assets/mesos-plugin3.png)
 
 ----
 
