@@ -103,7 +103,39 @@ ElasticSearch for Jenkins metrics and Logstash
 ![](../assets/microservices-shit.jpg)
 -->
 
+----
 
+## A 2000 Jenkins Masters Cluster
+
+![](../assets/pse-2000-dashboard.png)
+
+----
+
+![](../assets/pse-2000-dots.png)
+
+----
+
+![](../assets/pse-2000-mesos.png)
+
+----
+
+![](../assets/guppy-marathon.png)
+
+----
+
+![](../assets/pse-dots-failure.png)
+
+----
+
+## A 2000 Jenkins Masters Cluster
+
+* 3 Mesos masters (m3.xlarge: 4 vCPU, 15GB, 2x40 SSD)
+* 317 Mesos slaves (c3.2xlarge, m3.xlarge, m4.4xlarge)
+* 7 Mesos slaves dedicated to ElasticSearch: (c3.8xlarge: 32 vCPU, 60GB)
+
+**12.5 TB - 3748 CPU**
+
+Running 2000 masters and ~8000 concurrent jobs
 
 ---
 
@@ -157,10 +189,36 @@ Memory and CPU limits
 
 ----
 
+## Apache Mesos
+
+![](../assets/mesos-logo.png)
+
+<q>A distributed systems kernel</q>
+
+<img data-src="../assets/hadoop-logo.png">
+<img data-src="../assets/spark-logo-trademark.png" style="background:white;">
+<img width="25%" data-src="../assets/kafka-logo-wide.png" style="background:white;">
+
+----
+
+## Alternatives
+
+<img data-src="../assets/docker-swarmnado.gif" width="25%">
+<img data-src="../assets/kubernetes-logo.png">
+
+Docker Swarm / Kubernetes
+
+----
+
 ## Mesosphere Marathon
 
 <img width="60%" data-src="../assets/marathon-logo.png">
 
+For long running Jenkins masters
+
+<1.4 does not scale with the number of apps
+
+App definitions hit the ZooKeeper node limit
 
 ----
 
@@ -199,6 +257,7 @@ Memory and CPU limits
  * `terraform apply`
 * Sometimes it is too automatic
  * Changing image id will restart all instances
+* Had to fix a number of bugs, ie. retry AWS calls
 
 ----
 
@@ -214,6 +273,34 @@ Memory and CPU limits
 * Enhanced networking driver (AWS)
 
 ---
+
+
+
+
+# Mesos Framework
+
+Started with Jenkins Mesos plugin
+
+Means one framework per Jenkins master, does not scale
+
+If master is restarted all jobs running get killed
+
+----
+
+## Our new Mesos framework
+
+Using Netflix Fenzo
+
+Runs under Marathon, exposes REST API that Jenkins masters call
+
+* Reduce number of frameworks
+* Faster to spawn new build agents because framework is not started
+* Pipeline durable builds, can survive a restart of the master
+* Dedicated workers for builds
+* Affinity
+
+---
+
 
 
 
@@ -279,7 +366,7 @@ both in host and other containers
 
 ## Castle: backups and cleanup
 
-Periodically takes S3 snapshots from EBS volumes in AWS
+Periodically takes snapshots from EBS volumes in AWS
 
 Cleanups happening at different stages and periodically
 
@@ -339,8 +426,7 @@ Your container goes over memory quota?
 ## What about the child processes?
 
 
-<!--
-
+----
 
 # CPU
 
@@ -359,7 +445,7 @@ Your container goes over CPU limits
 Totally different from memory
 
 CPU translates into Docker [`\-\-cpu-shares`](https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources)
--->
+
 
 ---
 
@@ -572,38 +658,6 @@ New and interesting problems
 
 ----
 
-## A 2000 Jenkins Masters Cluster
-
-* 3 Mesos masters (m3.xlarge: 4 vCPU, 15GB, 2x40 SSD)
-* 317 Mesos slaves (c3.2xlarge, m3.xlarge, m4.4xlarge)
-* 7 Mesos slaves dedicated to ElasticSearch: (c3.8xlarge: 32 vCPU, 60GB)
-
-**12.5 TB - 3748 CPU**
-
-Running 2000 masters and ~8000 concurrent jobs
-
-----
-
-![](../assets/pse-2000-dashboard.png)
-
-----
-
-![](../assets/pse-2000-dots.png)
-
-----
-
-![](../assets/pse-2000-mesos.png)
-
-----
-
-![](../assets/guppy-marathon.png)
-
-----
-
-![](../assets/pse-dots-failure.png)
-
-----
-
 ### Terraform AWS
 
 * Instances
@@ -690,21 +744,6 @@ Blue/Green deployment
 
 Immutable infrastructure
 -->
-
----
-
-# The future
-
-New framework using Netflix Fenzo
-
-Runs under marathon, exposes REST API that masters call
-
-* Affinity
-* Reduce number of frameworks
-* Faster to spawn new build agents because framework is not started
-* Pipeline durable builds, can survive a restart of the master
-* Dedicated workers for builds
-
 
 ---
 
