@@ -346,7 +346,13 @@ Examples from https://github.com/jenkinsci/docker/tree/master/tests
 
 ----
 
-# Memory Issues with Containers
+# Isolation
+
+There is no 100% isolation
+
+----
+
+## Memory Issues with Containers
 
 Scheduler needs to account for container memory requirements and host available memory
 
@@ -356,7 +362,7 @@ Memory constrains translate to Docker [--memory](https://docs.docker.com/engine/
 
 ----
 
-## What do you think happens when?
+### What do you think happens when?
 
 Your container goes over memory quota?
 
@@ -366,9 +372,9 @@ Your container goes over memory quota?
 
 ----
 
-## What about the JVM?
+### What about the JVM?
 
-## What about the child processes?
+### What about the child processes?
 
 ---
 
@@ -669,6 +675,8 @@ There are not two OpenStack installations that are the same
 
 
 # Danke!
+
+### Rate this session in agiletestingdays.com
 
 [csanchez.org](http://csanchez.org)
 
