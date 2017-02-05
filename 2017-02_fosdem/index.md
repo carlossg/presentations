@@ -577,6 +577,7 @@ Can use Docker pipelines with some tricks
 * Multiple container support
   * One jnlp image, others custom
 * Pipeline support for both agent Pod definition and execution
+* Persistent workspace in the next version
 
 ----
 
