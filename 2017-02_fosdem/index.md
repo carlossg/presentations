@@ -1,11 +1,13 @@
-<img width="450" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo">
-
 ### Using Containers for Building and Testing
 ## Docker, Kubernetes and Mesos
 
 [Carlos Sanchez](http://csanchez.org)
 
 [csanchez.org](http://csanchez.org) / [@csanchez](http://twitter.com/csanchez)
+
+<span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+<img width="450" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo" style="vertical-align: middle; ">
+<img data-src="fosdem17.png" alt="FOSDEM logo" style="vertical-align: middle; ">
 
 <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small>
 
