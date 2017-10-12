@@ -37,40 +37,32 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 
 
-# Docker Docker Docker
-
-![](../assets/docker-logo.png)
-
-----
-
 <img width="200%" data-src="../assets/lstoll.png">
 
 ----
 
+<!-- 
 ## Using Containers is not Trivial
 
 <img width="450" data-src="../assets/container-ship-ships.jpg">
 <img width="450" data-src="../assets/bad-containers.jpeg">
+-->
+
+## When One Machine is no Longer Enough
+
+* Running containers across multiple hosts
+* Multiple environments: public cloud, private cloud, VMs or bare metal
+* HA and fault tolerance
+
+----
+
+> How would you design your infrastructure if you couldn't login? Ever.
+
+> Kelsey Hightower
 
 ----
 
 ![](../assets/microservices-shit.jpg)
-
-----
-
-## When One Machine is no Longer Enough
-
-* Running Docker across multiple hosts
-* In public cloud, private cloud, VMs or bare metal
-* HA and fault tolerant
-
-----
-
-<img height="100%" width="100%" data-src="../assets/devops_borat.png">
-
-----
-
-> If you haven't automatically destroyed something by mistake, you are not automating enough
 
 
 <!-- 
@@ -136,17 +128,39 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 # Kubernetes
 
+Free goodies:
+
 * Declarative Syntax
-* Pods
+* Pods (groups of colocated containers)
 * Persistent Storage
 * Networking Isolation
+
+----
+
+![](../assets/k8s-cheatsheet-physical-layout.png)
+
+----
+
+![](../assets/k8s-cheatsheet-abstractions-overview.png)
+
+----
+
+![](../assets/k8s-cheatsheet-abstractions-details.png)
+
+----
+
+<img height="100%" width="100%" data-src="../assets/devops_borat.png">
+
+----
+
+> If you haven't automatically destroyed something by mistake, you are not automating enough
 
 ---
 
 
 
 
-
+<!--
 # Scaling Jenkins
 
 Two options:
@@ -154,7 +168,6 @@ Two options:
 * More build agents per master
 * More masters
 
-----
 
 ## Scaling Jenkins: More Build Agents
 
@@ -168,7 +181,6 @@ Two options:
  * Handling multiple configurations, plugin versions,...
  * There is a limit on how many build agents can be attached
 
-----
 
 ## Scaling Jenkins: More Masters
 
@@ -183,25 +195,24 @@ Two options:
 
 Covered by CloudBees Jenkins Enterprise
 
----
+-->
 
 
 
 
+
+<!--
 
 # Docker and Jenkins
 
-----
 
 # Running in Docker
 
 ![](../assets/dockerhub-jenkinsci.png)
 
-----
 
 ![](../assets/dockerhub-jenkins-slave.png)
 
----
 
 ## Jenkins Docker Plugins
 
@@ -210,7 +221,6 @@ Covered by CloudBees Jenkins Enterprise
 * Isolated build agents and jobs
 * Agent image needs to include Java, downloads slave jar from Jenkins master
 
-----
 
 ## Jenkins Docker Plugins
 
@@ -221,7 +231,7 @@ Covered by CloudBees Jenkins Enterprise
   * CloudBees Docker Traceability
 * Great pipeline support
 
-----
+-->
 
 <!-- ![](../assets/docker-plugin-global-config.png) -->
 
@@ -229,6 +239,7 @@ Covered by CloudBees Jenkins Enterprise
 <!-- ![](../assets/docker-plugin-image-config.png) -->
 
 
+<!--
 
 ### Jenkins Docker Pipeline
 
@@ -254,6 +265,7 @@ Covered by CloudBees Jenkins Enterprise
         pcImg.push();
       }
     }
+-->
 
 <!-- ### [Jenkins Docker Slaves Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Docker+Slaves+Plugin)
 
@@ -273,17 +285,128 @@ Can have side containers
 
  -->
 
----
 
 
 
 
 
-# Kubernetes and Jenkins
+# ![](../assets/kubernetes-logo.png)  &  ![](../assets/jenkins-logo.png)
+
+----
+
+We can run both Jenkins **masters and agents** in Kubernetes
+
+----
+
+## Infinite Scale!
+
+[Jenkins Kubernetes Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin)
+
+* Dynamic Jenkins agents, running as Pods
+* Multi-container support
+  * One Jenkins agent image, others custom
+* Pipeline support for both agent Pod definition and execution
+* Persistent workspace
+
+----
+
+## On Demand Jenkins Agents
+
+```groovy
+podTemplate(label: 'mypod') {
+  node('mypod') {
+    sh 'Hello world!'
+  }
+}
+```
 
 ----
 
 ## Grouping Containers (Pods)
+
+```groovy
+podTemplate(label: 'maven', containers: [
+  containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
+    ttyEnabled: true, command: 'cat') ]) {
+
+  node('maven') {
+    stage('Get a Maven project') {
+      git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+      container('maven') {
+        stage('Build a Maven project') {
+          sh 'mvn -B clean package'
+        }
+      }
+    }
+  }
+}
+```
+
+----
+
+## Using Declarative Pipeline Too
+
+```groovy
+pipeline {
+  agent {
+    kubernetes {
+      label 'mypod'
+      containerTemplate {
+        name 'maven'
+        image 'maven:3.3.9-jdk-8-alpine'
+        ttyEnabled true
+        command 'cat'
+      }
+    }
+  }
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
+        }
+      }
+    }
+  }
+}
+```
+
+----
+
+## Pods: Multi-language Pipeline
+
+```groovy
+podTemplate(label: 'maven-golang', containers: [
+  containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
+    ttyEnabled: true, command: 'cat'),
+  containerTemplate(name: 'golang', image: 'golang:1.8.0',
+    ttyEnabled: true, command: 'cat')]) {
+
+  node('maven-golang') {
+    stage('Build a Maven project') {
+      git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+      container('maven') {
+        sh 'mvn -B clean package'
+      }
+    }
+
+    stage('Build a Golang project') {
+      git url: 'https://github.com/hashicorp/terraform.git'
+      container('golang') {
+        sh """
+        mkdir -p /go/src/github.com/hashicorp
+        ln -s `pwd` /go/src/github.com/hashicorp/terraform
+        cd /go/src/github.com/hashicorp/terraform && make core-dev
+        """
+      }
+    }
+  }
+}
+```
+
+----
+
+## Pods: Selenium
 
 Example:
 
@@ -297,9 +420,70 @@ Example:
 
 ----
 
-## Storage
+```groovy
+podTemplate(label: 'maven-selenium', containers: [
+  containerTemplate(name:'maven-firefox',image:'maven:3.3.9-jdk-8-alpine',
+    ttyEnabled: true, command: 'cat'),
+  containerTemplate(name:'maven-chrome',image:'maven:3.3.9-jdk-8-alpine',
+    ttyEnabled: true, command: 'cat'),
+  containerTemplate(name: 'selenium-hub', image: 'selenium/hub:3.4.0'),
+  // because containers run in the same network space, we need to
+  // make sure there are no port conflicts
+  // we also need to adapt the selenium images because they were
+  // designed to work with the --link option
+  containerTemplate(name: 'selenium-chrome',
+    image: 'selenium/node-chrome:3.4.0', envVars: [
+    containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
+    containerEnvVar(key: 'HUB_PORT_4444_TCP_PORT', value: '4444'),
+    containerEnvVar(key: 'DISPLAY', value: ':99.0'),
+    containerEnvVar(key: 'SE_OPTS', value: '-port 5556'),
+  ]),
+  containerTemplate(name: 'selenium-firefox',
+    image: 'selenium/node-firefox:3.4.0', envVars: [
+    containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
+    containerEnvVar(key: 'HUB_PORT_4444_TCP_PORT', value: '4444'),
+    containerEnvVar(key: 'DISPLAY', value: ':98.0'),
+    containerEnvVar(key: 'SE_OPTS', value: '-port 5557'),
+  ])
+  ]) {
+```
 
-Jenkins masters need persistent storage, agents (_maybe_)
+----
+
+```groovy
+  node('maven-selenium') {
+    stage('Checkout') {
+      git 'https://github.com/carlossg/selenium-example.git'
+      parallel (
+        firefox: {
+          container('maven-firefox') {
+            stage('Test firefox') {
+              sh """
+              mvn -B clean test -Dselenium.browser=firefox \
+                -Dsurefire.rerunFailingTestsCount=5 -Dsleep=0
+              """
+            }
+          }
+        },
+        chrome: {
+          container('maven-chrome') {
+            stage('Test chrome') {
+              sh """
+              mvn -B clean test -Dselenium.browser=chrome \
+                -Dsurefire.rerunFailingTestsCount=5 -Dsleep=0
+              """
+            }
+          }
+        }
+      )
+    }
+  }
+}
+```
+
+----
+
+## Storage
 
 [Persistent volumes](http://kubernetes.io/docs/user-guide/persistent-volumes/walkthrough/)
 
@@ -311,6 +495,47 @@ Jenkins masters need persistent storage, agents (_maybe_)
 
 ----
 
+## Using persistent volumes
+
+```
+apiVersion: "v1"
+kind: "PersistentVolumeClaim"
+metadata: 
+  name: "maven-repo"
+  namespace: "kubernetes-plugin"
+spec: 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+```
+
+----
+
+```groovy
+podTemplate(label: 'maven', containers: [
+  containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
+    ttyEnabled: true, command: 'cat')
+  ], volumes: [
+  persistentVolumeClaim(mountPath: '/root/.m2/repository',
+    claimName: 'maven-repo', readOnly: false)
+  ]) {
+
+  node('maven') {
+    stage('Build a Maven project') {
+      git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+      container('maven') {
+          sh 'mvn -B clean package'
+      }
+    }
+  }
+}
+```
+
+
+<!--
+
 ### Permissions
 
 Containers should not run as root
@@ -319,7 +544,6 @@ Container user id != host user id
 
 i.e. `jenkins` user in container is always 1000 but matches `ubuntu` user in host
 
-----
 
 ### Permissions
 
@@ -330,22 +554,20 @@ i.e. `jenkins` user in container is always 1000 but matches `ubuntu` user in hos
 
 > Volumes which support ownership management are modified to be owned and writable by the GID specified in fsGroup
 
-----
+
 
 # Networking
 
 Jenkins masters open several ports
 
 * HTTP
-* JNLP Build agent
-* SSH server (Jenkins CLI type operations)
+* Remoting protocol (agents)
 
 Jenkins agents connect to master:
 
 * inbound (SSH)
-* outbound (JNLP)
+* outbound (remoting)
 
-----
 
 Multiple [networking options](http://kubernetes.io/docs/admin/networking/): 
 
@@ -354,6 +576,8 @@ GCE, Flannel, Weave, Calico,...
 One IP per Pod
 
 Containers can find other containers in the same Pod using `localhost`
+
+-->
 
 ----
 
@@ -442,6 +666,21 @@ Your container goes over CPU limits
 
 Totally different from memory
 
+----
+
+## Resource Requests and Limits
+
+```groovy
+podTemplate(label: 'mypod', containers: [
+    containerTemplate(
+        name: 'maven', image: 'maven', ttyEnabled: true,
+        resourceRequestCpu: '50m',
+        resourceLimitCpu: '100m',
+        resourceRequestMemory: '100Mi',
+        resourceLimitMemory: '200Mi')]) {
+...
+}
+```
 
 ---
 
@@ -449,191 +688,13 @@ Totally different from memory
 
 
 
-
-## [Jenkins Kubernetes Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Kubernetes+Plugin)
-
-* Dynamic Jenkins agents, running as Pods
-* Multiple container support
-  * One jnlp image, others custom
-* Pipeline support for both agent Pod definition and execution
-* Persistent workspace
+# Deploying to Kubernetes
 
 ----
 
-### Jenkins Kubernetes Pipeline
+## Deploying to Kubernetes
 
-```groovy
-  podTemplate(label: 'maven', containers: [
-    containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
-      ttyEnabled: true, command: 'cat') ]) {
-
-    node('maven') {
-      stage('Get a Maven project') {
-        git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-        container('maven') {
-          stage('Build a Maven project') {
-            sh 'mvn -B clean package'
-          }
-        }
-      }
-    }
-  }
-```
-
-----
-
-Multi-language Pipeline
-
-```groovy
-podTemplate(label: 'maven-golang', containers: [
-  containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
-    ttyEnabled: true, command: 'cat'),
-  containerTemplate(name: 'golang', image: 'golang:1.8.0',
-    ttyEnabled: true, command: 'cat')]) {
-
-  node('maven-golang') {
-    stage('Build a Maven project') {
-      git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-      container('maven') {
-        sh 'mvn -B clean package'
-      }
-    }
-
-    stage('Build a Golang project') {
-      git url: 'https://github.com/hashicorp/terraform.git'
-      container('golang') {
-        sh """
-        mkdir -p /go/src/github.com/hashicorp
-        ln -s `pwd` /go/src/github.com/hashicorp/terraform
-        cd /go/src/github.com/hashicorp/terraform && make core-dev
-        """
-      }
-    }
-  }
-}
-```
-
-----
-
-Selenium pipeline
-
-```groovy
-podTemplate(label: 'maven-selenium', containers: [
-  containerTemplate(name:'maven-firefox',image:'maven:3.3.9-jdk-8-alpine',
-    ttyEnabled: true, command: 'cat'),
-  containerTemplate(name:'maven-chrome',image:'maven:3.3.9-jdk-8-alpine',
-    ttyEnabled: true, command: 'cat'),
-  containerTemplate(name: 'selenium-hub', image: 'selenium/hub:3.4.0'),
-  // because containers run in the same network space, we need to
-  // make sure there are no port conflicts
-  // we also need to adapt the selenium images because they were
-  // designed to work with the --link option
-  containerTemplate(name: 'selenium-chrome',
-    image: 'selenium/node-chrome:3.4.0', envVars: [
-    containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
-    containerEnvVar(key: 'HUB_PORT_4444_TCP_PORT', value: '4444'),
-    containerEnvVar(key: 'DISPLAY', value: ':99.0'),
-    containerEnvVar(key: 'SE_OPTS', value: '-port 5556'),
-  ]),
-  containerTemplate(name: 'selenium-firefox',
-    image: 'selenium/node-firefox:3.4.0', envVars: [
-    containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
-    containerEnvVar(key: 'HUB_PORT_4444_TCP_PORT', value: '4444'),
-    containerEnvVar(key: 'DISPLAY', value: ':98.0'),
-    containerEnvVar(key: 'SE_OPTS', value: '-port 5557'),
-  ])
-  ]) {
-```
-
-----
-
-```groovy
-  node('maven-selenium') {
-    stage('Checkout') {
-      git 'https://github.com/carlossg/selenium-example.git'
-      parallel (
-        firefox: {
-          container('maven-firefox') {
-            stage('Test firefox') {
-              sh """
-              mvn -B clean test -Dselenium.browser=firefox \
-                -Dsurefire.rerunFailingTestsCount=5 -Dsleep=0
-              """
-            }
-          }
-        },
-        chrome: {
-          container('maven-chrome') {
-            stage('Test chrome') {
-              sh """
-              mvn -B clean test -Dselenium.browser=chrome \
-                -Dsurefire.rerunFailingTestsCount=5 -Dsleep=0
-              """
-            }
-          }
-        }
-      )
-    }
-  }
-}
-```
-
-----
-
-Using persistent volumes
-
-```groovy
-podTemplate(label: 'maven', containers: [
-  containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine',
-    ttyEnabled: true, command: 'cat')
-  ], volumes: [
-  persistentVolumeClaim(mountPath: '/root/.m2/repository',
-    claimName: 'maven-repo', readOnly: false)
-  ]) {
-
-  node('maven') {
-    stage('Build a Maven project') {
-      git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-      container('maven') {
-          sh 'mvn -B clean package'
-      }
-    }
-  }
-}
-```
-
-----
-
-Declarative pipelines
-
-```groovy
-pipeline {
-  agent {
-    kubernetes {
-      label 'mypod'
-      containerTemplate {
-        name 'maven'
-        image 'maven:3.3.9-jdk-8-alpine'
-        ttyEnabled true
-        command 'cat'
-      }
-    }
-  }
-  stages {
-    stage('Run maven') {
-      steps {
-        container('maven') {
-          sh 'mvn -version'
-        }
-      }
-    }
-  }
-}
-```
-
-----
-
-Deploying to Kubernetes with kubernetes-pipeline-plugin
+[kubernetes-pipeline-plugin](https://github.com/jenkinsci/kubernetes-pipeline-plugin)
 
 ```groovy
 podTemplate(label: 'deploy', serviceAccount: 'deployer') {
@@ -645,8 +706,7 @@ podTemplate(label: 'deploy', serviceAccount: 'deployer') {
         file: readFile('kubernetes-hello-world-service.yaml'))
       kubernetesApply(environment: 'hello-world',
         file: readFile('kubernetes-hello-world-v1.yaml'))
-    }
-  }
+    }}
 
   stage('upgrade') {
     timeout(time:1, unit:'DAYS') {
@@ -656,13 +716,25 @@ podTemplate(label: 'deploy', serviceAccount: 'deployer') {
       checkout scm
       kubernetesApply(environment: 'hello-world',
         file: readFile('kubernetes-hello-world-v2.yaml'))
-    }
-  }
+    }}
 }
 ```
 
-
 ----
+
+Or Azure [kubernetes-cd-plugin](https://github.com/jenkinsci/kubernetes-cd-plugin)
+
+```groovy
+kubernetesDeploy(
+  credentialsType: 'KubeConfig',
+  kubeConfig: [path: '$HOME/.kube/config'],
+
+  configs: '*.yaml',
+  enableConfigSubstitution: false,
+)
+```
+
+<!--
 
 ## Jenkins Plugins Caveats
 
@@ -677,7 +749,6 @@ podTemplate(label: 'deploy', serviceAccount: 'deployer') {
  -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85
 ```
 
-----
 
 ## Jenkins Plugins Caveats
 
@@ -686,6 +757,8 @@ podTemplate(label: 'deploy', serviceAccount: 'deployer') {
  * Optimized for containerized agents
  * Plugins need to support it
 
+-->
+
 ---
 
 
@@ -693,7 +766,7 @@ podTemplate(label: 'deploy', serviceAccount: 'deployer') {
 
 
 
-# Thanks
+# Спасибо
 
 [csanchez.org](http://csanchez.org)
 
