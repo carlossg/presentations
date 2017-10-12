@@ -1,33 +1,12 @@
-
-### Divide and Conquer
-## Easier Continuous Delivery using Micro-Services
-
-[Carlos Sanchez](http://csanchez.org)
-
-[csanchez.org](http://csanchez.org) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@csanchez](http://twitter.com/csanchez)
-
-<span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
-<img width="400" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo" style="vertical-align: middle; ">
-<img width="540" data-src="atd-asia-logo.png" alt="Agile Testing Days Asia logo" style="vertical-align: middle; ">
-
-
-<small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small>
-
----
-
-
-
-
-
 # About me
 
-Engineer @ CloudBees, scaling Jenkins
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img width="100" data-src="../assets/jenkins-logo.png" alt="Jenkins logo" style="vertical-align: middle; ">
+Engineer @ CloudBees, Scaling Jenkins
 
-Author/contributor of Jenkins Kubernetes and Mesos plugins
+Author of Jenkins Kubernetes plugin
 
-Long time OSS contributor at Apache (Apache Maven), Eclipse, Puppet,…
+Contributor to Jenkins and Maven official Docker images
+
+Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 <img width="300" data-src="../assets/gde.png" alt="GDE logo">
 
@@ -391,7 +370,7 @@ Network isolation and SDNs
 
 
 
-# Thanks
+# Hvala!
 
 [csanchez.org](http://csanchez.org)
 
@@ -400,3 +379,4 @@ Network isolation and SDNs
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 
 [<img width="400" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo">](http://cloudbees.com)
+
