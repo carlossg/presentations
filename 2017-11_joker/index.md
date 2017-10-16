@@ -41,7 +41,7 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 ----
 
-<!-- 
+<!--
 ## Using Containers is not Trivial
 
 <img width="450" data-src="../assets/container-ship-ships.jpg">
@@ -65,7 +65,7 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 ![](../assets/microservices-shit.jpg)
 
 
-<!-- 
+<!--
 
 ![](../assets/mesos-logo.png)
 <img data-src="../assets/docker-swarm-logo.png" width="25%">
@@ -81,7 +81,7 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
  -->
 
-<!-- 
+<!--
 # Apache Mesos
 
 * Started before 2011
@@ -90,7 +90,7 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
  * Mesosphere Marathon: long running services
  * Apache Aurora: long running services
  * Chronos: distributed cron-like system
-* Used in Twitter, Airbnb, eBay, Apple, Verizon, Yelp,... 
+* Used in Twitter, Airbnb, eBay, Apple, Verizon, Yelp,...
  -->
 
 <!--
@@ -257,7 +257,7 @@ Covered by CloudBees Jenkins Enterprise
           sh "mvn -B clean package"
         }
       }
-      
+
       stage('Bake Docker image') {
         def pcImg = docker.build(
           "examplecorp/spring-petclinic:${env.BUILD_TAG}", 'app')
@@ -500,10 +500,10 @@ podTemplate(label: 'maven-selenium', containers: [
 ```
 apiVersion: "v1"
 kind: "PersistentVolumeClaim"
-metadata: 
+metadata:
   name: "maven-repo"
   namespace: "kubernetes-plugin"
-spec: 
+spec:
   accessModes:
     - ReadWriteOnce
   resources:
@@ -569,7 +569,7 @@ Jenkins agents connect to master:
 * outbound (remoting)
 
 
-Multiple [networking options](http://kubernetes.io/docs/admin/networking/): 
+Multiple [networking options](http://kubernetes.io/docs/admin/networking/):
 
 GCE, Flannel, Weave, Calico,...
 
@@ -689,6 +689,23 @@ podTemplate(label: 'mypod', containers: [
 
 
 # Deploying to Kubernetes
+
+----
+
+## Deploying to Kubernetes
+
+```groovy
+podTemplate(label: 'deployer', serviceAccount: 'deployer', containers: [
+    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.7.8',
+      command: 'cat', ttyEnabled: true)
+]){
+  node('deployer') {
+    container('kubectl') {
+      sh "kubectl apply -f my-kubernetes.yaml"
+    }
+  }
+}
+```
 
 ----
 
