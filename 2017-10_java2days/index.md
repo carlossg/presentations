@@ -305,7 +305,7 @@ We can run both Jenkins **masters and agents** in Kubernetes
 * Dynamic Jenkins agents, running as Pods
 * Multi-container support
   * One Jenkins agent image, others custom
-* Pipeline support for both agent Pod definition and execution
+* Jenkins Pipeline support for both agent Pod definition and execution
 * Persistent workspace
 
 ----
@@ -422,15 +422,27 @@ Example:
 
 ```groovy
 podTemplate(label: 'maven-selenium', containers: [
-  containerTemplate(name:'maven-firefox',image:'maven:3.3.9-jdk-8-alpine',
+
+  containerTemplate(name:'maven-firefox',
+    image:'maven:3.3.9-jdk-8-alpine',
     ttyEnabled: true, command: 'cat'),
-  containerTemplate(name:'maven-chrome',image:'maven:3.3.9-jdk-8-alpine',
+
+  containerTemplate(name:'maven-chrome',
+    image:'maven:3.3.9-jdk-8-alpine',
     ttyEnabled: true, command: 'cat'),
-  containerTemplate(name: 'selenium-hub', image: 'selenium/hub:3.4.0'),
+
+  containerTemplate(name: 'selenium-hub',
+    image: 'selenium/hub:3.4.0'),
+```
+
+----
+
+```groovy
   // because containers run in the same network space, we need to
   // make sure there are no port conflicts
   // we also need to adapt the selenium images because they were
   // designed to work with the --link option
+
   containerTemplate(name: 'selenium-chrome',
     image: 'selenium/node-chrome:3.4.0', envVars: [
     containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
@@ -438,6 +450,11 @@ podTemplate(label: 'maven-selenium', containers: [
     containerEnvVar(key: 'DISPLAY', value: ':99.0'),
     containerEnvVar(key: 'SE_OPTS', value: '-port 5556'),
   ]),
+```
+
+----
+
+```groovy
   containerTemplate(name: 'selenium-firefox',
     image: 'selenium/node-firefox:3.4.0', envVars: [
     containerEnvVar(key: 'HUB_PORT_4444_TCP_ADDR', value: 'localhost'),
@@ -445,7 +462,6 @@ podTemplate(label: 'maven-selenium', containers: [
     containerEnvVar(key: 'DISPLAY', value: ':98.0'),
     containerEnvVar(key: 'SE_OPTS', value: '-port 5557'),
   ])
-  ]) {
 ```
 
 ----
@@ -455,6 +471,11 @@ podTemplate(label: 'maven-selenium', containers: [
     stage('Checkout') {
       git 'https://github.com/carlossg/selenium-example.git'
       parallel (
+```
+
+----
+
+```groovy
         firefox: {
           container('maven-firefox') {
             stage('Test firefox') {
@@ -465,6 +486,11 @@ podTemplate(label: 'maven-selenium', containers: [
             }
           }
         },
+```
+
+----
+
+```groovy
         chrome: {
           container('maven-chrome') {
             stage('Test chrome') {
@@ -475,11 +501,12 @@ podTemplate(label: 'maven-selenium', containers: [
             }
           }
         }
-      )
-    }
-  }
-}
 ```
+
+<!-- )
+}
+}
+} -->
 
 ----
 

@@ -1,3 +1,19 @@
+### Divide and Conquer
+## Easier Continuous Delivery using Micro-Services
+
+[Carlos Sanchez](http://csanchez.org)
+
+[csanchez.org](http://csanchez.org) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [@csanchez](http://twitter.com/csanchez)
+
+<span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+<img width="400" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo" style="vertical-align: middle; ">
+<img width="540" data-src="logo.png" alt="Bosnia Agile Day logo" style="vertical-align: middle; background:black;">
+
+
+<!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
+
+---
+
 # About me
 
 Engineer @ CloudBees, Scaling Jenkins
@@ -379,4 +395,3 @@ Network isolation and SDNs
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 
 [<img width="400" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo">](http://cloudbees.com)
-
