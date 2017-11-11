@@ -14,11 +14,16 @@ body {
 
 .reveal {
   font-family: "Open Sans", sans-serif;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: normal;
   color: #eee; }
 
 ::selection {
+  color: #fff;
+  background: #e7ad52;
+  text-shadow: none; }
+
+::-moz-selection {
   color: #fff;
   background: #e7ad52;
   text-shadow: none; }
@@ -180,7 +185,8 @@ body {
 .reveal table td[align="right"] {
   text-align: right; }
 
-.reveal table tr:last-child td {
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
   border-bottom: none; }
 
 .reveal sup {
