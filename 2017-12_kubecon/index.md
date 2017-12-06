@@ -74,13 +74,12 @@ Memory and CPU limits
 ![](../assets/microservices-shit.jpg)
 -->
 
-----
+<!--
 
 > How would you design your infrastructure if you couldn't login? Ever.
 
 > Kelsey Hightower
 
-----
 
 ## Cluster Scheduling
 
@@ -90,13 +89,12 @@ Memory and CPU limits
 
 <!--
 <img width="50%" data-src="../assets/run-crash.gif">
--->
 
-----
 
 ## Embrace failure!
 
 ![](../assets/disaster-girl.jpg)
+-->
 
 ---
 
@@ -146,11 +144,13 @@ CloudBees Jenkins Operations Center with multiple masters
 
 Dynamic agent creation in each master
 
-----
+<!--
 
 ### [CloudBees Jenkins Enterprise](https://www.cloudbees.com/products/cloudbees-jenkins-enterprise)
 
 ![](../assets/CJE-graphic-revised-hi-res.png)
+
+-->
 
 ----
 
