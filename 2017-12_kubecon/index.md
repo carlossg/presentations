@@ -10,7 +10,7 @@
 
 <a href="http://cloudbees.com"><img width="350" data-src="../assets/cloudbees-logo_4.png" alt="CloudBees logo" style="background:white;"></a>
 
-<small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small>
+<!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
 ---
 
