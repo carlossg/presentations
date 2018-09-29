@@ -12,6 +12,16 @@ Carlos Sanchez
 
 ---
 
+<img data-src="../assets/jenkins-x-architecture.png">
+
+---
+
+<img style="vertical-align:middle" data-src="jw18-promo-slide-both.jpg">
+
+Use code **FLASHSALE** to save €250!
+
+
+---
 
 # Graciñas
 
