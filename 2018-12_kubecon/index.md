@@ -25,7 +25,7 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 ---
 
-<img data-src="../assets/jenkins-x-architecture.png">
+<img data-src="../assets/jenkins-x-components.png">
 
 ---
 
