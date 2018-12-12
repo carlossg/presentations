@@ -29,6 +29,10 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 ---
 
+<img data-src="DW-JW-Carlos-KubeCon.png">
+
+---
+
 <img width="20%" data-src="../assets/magritte.png">
 
 [csanchez.org](http://csanchez.org)
