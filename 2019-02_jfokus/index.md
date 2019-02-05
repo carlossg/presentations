@@ -1,3 +1,12 @@
+<style>
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+</style>
+
 <a href="http://jenkins-x.io"><img width="150" data-src="../assets/jenkins-x.png" alt="Jenkins X logo" style="background:white"> </a>
 
 ### Jenkins X: Continuous Delivery for Kubernetes
@@ -29,20 +38,38 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 ---
 
+<img data-src="../assets/istio.png">
+
+----
+
+# Flagger
+
+[flagger.app](https://flagger.app)
+
+----
+
+<img data-src="../assets/flagger-canary-overview.png">
+
+----
+
+<img data-src="../assets/flagger-canary-steps.png">
+
+----
+
+<img data-src="../assets/grafana-canary-analysis.png">
+
+----
+
+<img data-src="../assets/flagger-slack-canary-notifications.png">
+<img data-src="../assets/flagger-slack-canary-failed.png">
+
+---
+
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg/croc-hunter-jenkinsx-serverless](https://github.com/carlossg/croc-hunter-jenkinsx-serverless)
 
 <img width="45%" data-src="../assets/croc-hunter-jenkinsx-serverless-qr-code.png">
 
 ---
-
-<style>
-.container{
-    display: flex;
-}
-.col{
-    flex: 1;
-}
-</style>
 
 <div class="container">
 
