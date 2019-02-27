@@ -137,10 +137,10 @@ module.exports = function(grunt) {
 				tasks: 'css-core'
 			},
 			html: {
-				files: root.map(path => path + '/*.html')
+				files: '**/*.html'
 			},
 			markdown: {
-				files: root.map(path => path + '/*.md')
+				files: '**/*.md'
 			},
 			options: {
 				livereload: true
