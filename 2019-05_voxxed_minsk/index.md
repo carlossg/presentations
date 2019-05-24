@@ -24,6 +24,21 @@ Carlos Sanchez
 
 
 
+# About me
+
+Principal Software Engineer @ CloudBees
+
+Author of Jenkins Kubernetes plugin
+
+Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
+
+<img width="300" data-src="../assets/gde.png" alt="GDE logo">
+
+---
+
+
+
+
 # Jenkins X
 
 ----
@@ -36,7 +51,33 @@ Carlos Sanchez
 
 ----
 
-## Serverless Jenkins X
+<img data-src="../assets/helm.png">
+
+Package manager for Kubernetes
+
+----
+
+<img width="450" data-src="../assets/skaffold.png">
+
+Build Docker images with multiple backends: 
+
+* Docker build
+* Kaniko
+* Google Cloud Build
+* Jib (Maven/Gradle)
+
+----
+
+<img width="450" data-src="../assets/draft-logo.png">
+
+Generates Dockerfile and Helm charts for your project
+
+---
+
+
+
+
+# Serverless Jenkins X
 
 * Cloud Native, containers everywhere
 * YAML pipelines
@@ -45,6 +86,18 @@ Carlos Sanchez
 ----
 
 <img data-src="../assets/tekton-horizontal-color.png">
+
+Pipeline engine in Kubernetes
+
+Uses Pods and containers to run the pipeline steps
+
+----
+
+<img data-src="../assets/prow_logo.png">
+
+Implements ChatOps
+
+Handles GitHub webhooks
 
 ----
 
@@ -157,9 +210,11 @@ Progressive Delivery makes Continuous Delivery easier to adopt
 
 Install Istio, Prometheus and [Flagger](https://docs.flagger.app)
 
-    jx create addon istio
-    jx create addon prometheus
-    jx create addon flagger
+```shell
+jx create addon istio
+jx create addon prometheus
+jx create addon flagger
+```
 
 ----
 
@@ -178,8 +233,10 @@ Install Istio, Prometheus and [Flagger](https://docs.flagger.app)
 
 Get the ip of the Istio ingress and point your wildcard domain to it
 
-    kubectl -n istio-system get service istio-ingressgateway \
-      -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```shell
+kubectl -n istio-system get service istio-ingressgateway \
+  -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
 
 ----
 
@@ -266,7 +323,7 @@ canary:
 
 ## Profit!
 
-```
+```shell
 jx promote croc-hunter-jenkinsx \
   --version 0.0.130 \
   --env production
