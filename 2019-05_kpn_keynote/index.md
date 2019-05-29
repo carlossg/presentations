@@ -172,7 +172,28 @@ Declarative configuration
 
 Active reconciliation
 
-Optimized for GitOps
+Optimized for Infrastructure as Code and GitOps
+
+----
+
+## GitOps
+
+[weave.works/technologies/gitops](https://www.weave.works/technologies/gitops/)
+
+* The entire system described declaratively.
+* The canonical desired system state versioned in Git.
+* Approved changes can be automatically applied to the system.
+* Software agents to ensure correctness and alert on divergence.
+
+----
+
+## GitOps
+
+* Faster development: continuously pushing to git
+* Better Ops: fully reproducible operations
+* Stronger security guarantees: strong cryptography to track changes
+* Easier compliance and auditing: everything is tracked and logged
+
 
 ----
 
