@@ -31,7 +31,7 @@ Author of Jenkins Kubernetes plugin
 
 Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
-<!-- <img width="300" data-src="../assets/gde.png" alt="GDE logo"> -->
+<img width="300" data-src="../assets/gde.png" alt="GDE logo">
 
 ---
 
