@@ -321,17 +321,15 @@ A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted f
 
 ---
 
-
-
 <div class="container">
 
 <div class="col">
 
-    <p>[csanchez.org](http://csanchez.org)</p>
+[csanchez.org](http://csanchez.org)
 
-    <p><img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)</p>
+<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)
 
-    <p><img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)</p>
+<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 </div>
 
 <!-- <div class="col">

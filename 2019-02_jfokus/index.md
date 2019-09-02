@@ -75,11 +75,11 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 <div class="col">
 
-    <p>[csanchez.org](http://csanchez.org)</p>
+[csanchez.org](http://csanchez.org)
 
-    <p><img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)</p>
+<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)
 
-    <p><img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)</p>
+<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 </div>
 
 <!-- <div class="col">
