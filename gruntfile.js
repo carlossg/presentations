@@ -1,4 +1,4 @@
-const sass = require('node-sass');
+const sass = null //require('node-sass');
 
 module.exports = grunt => {
 
@@ -150,10 +150,10 @@ module.exports = grunt => {
 				tasks: 'test'
 			},
 			html: {
-				files: root.map(path => path + '/*.html')
+				files: '**/*.html'
 			},
 			markdown: {
-				files: root.map(path => path + '/*.md')
+				files: '**/*.md'
 			},
 			options: {
 				livereload: true
