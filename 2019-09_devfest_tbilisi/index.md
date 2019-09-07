@@ -103,7 +103,7 @@ React to the issues **automatically**
 
 ----
 
-<img data-src="../assets/jenkins-x-components-tekton.png">
+<img data-src="../assets/jenkins-x-components-tekton-2.png">
 
 ----
 
