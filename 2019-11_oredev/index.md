@@ -319,9 +319,7 @@ jx promote croc-hunter-java \
 <img data-src="../assets/flagger-slack-canary-notifications.png">
 <img data-src="../assets/flagger-slack-canary-failed.png">
 
----
-
-
+----
 
 <img data-src="../assets/quarkus_logo_horizontal_rgb.png">
 
@@ -329,11 +327,14 @@ jx promote croc-hunter-java \
 
 A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted from the best of breed Java libraries and standards
 
-----
+
+
+
+---
 
 <img height="600px" data-src="../assets/The_Devops2.6_Toolkit_EBook.jpg">
 
----
+----
 
 <div class="container">
 
