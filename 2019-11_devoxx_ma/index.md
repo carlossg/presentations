@@ -21,8 +21,6 @@ Carlos Sanchez /
 
 
 <!-- 
-# Hei
-
 Cloud Engineer @ Adobe
 
 Author of Jenkins Kubernetes plugin

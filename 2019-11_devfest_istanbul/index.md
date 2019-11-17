@@ -7,9 +7,8 @@
 }
 </style>
 
-<img width="300" data-src="../assets/kubernetes-logo.png" alt="Kubernetes logo" style="background:white">
-
-## Progressive Delivery in Kubernetes
+## Progressive Delivery
+### Continuous Delivery the Right Way
 
 Carlos Sanchez /
 [csanchez.org](http://csanchez.org) / 
@@ -21,6 +20,8 @@ Carlos Sanchez /
 
 ---
 
+
+<!-- 
 Cloud Engineer @ Adobe
 
 Author of Jenkins Kubernetes plugin
@@ -28,13 +29,20 @@ Author of Jenkins Kubernetes plugin
 Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 <img width="300" data-src="../assets/gde.png" alt="GDE logo">
-
----
+ -->
 
 
 
 
 # Progressive Delivery
+
+----
+
+<img data-src="../assets/progressive-delivery-launchdarkly.png">
+
+----
+
+<img data-src="../assets/progressive-delivery-redmonk.png">
 
 ----
 
@@ -80,11 +88,24 @@ reduces the risk associated with Continuous Delivery
 
 ----
 
+![](../assets/bad-containers.jpeg)
+
+----
+
 ## Monitoring is the new testing
 
 Know when users are experiencing issues **in production**
 
 React to the issues **automatically**
+
+----
+
+<img height="100%" width="100%" data-src="../assets/devops_borat.png">
+
+----
+
+> If you haven't automatically destroyed something by mistake, you are not automating enough
+
 
 ---
 
@@ -95,6 +116,14 @@ React to the issues **automatically**
 ----
 
 <img data-src="../assets/kubernetes-logo-text.png">
+
+----
+
+<img data-src="../assets/kubernetes-everywhere-meme.jpg">
+
+----
+
+<img data-src="../assets/kubernetes-heisenberg.png">
 
 ----
 
@@ -169,6 +198,10 @@ A systems monitoring and alerting toolkit
 [flagger.app](https://flagger.app)
 
 > automates the promotion of canary deployments by using Istio’s traffic shifting and Prometheus metrics to analyse the application’s behaviour during a controlled rollout
+
+----
+
+<img height="600px" data-src="../assets/yaml.jpg">
 
 ----
 
@@ -275,9 +308,9 @@ jx promote croc-hunter-java \
 
 ----
 
+<!-- 
 <img data-src="../assets/flagger-canary-steps.png">
-
-----
+ -->
 
 <img data-src="../assets/grafana-canary-analysis.png">
 
@@ -285,18 +318,6 @@ jx promote croc-hunter-java \
 
 <img data-src="../assets/flagger-slack-canary-notifications.png">
 <img data-src="../assets/flagger-slack-canary-failed.png">
-
----
-
-
-
-<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg/croc-hunter-jenkinsx](https://github.com/carlossg/croc-hunter-jenkinsx)
-
-<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg/croc-hunter-java](https://github.com/carlossg/croc-hunter-java)
-
-<img width="35%" data-src="../assets/croc-hunter-jenkinsx-qr-code.png">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img width="35%" data-src="../assets/croc-hunter-java-qr-code.png">
 
 ----
 
@@ -306,7 +327,14 @@ jx promote croc-hunter-java \
 
 A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted from the best of breed Java libraries and standards
 
+
+
+
 ---
+
+<img height="600px" data-src="../assets/The_Devops2.6_Toolkit_EBook.jpg">
+
+----
 
 <div class="container">
 
@@ -317,6 +345,7 @@ A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted f
 <img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
+
 </div>
 
 <!-- <div class="col">
@@ -324,8 +353,14 @@ A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted f
 </div> -->
 
 <div class="col">
-    <img width="80%" data-src="../assets/blog-qr-code.png">
+
+<img width="50%" data-src="../assets/croc-hunter-java-qr-code.png">
+
+<a href="http://adobe.com"><img width="400" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
+
+<!-- <img width="80%" data-src="../assets/blog-qr-code.png"> -->
+
+
 </div>
 </div>
 
-<a href="http://adobe.com"><img width="400" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
