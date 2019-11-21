@@ -312,6 +312,22 @@ jx promote croc-hunter-java \
 <img data-src="../assets/flagger-canary-steps.png">
  -->
 
+----
+
+[staging](http://croc-hunter-java.jx-staging.us.g.csanchez.org/)
+[github](https://github.com/carlossg/environment-jx-rocks-us-staging)
+
+[production](http://croc-hunter-java.istio.us.g.csanchez.org/)
+[github](https://github.com/carlossg/environment-jx-rocks-us-production)
+
+[grafana](http://flagger-grafana.us.g.csanchez.org)
+
+----
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/i3UfQxCz14A?start=1332" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+----
+
 <img data-src="../assets/grafana-canary-analysis.png">
 
 ----
