@@ -312,8 +312,6 @@ jx promote croc-hunter-java \
 <img data-src="../assets/flagger-canary-steps.png">
  -->
 
-----
-
 [staging](http://croc-hunter-java.jx-staging.us.g.csanchez.org/)
 [github](https://github.com/carlossg/environment-jx-rocks-us-staging)
 
@@ -328,7 +326,7 @@ jx promote croc-hunter-java \
 
 ----
 
-<img data-src="../assets/grafana-canary-analysis.png">
+<img height="650" data-src="../assets/grafana-canary-analysis.png">
 
 ----
 
