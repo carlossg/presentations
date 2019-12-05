@@ -171,7 +171,7 @@ Generates Dockerfile and Helm charts for your project
 # Progressive Delivery
 ## with Jenkins X
 
-[jenkins-x.io/developing/progressive-delivery](https://jenkins-x.io/developing/progressive-delivery/)
+[jenkins-x.io/docs/managing-jx/tutorials/progressive-delivery](https://jenkins-x.io/docs/managing-jx/tutorials/progressive-delivery/)
 
 ----
 
