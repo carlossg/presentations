@@ -81,14 +81,14 @@ reduces the risk associated with Continuous Delivery
 
 ## Rolling Updates
 
-<img data-src="../assets/module_06_rollingupdates.gif" height="600px">
+<img data-src="../assets/module_06_rollingupdates.gif" height="550px">
 
 ----
 
 ## Blue-Green Deployment
 
 <a href="https://medium.com/continuous-deployment/continuous-deployment-strategies-32e2f7badd2">
-  <img data-src="../assets/blue_green_deployments.png" height="500px">
+  <img data-src="../assets/blue_green_deployments.png" height="480px">
 </a>
 
 <small>medium.com/continuous-deployment/continuous-deployment-strategies-32e2f7badd2</small>
@@ -98,7 +98,7 @@ reduces the risk associated with Continuous Delivery
 ## Canary Deployment
 
 <a href="https://medium.com/continuous-deployment/continuous-deployment-strategies-32e2f7badd2">
-  <img data-src="../assets/canary_deployments.png" height="500px">
+  <img data-src="../assets/canary_deployments.png" height="480px">
 </a>
 
 <small>medium.com/continuous-deployment/continuous-deployment-strategies-32e2f7badd2</small>
@@ -339,7 +339,7 @@ jx promote croc-hunter-java \
 <img data-src="../assets/flagger-canary-steps.png">
  -->
 
-<img data-src="../assets/grafana-canary-analysis.png">
+<img data-src="../assets/grafana-canary-analysis.png" height="500px">
 
 ----
 
