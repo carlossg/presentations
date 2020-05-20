@@ -38,8 +38,6 @@ Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
 # Why GitOps?
 
-----
-
 <img width="600" data-src="../assets/automate-all-the-things.png">
 
 ----
@@ -144,13 +142,7 @@ Then react on git changes deploying and updating the infrastructure
 
 or just Infrastructure As Code?
 
-<img width="500" data-src="is-this-the-real-life.jpg">
-
-----
-
-GitOps needs Infrastructure As Code
-
-Infrastructure As Code does not need to do GitOps
+<img width="400" data-src="is-this-the-real-life.jpg">
 
 ----
 
@@ -168,6 +160,16 @@ CDN configuration is also stored in git
 
 Same Jenkins and templating mechanism to deploy and update CDN configuration
 
+----
+
+## And More!
+
+Grafana
+
+Prometheus
+
+...
+
 ---
 
 
@@ -178,8 +180,6 @@ Same Jenkins and templating mechanism to deploy and update CDN configuration
 ----
 
 ## No!
-
-----
 
 Integrate changes coming from 
 
