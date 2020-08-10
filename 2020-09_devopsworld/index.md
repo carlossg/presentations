@@ -7,7 +7,10 @@
 }
 </style>
 
-<!-- <a href="http://jenkins-x.io"><img width="300" data-src="../assets/jenkinsx-stacked-color.png" alt="Jenkins X logo" style="background:white"> </a> -->
+<!-- .slide: data-background="./slide-1.png" -->
+
+
+<!-- <a href="http://jenkins-x.io"><img width="300" data-src="../assets/jenkinsx-stacked-color.png" alt="Jenkins X logo" style="background:white"> </a> 
 
 ## GitOps at Adobe
 
@@ -15,16 +18,17 @@ Carlos Sanchez /
 [csanchez.org](http://csanchez.org) / 
 [@csanchez](http://twitter.com/csanchez)
 
-<a href="http://adobe.com"><img width="250" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
 
-<!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
+<small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
----
+----
 
 
 Cloud Engineer
 
 @ [Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
+
+<a href="http://adobe.com"><img width="250" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
 
 Author of Jenkins Kubernetes plugin
 
@@ -209,8 +213,9 @@ Yes, you can [trigger Jenkins pipelines from message queues](https://github.com/
 
 
 
+<!-- .slide: data-background="./slide-last.png" -->
 
-
+<!--
 <div class="container">
 
 <div class="col">
@@ -223,9 +228,9 @@ Yes, you can [trigger Jenkins pipelines from message queues](https://github.com/
 
 </div>
 
-<!-- <div class="col">
+<div class="col">
     <img width="80%" data-src="../assets/magritte.png">
-</div> -->
+</div>
 
 <div class="col">
 
@@ -235,4 +240,4 @@ Yes, you can [trigger Jenkins pipelines from message queues](https://github.com/
 
 </div>
 </div>
-
+-->
