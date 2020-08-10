@@ -266,11 +266,11 @@ gulp.task('serve', () => {
     connect.server({
         root: root,
         port: port,
-        host: '0.0.0.0',
+        host: '127.0.0.1',
         livereload: true
     })
 
-    gulp.watch(['*.html', '*.md'], gulp.series('reload'))
+    gulp.watch(['*.html', '**/*.html', '**/*.md'], gulp.series('reload'))
 
     gulp.watch(['js/**'], gulp.series('js', 'reload', 'test'))
 
