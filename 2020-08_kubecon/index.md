@@ -68,13 +68,14 @@ and Test-Driven Java Development
 
 > New versions being deployed do not replace existing versions but run in parallel for an amount of time receiving live production traffic, and are evaluated in terms of correctness and performance before the rollout is considered successful.
 
-----
+<!--
 
 Continuous Delivery is hard
 
 Progressive Delivery makes Continuous Delivery easier to adopt
 
 reduces the risk associated with Continuous Delivery
+-->
 
 ----
 
@@ -125,9 +126,7 @@ reduces the risk associated with Continuous Delivery
 
 <small>Martin Fowler martinfowler.com/articles/feature-toggles.html</small>
 
-----
-
-![](../assets/bad-containers.jpeg)
+<!-- ![](../assets/bad-containers.jpeg) -->
 
 ----
 
@@ -139,9 +138,8 @@ React to the issues **automatically**
 
 ----
 
-Progressive Delivery requires a good amount of metrics
+<!-- Progressive Delivery requires a good amount of metrics -->
 
-----
 
 <img height="100%" width="100%" data-src="../assets/devops_borat.png">
 
@@ -162,14 +160,14 @@ Progressive Delivery requires a good amount of metrics
 
 <img data-src="../assets/istio.png">
 
-----
+<!-- ----
 
 ## Prometheus
 
 <img data-src="../assets/prometheus_logo_orange_circle.svg">
 
 A systems monitoring and alerting toolkit
-
+ -->
 ----
 
 ## Flagger
@@ -180,9 +178,9 @@ A systems monitoring and alerting toolkit
 
 ----
 
-<img height="600px" data-src="../assets/yaml.jpg">
+<!-- <img height="600px" data-src="../assets/yaml.jpg"> -->
 
-----
+
 
 <img data-src="../assets/flagger-canary-overview.png">
 
@@ -194,10 +192,11 @@ A systems monitoring and alerting toolkit
 
 <img data-src="../assets/grafana-canary-analysis.png" height="500px">
 
-----
+<!-- 
 
 <img data-src="../assets/flagger-slack-canary-notifications.png">
 <img data-src="../assets/flagger-slack-canary-failed.png">
+-->
 
 ---
 
