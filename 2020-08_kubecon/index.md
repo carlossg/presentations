@@ -7,8 +7,6 @@
 }
 </style>
 
-<!-- <a href="http://jenkins-x.io"><img width="300" data-src="../assets/jenkinsx-stacked-color.png" alt="Jenkins X logo" style="background:white"> </a> -->
-
 ## Progressive Delivery in Kubernetes
 
 Carlos Sanchez /
@@ -29,7 +27,7 @@ Author of Jenkins Kubernetes plugin
 
 Long time OSS contributor at Apache Maven, Eclipse, Puppet,…
 
-<a href="http://adobe.com"><img width="250" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
+<a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
 <img width="300" data-src="../assets/gde.png" alt="GDE logo">
 

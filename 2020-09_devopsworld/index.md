@@ -28,7 +28,7 @@ Cloud Engineer
 
 @ [Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
 
-<a href="http://adobe.com"><img width="250" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
+<a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
 Author of Jenkins Kubernetes plugin
 
@@ -236,7 +236,7 @@ Yes, you can [trigger Jenkins pipelines from message queues](https://github.com/
 
 <img width="50%" data-src="../assets/blog-qr-code.png">
 
-<a href="http://adobe.com"><img width="400" data-src="../assets/adobe-logo.svg" alt="Adobe logo" style="background:white"></a>
+<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
 </div>
 </div>
