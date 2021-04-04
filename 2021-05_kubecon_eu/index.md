@@ -515,31 +515,45 @@ envoyproxy.io
 
 <img style="vertical-align:middle" data-src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fwww.envoyproxy.io%2Fdocs%2Fenvoy%2Flatest%2Fstart%2Fsandboxes%2Fdouble-proxy&size=150x150&margin=0">
 
+----
+
+## Envoy Debugging
+
+TLS connection errors only show up in `connection` component debug logs
+
+Client only sees socket closing messages
+
+----
+
+Example: certificate SAN does not match `match_subject_alt_names`
+
+VM side
+
+```
+envoy_vm_1     [debug][connection]
+[source/extensions/transport_sockets/tls/ssl_socket.cc:224]
+[C0] TLS error: 268435581:SSL routines:
+OPENSSL_internal:CERTIFICATE_VERIFY_FAILED
+```
+
+Sidecar side
+
+```
+envoy_sidecar_1 [debug][connection]
+[source/extensions/transport_sockets/tls/ssl_socket.cc:224]
+[C1] TLS error: 268436502:SSL routines:
+OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_UNKNOWN
+envoy_sidecar_1 [debug][connection]
+[source/common/network/connection_impl.cc:241]
+[C1] closing socket: 0
+```
+
+
 
 ---
 
 
 
-
-# What's Next
-
-----
-
-Certificate management with
-
-<a href="https://spiffe.io/"><img width="50%" data-src="spiffe-horizontal-color.png"></a>
-
-Can generate short lived x509 certificates
-
-Integrates nicely with Envoy
-
-----
-
-More automation using operators like Azure Service Operator
-
-Support more dedicated infrastructure
-
----
 
 
 <div class="container">
