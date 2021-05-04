@@ -124,13 +124,13 @@ Load Balancer in front of VMs gives a dedicated egress ip
 
 <img data-src="kubeconeu-2021-squid.svg">
 
-JVM is configured with Squid as HTTP proxy for transparent forwarding
+<div style="margin-left: -100px;margin-right: -100px;">JVM is configured with Squid as HTTP proxy for transparent forwarding</div>
 
 ----
 
 <img data-src="kubeconeu-2021-squid.svg">
 
-k8s network policies prevent one tenant to access a different tenant proxy
+<div style="margin-left: -100px;margin-right: -100px;">k8s network policies prevent one tenant to access a different tenant proxy</div>
 
 ----
 
@@ -180,7 +180,7 @@ Running Envoy on VMs and pod sidecars in Kubernetes
 
 <img data-src="kubeconeu-2021-envoy.svg">
 
-Each tenant gets a VNET, a VM auto scale set and a Load Balancer
+<div style="margin-left: -100px;margin-right: -100px;">Each tenant gets a VNET, a VM auto scale set and a Load Balancer</div>
 
 ----
 
@@ -198,13 +198,13 @@ Load Balancer in front of VMs gives a dedicated public egress ip
 
 <img data-src="kubeconeu-2021-lb-private.svg">
 
-Private Load Balancer in front of VMs gives a dedicated private egress ip
+<div style="margin-left: -100px;margin-right: -100px;">Private Load Balancer in front of VMs gives a dedicated private egress ip</div>
 
 ----
 
 <img data-src="kubeconeu-2021-proxy.svg">
 
-JVM is configured with Envoy sidecar as HTTP proxy for transparent forwarding
+<div style="margin-left: -100px;margin-right: -100px;">JVM is configured with Envoy sidecar as HTTP proxy for transparent forwarding</div>
 
 
 ----
