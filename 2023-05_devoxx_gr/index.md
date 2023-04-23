@@ -418,6 +418,26 @@ For `1000m` in Kubernetes and 4 threads
 
 you can consume all the CPU time in 25ms and be throttled for 75 ms
 
+
+----
+
+```
++----------+   +-----------------------------+   +-----------
+|  Core 1  |   | Thread 1                    |   |  Thread 1
++----------+   +-----------------------------+   +-----------
++----------+   
+|  Core 2  |   
++----------+   
++----------+   
+|  Core 3  |   
++----------+   
++----------+   
+|  Core 4  |   
++----------+   
+               <----------------------------->   <-----------
+                        Period 100 ms
+```
+
 ----
 
 ```
@@ -439,6 +459,7 @@ you can consume all the CPU time in 25ms and be throttled for 75 ms
                                Throttling
 ```
 
+----
 
 <!-- ### Secrets of Performance Tuning Java on Kubernetes
 
@@ -457,7 +478,6 @@ https://2022.javazone.no/#/program/77f4b4f6-094a-44ba-a23f-0fd505e8d9d6
 
 Using Kubernetes Vertical and Horizontal Pod Autoscaler -->
 
-----
 
 <iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
 
