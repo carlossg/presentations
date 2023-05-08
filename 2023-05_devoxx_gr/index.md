@@ -171,10 +171,6 @@ Assume:
 
 ----
 
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
-
-----
-
 ### What is the default JVM heap size?
 
 1. 75% of container memory
@@ -228,10 +224,6 @@ Set request and limits to the same value
 
 ----
 
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
-
-----
-
 ### What is the default JVM Garbage Collector?
 
 1. SerialGC
@@ -275,10 +267,6 @@ Configure GC with
 ----
 
 ![](garbage_collectors.png)
-
-----
-
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
 
 ----
 
@@ -328,10 +316,6 @@ Configure cpus with
 
 ----
 
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
-
-----
-
 ### In a host with 32 CPUs, and 2 JVMs with each 8 CPU requests/16 CPU limit, how much CPU can each use if both are as busy as possible?
 
 1. 100%
@@ -347,10 +331,6 @@ Configure cpus with
 2. 75%
 3. **50%**
 4. 25%
-
-----
-
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
 
 ----
 
@@ -477,10 +457,6 @@ https://2022.javazone.no/#/program/77f4b4f6-094a-44ba-a23f-0fd505e8d9d6
 * You could have bigger nodes too
 
 Using Kubernetes Vertical and Horizontal Pod Autoscaler -->
-
-
-<iframe src="https://wall.sli.do/event/jhm2sw73pV2PqtUDvNALAU?section=418b376d-3406-4520-bf7d-63e0a1605486" width="100%" height="600"></iframe>
-
 
 ---
 
