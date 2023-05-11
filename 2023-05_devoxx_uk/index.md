@@ -80,7 +80,7 @@ Traffic leaving the clusters must be encrypted
 
 * Customers can have multiple AEM environments that they can self-serve
 <!-- * Customers run their dev/stage/production -->
-* Each customer: 3+ Kubernetes namespaces (dev, stage, prod environments)
+* Each customer: 3+ Kubernetes namespaces
 * Each environment is a micro-monolith ™
 <!-- * Sandboxes, evaluation-like environments
 
@@ -136,13 +136,13 @@ Using init containers and (many) sidecars to apply division of concerns
 
 ----
 
-## Sidecars
+<!-- ## Sidecars
 
 * Custom developed (threaddump collector, storage initialization)
 * OSS (fluent-bit)
 * Extended from OSS (httpd)
 
-----
+-->
 
 ### Service warmup
 
@@ -282,10 +282,6 @@ Assume:
 
 ----
 
-It depends
-
-----
-
 ### What is the default JVM heap size?
 
 1. **75% of container memory** (< 256 MB)
@@ -296,7 +292,7 @@ It depends
 
 ----
 
-JDKs >8u191 and >11 will detect the available memory in the container, not the host
+JDKs >=8u191 and >=11 will detect the available memory in the container, not the host
 
 Using the container memory limits, so there is no guarantee that physical memory is available
 
@@ -338,10 +334,6 @@ Set request and limits to the same value
 
 ----
 
-It depends
-
-----
-
 ### What is the default JVM Garbage Collector?
 
 1. **SerialGC**   *<2 processors & < 1792MB available*
@@ -378,23 +370,19 @@ Configure GC with
 
 ----
 
-### How many CPUs does the JVM think are available?
+### How many CPUs will the JVM be able to use?
 
-1. Same as the host
-2. Same as the k8s container cpu requests
-3. Same as the k8s container cpu limits
-
-----
-
-It depends
+1. Same as the k8s container cpu requests
+2. Same as the k8s container cpu limits
+3. As many as the OS allows
 
 ----
 
-### How many CPUs does the JVM think are available?
+### How many CPUs will the JVM be able to use?
 
-1. **Same as the host** Java 19+ / 17.0.5+ / 11.0.17+ / 8u351+
-2. Same as the k8s container cpu requests
-3. **Same as the k8s container cpu limits** (otherwise, sort of)
+1. Same as the k8s container cpu requests
+2. **Same as the k8s container cpu limits** <17.0.5 / <11.0.17 / <8u351
+3. **As many as the OS allows** Java 19+ / 17.0.5+ / 11.0.17+ / 8u351+
 
 ----
 
@@ -428,21 +416,19 @@ Configure cpus with
 
 ----
 
-### In a host with 32 CPUs, and 2 JVMs with each 8 CPU requests/16 CPU limit, how much CPU can each use if both are as busy as possible?
+### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/16 CPU limit, what is the max CPU used?
 
-1. 100%
-2. 75%
-3. 50%
-4. 25%
+1. 8
+2. 16
+3. 32
 
 ----
 
-### In a host with 32 CPUs, and 2 JVMs with each 8 CPU requests/16 CPU limit, how much CPU can each use if both are as busy as possible?
+### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/16 CPU limit, what is the max CPU used?
 
-1. 100%
-2. 75%
-3. **50%**
-4. 25%
+1. 8
+2. **16**
+3. 32
 
 ----
 
@@ -450,21 +436,19 @@ Configure cpus with
 
 ----
 
-### In a host with 32 CPUs, and 2 JVMs with each 8 CPU requests and no limits, how much CPU can one use if the other one is not using CPU?
+### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/no limits, what is the max CPU used?
 
-1. 100%
-2. 75%
-3. 50%
-4. 25%
+1. 8
+2. 16
+3. 32
 
 ----
 
-### In a host with 32 CPUs, and 2 JVMs with each 8 CPU requests and no limits, how much CPU can one use if the other one is not using CPU?
+### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/no limits, what is the max CPU used?
 
-1. **100%**
-2. 75%
-3. 50%
-4. 25%
+1. 8
+2. 16
+3. **32**
 
 ----
 
@@ -496,25 +480,15 @@ After they are used the container is throttled
 
 ----
 
-### CPU limits in Kubernetes
+<!-- ### CPU limits in Kubernetes
 
 Example
 
 `500m` in Kubernetes -> 50ms of CPU usage in each 100ms period
 
-`1000m` in Kubernetes -> 100ms of CPU usage in each 100ms period
+`1000m` in Kubernetes -> 100ms of CPU usage in each 100ms period -->
 
-----
 
-### CPU limits in Kubernetes
-
-This is challenging for Java and multiple threads
-
-For `1000m` in Kubernetes and 4 threads
-
-you can consume all the CPU time in 25ms and be throttled for 75 ms
-
-----
 
 ```
 +----------+   +-----------------------------+   +-----------
@@ -532,6 +506,17 @@ you can consume all the CPU time in 25ms and be throttled for 75 ms
                <----------------------------->   <-----------
                         Period 100 ms
 ```
+
+----
+
+
+### CPU limits in Kubernetes
+
+This is challenging for Java and multiple threads
+
+For `1000m` in Kubernetes and 4 threads
+
+you can consume all the CPU time in 25ms and be throttled for 75 ms
 
 ----
 
@@ -579,6 +564,101 @@ Using Kubernetes Vertical and Horizontal Pod Autoscaler -->
 
 ---
 
+
+# Kubernetes Autoscaling
+
+----
+
+## Kubernetes Autoscaling
+
+* Cluster Autoscaler
+* Horizontal Pod Autoscaler
+* Vertical Pod Autoscaler
+
+---
+
+
+# Vertical Pod Autoscaler
+
+Increasing/decreasing the resources for each pod
+
+----
+
+## VPA
+
+Allows scaling resources up and down for a deployment
+
+Requires restart of pods (automatic or on next start)
+
+(next versions of Kubernetes will avoid it)
+
+Makes it slow to respond, can exhaust resources in busy nodes
+
+⚠️ Do not set VPA to auto if you don't want random pod restart
+
+----
+
+## VPA
+
+Only used in AEM dev environments to scale down if unused
+
+And only for some containers
+
+JVM footprint is hard to reduce
+
+Savings: 5-15%
+
+---
+
+
+
+# Horizontal Pod Autoscaler
+
+Creating more pods when needed
+
+----
+
+## HPA
+
+
+AEM scales on CPU and http requests per minute (rpm) metrics
+
+⚠️ Do not use same metrics as VPA
+
+CPU autoscaling is problematic
+
+Periodic tasks can spike the CPU, more pods do not help
+
+Spikes on startup can trigger a cascading effect
+
+----
+
+# HPA
+
+AEM needs to be warmed up on startup
+
+rpm autoscaling is better suited
+
+As long as customers don’t have expensive requests
+
+Savings: 50-75%
+
+----
+
+Pods vs RPM
+
+![](hpa-pods.png)
+![](hpa-rpm.png)
+
+----
+
+## VPA vs HPA
+
+Increasing the memory and CPU is more effective than adding more replicas
+
+But you are going to need multiple replicas for HA
+
+---
 
 
 
