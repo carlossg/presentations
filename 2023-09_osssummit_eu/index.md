@@ -25,14 +25,17 @@ Carlos Sanchez /
 
 ----
 
-Natalia / Software Developer Engineer
+**Natalia** / Software Developer Engineer
 
 Maths, coding
 
-Carlos / Principal Scientist
+<br/>
 
-Author of Jenkins Kubernetes plugin \
-Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
+**Carlos** / Principal Scientist
+
+OSS contributor, Jenkins Kubernetes plugin
+
+<br/>
 
 [Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
 
@@ -82,19 +85,19 @@ Maven
 
 ----
 
-Running on Azure
+Running on **Azure**
 
-37+ clusters and growing
+**37+ clusters** and growing
 
-Multiple regions: US, Europe, Australia, Singapore, Japan, India, more coming
+**Multiple regions**: US, Europe, Australia, Singapore, Japan, India, more coming
 
-Adobe has a dedicated team managing clusters for multiple products
+Adobe has a **dedicated team** managing clusters for multiple products
 
 ----
 
-Customers can run their own code
+Customers can **run their own code**
 
-Cluster permissions are limited for security
+**Cluster permissions** are **limited** for security
 
 ie. Traffic leaving the clusters must be encrypted
 
@@ -241,7 +244,7 @@ An operator to rule them all
 
 Launches jobs pre/post environment creation
 
-Reconciles with other internal operators
+**Reconciles** with other **internal operators**
 
 Provides an API to other systems to manage environments
 
@@ -255,11 +258,11 @@ https://fluxcd.io/
 
 ### FluxCD Helm Operator
 
-Allows managing Helm charts using declarative state vs imperative commands
+Allows **managing Helm charts** using **declarative** state vs imperative commands
 
 Integrated with our operators to manage the lifecycle of the Helm releases
 
-and to gather state from the Helm operations
+and to **gather state** from the Helm operations
 
 ----
 
@@ -271,11 +274,11 @@ https://argoproj.github.io/rollouts/
 
 ### Argo Rollouts Operator
 
-Provides advanced deployment strategies
+Provides **advanced deployment strategies**
 
 Canary, Blue/Green, A/B testing, etc.
 
-Automated rollbacks
+**Automated rollbacks**
 
 ----
 
@@ -287,9 +290,9 @@ https://github.com/kubernetes-sigs/security-profiles-operator
 
 ### Kubernetes Security Profiles Operator
 
-Allows to create and manage security profiles for pods
+Allows to create and manage **security profiles for pods**
 
-Security profiles define capabilities that a pod can use
+Security profiles **define capabilities** that a pod can use
 
 Can integrate with Seccomp, SELinux, AppArmor
 
@@ -691,7 +694,7 @@ Multiple scale sets in different availability zones
 
 ## Kubernetes Cluster Autoscaler
 
-Max nodes managed at the cluster level
+**Max nodes** managed at the cluster level
 
 Savings: 30-50%
 
@@ -716,25 +719,25 @@ Increasing/decreasing the resources for each pod
 
 ## VPA
 
-Allows scaling resources up and down for a deployment
+Allows scaling resources **up and down** for a deployment
 
-Requires restart of pods (automatic or on next start)
+Requires **restart of pods** (automatic or on next start)
 
 (next versions of Kubernetes will avoid it)
 
 Makes it slow to respond, can exhaust resources in busy nodes
 
-⚠️ Do not set VPA to auto if you don't want random pod restart
+⚠️ Do **not set VPA to auto** if you don't want random pod restart
 
 ----
 
 ## VPA
 
-Only used in AEM dev environments to scale down if unused
+Only used in AEM **dev environments** to scale down if unused
 
 And only for some containers
 
-JVM footprint is hard to reduce
+**JVM footprint** is hard to reduce
 
 Savings: 5-15%
 
@@ -751,15 +754,15 @@ Creating more pods when needed
 ## HPA
 
 
-AEM scales on CPU and http requests per minute (rpm) metrics
+AEM scales on **CPU and http requests** per minute (rpm) metrics
 
 ⚠️ Do not use same metrics as VPA
 
-CPU autoscaling is problematic
+**CPU autoscaling** is problematic
 
-Periodic tasks can spike the CPU, more pods do not help
+Periodic tasks can spike the CPU, **more pods do not help**
 
-Spikes on startup can trigger a cascading effect
+Spikes on **startup** can trigger a **cascading effect**
 
 ----
 
@@ -767,7 +770,7 @@ Spikes on startup can trigger a cascading effect
 
 AEM needs to be warmed up on startup
 
-rpm autoscaling is better suited
+**rpm autoscaling** is better suited
 
 <!-- As long as customers don’t have expensive requests -->
 
