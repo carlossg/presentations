@@ -3,12 +3,3 @@
 .reveal pre code {
   max-height: 600px;
 }
-
-.reveal-index {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: normal;
-  color: #222;
-  margin-left:20px; 
-  margin-right:20px;
-}
