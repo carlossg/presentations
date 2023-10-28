@@ -48,33 +48,11 @@ OSS contributor, Jenkins Kubernetes plugin
 
 ----
 
-Content Management System
-
-Digital Asset Management
-
-Digital Enrollment and Forms
-
-Used by many Fortune 100 companies
-
-----
-
 An existing distributed Java OSGi application
 
 Using OSS components from Apache Software Foundation
 
 A huge market of extension developers
-
-----
-
-Contributing and building on top of ASF projects
-
-Sling
-
-Felix
-
-Maven
-
-...
 
 ---
 
@@ -360,27 +338,6 @@ Easy switch for containerized Java
 
 ----
 
-## Quizz
-
-Assume:
-
-* Java 11+ and latest releases
-* 4GB memory available
-* 2+ CPUs available
-
-----
-
-### What is the default JVM heap size?
-
-1. 75% of container memory
-2. 75% of host memory
-3. 25% of container memory
-4. 25% of host memory
-5. 127MB
-
-
-----
-
 ### What is the default JVM heap size?
 
 1. **75% of container memory** (< 256 MB)
@@ -388,22 +345,6 @@ Assume:
 3. **25% of container memory** (> 512 MB)
 4. 25% of host memory
 5. **127MB** (256 MB to 512 MB)
-
-----
-
-JDKs >=8u191 and >=11 will detect the available memory in the container, not the host
-
-Using the container memory limits, so there is no guarantee that physical memory is available
-
-----
-
-Do not trust JVM ergonomics
-
-Configure memory with
-
-* `-XX:InitialRAMPercentage`
-* `-XX:MaxRAMPercentage`
-* ~~`-XX:MinRAMPercentage`~~ (allows setting the maximum heap size for a JVM running with less than 200MB)
 
 ----
 
@@ -421,123 +362,11 @@ Set request and limits to the same value
 
 ### What is the default JVM Garbage Collector?
 
-1. SerialGC
-2. ParallelGC
-3. G1GC
-4. ZGC
-5. ShenandoahGC
-
-----
-
-### What is the default JVM Garbage Collector?
-
 1. **SerialGC**   *<2 processors & < 1792MB available*
 2. **ParallelGC** *Java 8*
 3. **G1GC**       *Java >=11*
 4. ZGC
 5. ShenandoahGC
-
-
-----
-
-Poorly tuned GC will cause pauses and other issues
-
-----
-
-Do not trust JVM ergonomics
-
-Configure GC with
-
-* `-XX:+UseSerialGC`
-* `-XX:+UseParallelGC`
-* `-XX:+UseG1GC`
-* `-XX:+UseZGC`
-* `-XX:+UseShenandoahGC`
-
-
-----
-
-![](garbage_collectors.png)
-
-----
-
-### How many CPUs will the JVM be able to use?
-
-1. Same as the k8s container cpu requests
-2. Same as the k8s container cpu limits
-3. As many as the OS allows
-
-----
-
-### How many CPUs will the JVM be able to use?
-
-1. Same as the k8s container cpu requests
-2. **Same as the k8s container cpu limits** <17.0.5 / <11.0.17 / <8u351
-3. **As many as the OS allows** Java 19+ / 17.0.5+ / 11.0.17+ / 8u351+
-
-----
-
-Before Java 19/17.0.5/11.0.17/8u351
-
-* 0 ... 1023 = 1 CPU
-* 1024 = (no limit)
-* 2048 = 2 CPUs
-* 4096 = 4 CPUs
-
-----
-
-Number of CPUs / active processor count is used to compute the number of threads in the JVM
-
-used when creating threads for various subsystems.
-
-----
-
-[JDK-8281181 Do not use CPU Shares to compute active processor count](https://bugs.openjdk.org/browse/JDK-8281181)
-
-> the JDK interprets cpu.shares as an absolute number that limits how many CPUs the current process can use
-
-Kubernetes sets `cpu.shares` from the CPU requests
-
-
-----
-
-Do not trust JVM ergonomics
-
-Configure cpus with
-
-* `-XX:ActiveProcessorCount`
-
-----
-
-### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/16 CPU limit, what is the max CPU used?
-
-1. 8
-2. 16
-3. 32
-
-----
-
-### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/16 CPU limit, what is the max CPU used?
-
-1. 8
-2. **16**
-3. 32
-
-----
-
-### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/no limits, what is the max CPU used?
-
-1. 8
-2. 16
-3. 32
-
-----
-
-### In a 32 CPU host with 2 JVMs where one is idle, each with 8 CPU requests/no limits, what is the max CPU used?
-
-1. 8
-2. 16
-3. **32**
 
 ---
 
