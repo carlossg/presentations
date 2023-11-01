@@ -653,6 +653,11 @@ Resource optimization: tuning JVM CPU, memory, GC
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [angulito](https://github.com/angulito)
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
+
 </div>
 
 <!-- <div class="col">
@@ -665,11 +670,10 @@ Resource optimization: tuning JVM CPU, memory, GC
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
 
-[csanchez.org](http://csanchez.org)
+<!-- [csanchez.org](http://csanchez.org) -->
+
+<img height="300px" style="vertical-align:middle" data-src="qr.png"></img>
 
 
 </div>
 </div>
-
-
-<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
