@@ -384,10 +384,6 @@ It is used for scheduling and then a relative weight
 
 It is not the number of CPUs that can be used
 
-----
-
-### CPU requests in Kubernetes
-
 1 CPU means it can consume one CPU cycle per CPU period
 
 Two containers with 0.1 cpu requests each can use 50% of the CPU time of the node
@@ -404,85 +400,8 @@ The limit is the number of CPU cycles that can be used in that period
 
 After they are used, the container is throttled
 
-----
-
-<!-- ### CPU limits in Kubernetes
-
-Example
-
-`500m` in Kubernetes -> 50ms of CPU usage in each 100ms period
-
-`1000m` in Kubernetes -> 100ms of CPU usage in each 100ms period -->
-
-
-
-```
-+----------+   +-----------------------------+   +-----------
-|  Core 1  |   | Thread 1                    |   |  Thread 1
-+----------+   +-----------------------------+   +-----------
-+----------+   
-|  Core 2  |   
-+----------+   
-+----------+   
-|  Core 3  |   
-+----------+   
-+----------+   
-|  Core 4  |   
-+----------+   
-               <----------------------------->   <-----------
-                        Period 100 ms
-```
-
-----
-
-
-### CPU limits in Kubernetes
-
-This is challenging for Java and multiple threads
-
-For `1000m` in Kubernetes and 4 threads
-
-you can consume all the CPU time in 25ms and be throttled for 75 ms
-
-----
-
-```
-+----------+   +-----------------------------+   +-----------
-|  Core 1  |   | Thread 1 ~~~~~~~~~~~~~~~~~~~|   |  Thread 1
-+----------+   +-----------------------------+   +-----------
-+----------+   +-----------------------------+   +-----------
-|  Core 2  |   | Thread 2 ~~~~~~~~~~~~~~~~~~~|   |  Thread 2
-+----------+   +-----------------------------+   +-----------
-+----------+   +-----------------------------+   +-----------
-|  Core 3  |   | Thread 3 ~~~~~~~~~~~~~~~~~~~|   |  Thread 3
-+----------+   +-----------------------------+   +-----------
-+----------+   +-----------------------------+   +-----------
-|  Core 4  |   | Thread 4 ~~~~~~~~~~~~~~~~~~~|   |  Thread 4
-+----------+   +-----------------------------+   +-----------
-               <----------------------------->   <-----------
-                        Period 100 ms
-                          <------------------>
-                               Throttling
-```
-
 ---
 
-<!-- ### Secrets of Performance Tuning Java on Kubernetes
-
-by @brunoborges
-
-https://2022.javazone.no/#/program/77f4b4f6-094a-44ba-a23f-0fd505e8d9d6
- -->
-
-<!-- 
-
-# Scaling
-
-* ⚠️ API rate limits can be hit on upgrades, so we limit each cluster in the hundreds of nodes
-
-* You could have bigger nodes too
-
-Using Kubernetes Vertical and Horizontal Pod Autoscaler -->
 
 
 
