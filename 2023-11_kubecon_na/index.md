@@ -204,8 +204,6 @@ Launches jobs pre/post environment creation
 
 **Reconciles** with other **internal operators**
 
-Provides an API to other systems to manage environments
-
 ----
 
 ## FluxCD Helm Operator
@@ -237,24 +235,6 @@ Provides **advanced deployment strategies**
 Canary, Blue/Green, A/B testing, etc.
 
 **Automated rollbacks**
-
-----
-
-## Kubernetes Security Profiles Operator
-
-https://github.com/kubernetes-sigs/security-profiles-operator
-
-----
-
-### Kubernetes Security Profiles Operator
-
-Allows to create and manage **security profiles for pods**
-
-Security profiles **define capabilities** that a pod can use
-
-Can integrate with Seccomp, SELinux, AppArmor
-
-Can be installed, recorded and distributed as OCI images
 
 
 ---
@@ -394,17 +374,7 @@ Set request and limits to the same value
 
 Automatically increase and reduce the cluster size
 
-----
-
-## Kubernetes Cluster Autoscaler
-
 Based on CPU/memory requests
-
-Some head room for spikes
-
-Multiple scale sets in different availability zones
-
-<!-- At scale it is easy to cause a Denial of Service in our services or cloud services -->
 
 ----
 
@@ -431,29 +401,16 @@ Savings: 30-50%
 
 Increasing/decreasing the resources for each pod
 
-----
-
-## VPA
-
-Allows scaling resources **up and down** for a deployment
-
 Requires **restart of pods** (automatic or on next start)
 
 (next versions of Kubernetes will avoid it)
 
-Makes it slow to respond, can exhaust resources in busy nodes
-
-⚠️ Do **not set VPA to auto** if you don't want random pod restart
 
 ----
 
 ## VPA
 
 Only used in AEM **dev environments** to scale down if unused
-
-And only for some containers
-
-**JVM footprint** is hard to reduce
 
 Savings: 5-15%
 
@@ -480,32 +437,7 @@ Periodic tasks can spike the CPU, **more pods do not help**
 
 Spikes on **startup** can trigger a **cascading effect**
 
-----
-
-# HPA
-
-AEM needs to be warmed up on startup
-
-**rpm autoscaling** is better suited
-
-<!-- As long as customers don’t have expensive requests -->
-
 Savings: 50-75%
-
-----
-
-Pods vs RPM
-
-![](hpa-pods.png)
-![](hpa-rpm.png)
-
-----
-
-## VPA vs HPA
-
-Increasing the memory and CPU is more effective than adding more replicas
-
-But you are going to need multiple replicas for HA
 
 ---
 
