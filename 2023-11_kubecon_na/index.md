@@ -73,13 +73,13 @@ Adobe has a **dedicated team** managing clusters for multiple products
 
 ----
 
-Customers can **run their own code**
+<!-- Customers can **run their own code**
 
 **Cluster permissions** are **limited** for security
 
-ie. Traffic leaving the clusters must be encrypted
+ie. Traffic leaving the clusters must be encrypted -->
 
-----
+
 
 ## AEM Environments
 
@@ -334,21 +334,18 @@ Typically can use up to 75% of container memory
 
 Unless there is a lot of off-heap memory used (ElasticSearch, Spark,...)
 
-JVM takes all the memory on startup and manages it
-
 JVM memory use is hidden from Kubernetes, which sees all of it as used
 
 Set request and limits to the same value
 
-----
 
-### What is the default JVM Garbage Collector?
+<!-- ### What is the default JVM Garbage Collector?
 
 1. **SerialGC**   *<2 processors & < 1792MB available*
 2. **ParallelGC** *Java 8*
 3. **G1GC**       *Java >=11*
 4. ZGC
-5. ShenandoahGC
+5. ShenandoahGC -->
 
 ---
 
