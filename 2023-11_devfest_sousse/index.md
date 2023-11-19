@@ -249,9 +249,7 @@ A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted f
 
 <div class="col">
 
-<!-- <img width="50%" data-src="../assets/blog-qr-code.png"> -->
-
-<img width="60%" data-src="../assets/instagram-qr-code.png">
+<img width="50%" data-src="../assets/blog-qr-code.png">
 
 
 </div>
