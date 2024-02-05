@@ -14,8 +14,10 @@
 <a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
 Carlos Sanchez /
-[csanchez.org](http://csanchez.org) / 
-[@csanchez](http://twitter.com/csanchez)
+[csanchez.org](http://csanchez.org)
+
+[@csanchez](http://twitter.com/csanchez) /
+[@csanchez@fosstodon.org](https://fosstodon.org/@csanchez)
 
 <!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
@@ -37,6 +39,11 @@ Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 <div style="text-align: right; font-size: 15px">
 <a href="https://twitter.com/memenetes/status/1741867203706671463">@memenetes</a>
 <div>
+
+---
+
+<img width="550" data-src="jenkins-kubernetes-first-commit.png">
+
 
 ---
 
@@ -140,16 +147,6 @@ Progressive Delivery requires a good amount of metrics
 
 
 # Progressive Delivery in Kubernetes
-
-----
-
-## Kubernetes
-
-> an open-source system for automating deployment, scaling, and management of containerized applications
-
-----
-
-![](../assets/bad-containers.jpeg)
 
 ----
 
