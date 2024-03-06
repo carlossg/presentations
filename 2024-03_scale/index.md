@@ -63,6 +63,14 @@ Adobe has a **dedicated team** managing clusters for multiple products
 
 ----
 
+17k+ environments
+
+100k+ `Deployments`
+
+6k+ namespaces
+
+----
+
 <!-- Customers can **run their own code**
 
 **Cluster permissions** are **limited** for security
