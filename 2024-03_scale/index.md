@@ -13,9 +13,16 @@
 
 <a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
-Carlos Sanchez /
-[csanchez.org](http://csanchez.org) / 
-[@csanchez](http://twitter.com/csanchez)
+Carlos Sanchez
+
+<small>
+
+[csanchez.org](http://csanchez.org) /
+[@csanchez](http://twitter.com/csanchez) /
+[@csanchez@fosstodon.org](https://fosstodon.org/@csanchez)
+
+</small>
+
 
 <!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
@@ -55,11 +62,19 @@ A huge market of extension developers
 
 Running on **Azure**
 
-**40+ clusters** and growing
+**45+ clusters** and growing
 
 **Multiple regions**: US, Europe, Australia, Singapore, Japan, India, more coming
 
 Adobe has a **dedicated team** managing clusters for multiple products
+
+----
+
+17k+ environments
+
+100k+ `Deployments`
+
+6k+ namespaces
 
 ----
 
