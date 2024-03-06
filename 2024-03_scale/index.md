@@ -55,7 +55,7 @@ A huge market of extension developers
 
 Running on **Azure**
 
-**40+ clusters** and growing
+**45+ clusters** and growing
 
 **Multiple regions**: US, Europe, Australia, Singapore, Japan, India, more coming
 
