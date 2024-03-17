@@ -13,9 +13,16 @@
 
 <a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
-Carlos Sanchez /
-[csanchez.org](http://csanchez.org) / 
-[@csanchez](http://twitter.com/csanchez)
+Carlos Sanchez
+
+<small>
+
+[csanchez.org](http://csanchez.org) /
+[@csanchez](http://twitter.com/csanchez) /
+[@csanchez@fosstodon.org](https://fosstodon.org/@csanchez)
+
+</small>
+
 
 <!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
