@@ -357,6 +357,14 @@ What happens with environments with low traffic?
 
 ---
 
+# Demo
+
+----
+
+![](argo-failed-analysis-run.png)
+
+---
+
 
 Progressive Delivery is a great idea
 
