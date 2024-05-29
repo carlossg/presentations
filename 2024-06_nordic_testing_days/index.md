@@ -79,7 +79,7 @@ reduces the risk associated with Continuous Delivery
 
 ## Rolling Updates
 
-<img data-src="../assets/module_06_rollingupdates.gif" height="550px">
+<img data-src="../assets/module_06_rollingupdates.gif" height="500px">
 
 ----
 
@@ -166,7 +166,7 @@ Ingress controllers:
 
 ## Argo Rollouts
 
-<img height="600px" data-src="../assets/argo-icon-color-square.png">
+<img height="500px" data-src="../assets/argo-icon-color-square.png">
 
 ----
 
@@ -186,11 +186,11 @@ Ingress controllers:
 
 ----
 
-<img data-src="../assets/argo-canary-deployments.png">
+<img height="600px" data-src="../assets/argo-canary-deployments.png">
 
 ----
 
-<img data-src="../assets/argo-rollout-ui.png">
+<img height="600px" data-src="../assets/argo-rollout-ui.png">
 
 
 ----
@@ -244,6 +244,3 @@ A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted f
 
 </div>
 </div>
-
-
-<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
