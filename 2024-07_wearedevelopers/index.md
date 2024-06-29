@@ -13,9 +13,10 @@
 
 Carlos Sanchez /
 [csanchez.org](http://csanchez.org)
-
-[@csanchez](http://twitter.com/csanchez) /
-[@csanchez@fosstodon.org](https://fosstodon.org/@csanchez)
+/
+[@csanchez](http://twitter.com/csanchez)
+<!-- /
+[@csanchez@fosstodon.org](https://fosstodon.org/@csanchez) -->
 
 <!-- <small>[Watch online at carlossg.github.io/presentations](https://carlossg.github.io/presentations)</small> -->
 
@@ -27,7 +28,7 @@ Principal Scientist
 
 Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
-<img width="300" data-src="../assets/gde.png" alt="GDE logo">
+<!-- <img width="300" data-src="../assets/gde.png" alt="GDE logo"> -->
 
 ---
 
@@ -54,13 +55,13 @@ Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
 ----
 
-Continuous Delivery is hard
+<!-- Continuous Delivery is hard
 
 Progressive Delivery makes Continuous Delivery easier to adopt
 
-reduces the risk associated with Continuous Delivery
+reduces the risk associated with Continuous Delivery -->
 
-----
+
 
 * Avoiding downtime
 * Limit the blast radius
@@ -114,9 +115,9 @@ React to the issues **automatically**
 
 ----
 
-Progressive Delivery requires a good amount of metrics
+<!-- Progressive Delivery requires a good amount of metrics -->
 
-----
+
 
 <img height="100%" width="100%" data-src="../assets/devops_borat.png">
 
@@ -191,18 +192,15 @@ Ingress controllers:
 <img height="600px" data-src="../assets/argo-rollout-ui.png">
 
 
-----
 
 
-<img data-src="../assets/istio.png">
+<!-- <img data-src="../assets/istio.png"> -->
 
-----
-
-## Prometheus
+<!-- ## Prometheus
 
 <img data-src="../assets/prometheus_logo_orange_circle.svg">
 
-A systems monitoring and alerting toolkit
+A systems monitoring and alerting toolkit -->
 
 <!--
 
