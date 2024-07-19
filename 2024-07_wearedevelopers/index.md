@@ -55,6 +55,10 @@ Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
 ----
 
+<img data-src="crowdstrike.png">
+
+----
+
 <!-- Continuous Delivery is hard
 
 Progressive Delivery makes Continuous Delivery easier to adopt
