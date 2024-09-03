@@ -397,6 +397,17 @@ But you are going to need multiple replicas for HA
 
 
 
+
+# ARM architecture
+
+15-25% cost savings for the same performance
+
+Easy switch for containerized Java and other languages
+
+---
+
+
+
 # Hibernation
 
 <img width="400" data-src="../assets/meme-hibernation.jpg">
