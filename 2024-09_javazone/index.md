@@ -106,6 +106,14 @@ reduces the risk associated with Continuous Delivery -->
 
 ----
 
+## Dark Launching
+
+<a href="https://martinfowler.com/bliki/DarkLaunching.html">
+  <img data-src="../assets/dark-launching_jp.png">
+</a>
+
+----
+
 ## Feature Flags
 
 <a href="https://martinfowler.com/articles/feature-toggles.html">
