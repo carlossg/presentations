@@ -28,7 +28,7 @@ Principal Scientist
 
 Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
-<!-- <img width="300" data-src="../assets/gde.png" alt="GDE logo"> -->
+<img width="300" data-src="../assets/gde.png" alt="GDE logo">
 
 ---
 
