@@ -39,14 +39,6 @@ Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
 ----
 
-<img data-src="../assets/progressive-delivery-launchdarkly.png">
-
-----
-
-<img width="800" data-src="../assets/progressive-delivery-redmonk.png">
-
-----
-
 > [Progressive Delivery](https://redmonk.com/jgovernor/2018/08/06/towards-progressive-delivery/) is a term that includes deployment strategies that try to avoid the pitfalls of all-or-nothing deployment strategies
 
 ----
@@ -131,14 +123,6 @@ React to the issues **automatically**
 
 ----
 
-<!-- Progressive Delivery requires a good amount of metrics -->
-
-
-
-<img height="100%" width="100%" data-src="../assets/devops_borat.png">
-
-----
-
 > If you haven't automatically destroyed something by mistake, you are not automating enough
 
 
@@ -194,14 +178,6 @@ Ingress controllers:
 ## Argo Rollouts
 
 <img data-src="../assets/argo-rollout-architecture.png">
-
-----
-
-<img height="600px" data-src="../assets/yaml.jpg">
-
-----
-
-<img height="600px" data-src="../assets/argo-canary-deployments.png">
 
 ----
 
