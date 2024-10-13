@@ -349,11 +349,51 @@ Argo Rollouts is a great implementation
 
 Some things to iron out and prepare for
 
+---
+
+## Enablement challenges
+
+Hitting the namespace quota limit
+
+Scaling down the deployment after the rollout is complete
 
 ---
 
+## Disablement challenges
 
+Scaling up the deployment after the rollout is deleted with no service interruptions
 
+---
+
+## Steps configuration
+
+Short pauses reduce the window for identifying errors, potentially leading to missed issues
+
+Long pauses can significantly increase deployment duration
+
+---
+
+ ## Metrics selection
+
+ Compare metrics between stable and canary
+
+ Identify environments already experiencing errors
+
+ Recognize low-traffic environments
+
+ Check errors in both author and publish deployments
+
+ <!-- Use dry-run mode until the suitable metrics are found -->
+
+---
+
+## Customer vs internal changes
+
+Rolling back changes without user feedback can create confusion
+
+Be mindful of users who have strict requirements for fast deployments
+
+---
 
 
 <div class="container">
