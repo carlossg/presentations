@@ -387,6 +387,9 @@ Long pauses can significantly increase deployment duration
 
 ---
 
+![](argo-metrics.png)
+
+---
 ## Customer vs internal changes
 
 Rolling back changes without user feedback can create confusion
