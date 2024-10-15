@@ -1,3 +1,25 @@
+<!-- 
+ArgoCon:
+Intro
+Scale
+How did we rolled it out 
+Watch out for quotas
+PR to auto downscale the previous one
+Differentiating customer triggered vs internal: confusing for external users with no feedback
+Figuring out the correct metrics: compare stable to canary, broken environments, low traffic environments
+Teaching engineers about Rollouts
+Setting the steps correctly: short steps may not catch issues, not too short not too long
+Immutable secrets/configmaps, old ones are deleted
+False positives, false negatives
+Controller stuck 
+Degraded rollouts: InvalidSpec, timeout (replicaset fails to be ready), error, abort
+Disabling it, requires manual scale up of Deployment
+Deployments with little traffic
+Increase in COGS 
+-->
+
+
+
 <style>
 .container{
     display: flex;
@@ -11,29 +33,28 @@
 
 <a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
 
-Roxana Balasoiu /
-[github.com/balasoiuroxana](https://github.com/balasoiuroxana)
-
-Carlos Sanchez /
-[csanchez.org](http://csanchez.org) / 
-[@csanchez](http://twitter.com/csanchez)
+Roxana Balasoiu / Carlos Sanchez
 
 
 
 ---
 
 
-**Natalia** / Software Developer Engineer
+**Roxana / Software Developer Engineer**
 
-Maths, coding
+xxx
 
-<br/>
+[github.com/balasoiuroxana](https://github.com/balasoiuroxana)
 
-**Carlos** / Principal Scientist
+
+
+**Carlos / Principal Scientist**
 
 OSS contributor, Jenkins Kubernetes plugin
 
-<br/>
+[csanchez.org](http://csanchez.org) / 
+[@csanchez](http://twitter.com/csanchez)
+
 
 [Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
 
@@ -152,6 +173,66 @@ Using existing metrics from Prometheus
 
 ----
 
+## Scale
+
+XXk `Rollout` objects TODO
+
+XX reconciliations per day (XX max per cluster)
+
+TODO
+
+Noticed the controller stuck some times
+
+----
+
+## Rollout of the Rollout
+
+Slow to avoid issues
+
+Watch for quotas as Deployments are scaled down and Rollouts up
+
+----
+
+# Reverting the Rollouts
+
+Disabling Rollouts require scaling up the `Deployment` object
+
+----
+
+##### Reference Deployment From Rollout
+
+<div style="font-size: 0.6em">
+
+Instead of removing Deployment you can scale it down to zero and reference it from the Rollout resource:
+
+1. Create a Rollout resource.
+1. Reference an existing Deployment using `workloadRef` field.
+1. In the `workloadRef` field set the `scaleDown` attribute, which specifies how the Deployment should be scaled down. There are three options available:
+   * `never`: the Deployment is not scaled down
+   * `onsuccess`: the Deployment is scaled down after the Rollout becomes healthy
+   * `progressively`: as the Rollout is scaled up the Deployment is scaled down.
+
+</div>
+
+----
+
+## Migration
+
+![](argo-rollouts-pr.png)
+
+[argo-rollouts PR #3111](https://github.com/argoproj/argo-rollouts/pull/3111)
+
+----
+
+## Migration
+
+`Rollout` requires changing runbooks, tooling and training
+
+Teaching engineers about `Rollouts`, `Deployments` scaled down to 0 are confusing
+
+
+----
+
 Two deployments tied together (author & publish)
 
 Rolling both at the same time
@@ -224,10 +305,16 @@ provider:
         }
 ```
 
+----
+
+Differentiating customer triggered vs internal
+
+Avoid confusing external users with no feedback
+
 
 ---
 
-# The Good
+# Benefits
 
 Automatic roll back on high error rates
 
@@ -237,7 +324,7 @@ Reduced blast radius
 
 ----
 
-# The Good
+# Benefits
 
 Only a percentage of traffic is affected temporarily
 
@@ -249,7 +336,7 @@ More velocity
 
 ---
 
-# The Bad
+# Challenges
 
 Migration requires orchestration to avoid downtime
 
@@ -258,32 +345,9 @@ Even using `workloadRef`
 A problem with 1000s of services
 
 
-----
-
-![](argo-rollouts-pr.png)
-
-[argo-rollouts PR #3111](https://github.com/argoproj/argo-rollouts/pull/3111)
-
-----
-
-##### Reference Deployment From Rollout
-
-<div style="font-size: 0.6em">
-
-Instead of removing Deployment you can scale it down to zero and reference it from the Rollout resource:
-
-1. Create a Rollout resource.
-1. Reference an existing Deployment using `workloadRef` field.
-1. In the `workloadRef` field set the `scaleDown` attribute, which specifies how the Deployment should be scaled down. There are three options available:
-   * `never`: the Deployment is not scaled down
-   * `onsuccess`: the Deployment is scaled down after the Rollout becomes healthy
-   * `progressively`: as the Rollout is scaled up the Deployment is scaled down.
-
-</div>
-
 ---
 
-# The Ugly
+# Challenges
 
 Start with simple rollouts, watch for degraded status
 
@@ -318,13 +382,43 @@ Example:
 
 ----
 
-Need good metrics
+# Metrics
+
+Figuring out the correct metrics
 
 Metrics need to account for `canary`/`stable` labels
 
 What happens with environments with low traffic?
 
-`Rollout` requires changing runbooks, tooling and training
+Even broken environments that always fail canary
+
+----
+
+# Steps
+
+Setting the steps correctly: short steps may not catch issues, not too short not too long
+
+----
+
+# False Positives / Negatives
+
+Review number of Rollouts that are not promoted
+
+Fix and iterate
+
+----
+
+# Handling Failures
+
+Look for degraded rollouts: InvalidSpec, timeout (replicaset fails to be ready), error, abort
+
+----
+
+# Costs
+
+Increase in cost for the added safety
+
+
 
 ---
 
@@ -403,14 +497,13 @@ Be mindful of users who have strict requirements for fast deployments
 
 <div class="col">
 
-<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[nangulito](http://twitter.com/nangulito)
 
-<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [angulito](https://github.com/angulito)
+<img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [balasoiuroxana](https://github.com/balasoiuroxana)
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Corporate_Horizontal_Lockup_Red_RGB.svg" alt="Adobe logo" style="background:white"></a>
+<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a>
 
 </div>
 
@@ -420,9 +513,9 @@ Be mindful of users who have strict requirements for fast deployments
 
 <div class="col">
 
-<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)
-
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [carlossg](https://github.com/carlossg)
+
+<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[csanchez](http://twitter.com/csanchez)
 
 <!-- [csanchez.org](http://csanchez.org) -->
 
