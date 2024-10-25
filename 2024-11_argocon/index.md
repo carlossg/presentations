@@ -175,13 +175,17 @@ Using existing metrics from Prometheus
 
 ## Scale
 
-XXk `Rollout` objects TODO
+6k `Rollout` objects
 
 XX reconciliations per day (XX max per cluster)
 
 TODO
 
 Noticed the controller stuck some times
+
+----
+
+TODO: Grafana Dashboard
 
 ----
 
@@ -311,6 +315,9 @@ Differentiating customer triggered vs internal
 
 Avoid confusing external users with no feedback
 
+Be mindful of users who have strict requirements for fast deployments
+
+
 
 ---
 
@@ -345,7 +352,7 @@ Even using `workloadRef`
 A problem with 1000s of services
 
 
----
+----
 
 # Challenges
 
@@ -392,11 +399,19 @@ What happens with environments with low traffic?
 
 Even broken environments that always fail canary
 
+Check errors in both author and publish deployments
+
+----
+
+![](argo-metrics.png)
+
 ----
 
 # Steps
 
 Setting the steps correctly: short steps may not catch issues, not too short not too long
+
+Long pauses can significantly increase deployment duration
 
 ----
 
@@ -422,73 +437,12 @@ Increase in cost for the added safety
 
 ---
 
-# Demo
-
-----
-
-<video controls >
-  <source src="demo.mp4" type="video/mp4">
-</video>
-
-----
-
-![](argo-failed-analysis-run.png)
-
----
-
-
 Progressive Delivery is a great idea
 
 Argo Rollouts is a great implementation
 
 Some things to iron out and prepare for
 
----
-
-## Enablement challenges
-
-Hitting the namespace quota limit
-
-Scaling down the deployment after the rollout is complete
-
----
-
-## Disablement challenges
-
-Scaling up the deployment after the rollout is deleted with no service interruptions
-
----
-
-## Steps configuration
-
-Short pauses reduce the window for identifying errors, potentially leading to missed issues
-
-Long pauses can significantly increase deployment duration
-
----
-
- ## Metrics selection
-
- Compare metrics between stable and canary
-
- Identify environments already experiencing errors
-
- Recognize low-traffic environments
-
- Check errors in both author and publish deployments
-
- <!-- Use dry-run mode until the suitable metrics are found -->
-
----
-
-![](argo-metrics.png)
-
----
-## Customer vs internal changes
-
-Rolling back changes without user feedback can create confusion
-
-Be mindful of users who have strict requirements for fast deployments
 
 ---
 
@@ -499,6 +453,8 @@ Be mindful of users who have strict requirements for fast deployments
 
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/GitHub-Mark-64px.png"> [balasoiuroxana](https://github.com/balasoiuroxana)
+
+<img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[balasoiuroxana](http://twitter.com/balasoiuroxana)
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
