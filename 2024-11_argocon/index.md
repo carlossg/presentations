@@ -42,9 +42,8 @@ Roxana Balasoiu / Carlos Sanchez
 
 **Roxana / Software Developer Engineer**
 
-xxx
-
-[github.com/balasoiuroxana](https://github.com/balasoiuroxana)
+[balasoiuroxana](https://github.com/balasoiuroxana) /
+[@balasoiuroxana](http://twitter.com/balasoiuroxana)
 
 
 
@@ -185,7 +184,7 @@ Noticed the controller stuck some times
 
 ----
 
-TODO: Grafana Dashboard
+![](argo-rollouts-grafana.png)
 
 ----
 
