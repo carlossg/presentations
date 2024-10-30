@@ -176,9 +176,7 @@ Using existing metrics from Prometheus
 
 6k `Rollout` objects
 
-XX reconciliations per day (XX max per cluster)
-
-TODO
+10k reconciliations in average (up to 5k per cluster)
 
 Noticed the controller stuck some times
 
@@ -455,11 +453,6 @@ Some things to iron out and prepare for
 
 <img height="64px" style="vertical-align:middle" data-src="../assets/twitter-logo.png">[balasoiuroxana](http://twitter.com/balasoiuroxana)
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a>
-
 </div>
 
 <!-- <div class="col">
@@ -474,8 +467,10 @@ Some things to iron out and prepare for
 
 <!-- [csanchez.org](http://csanchez.org) -->
 
-<img height="300px" style="vertical-align:middle" data-src="qr.png"></img>
+<!-- <img height="300px" style="vertical-align:middle" data-src="qr.png"></img> -->
 
 
 </div>
 </div>
+
+<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a>
