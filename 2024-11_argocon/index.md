@@ -70,22 +70,15 @@ Using OSS components from Apache Software Foundation
 
 A huge market of extension developers
 
----
-
-
-
-
-# AEM on Kubernetes
-
 ----
 
 Running on **Azure**
 
-**45+ clusters** and growing
+**50+ clusters** and growing
 
-**Multiple regions**: US, Europe, Australia, Singapore, Japan, India, more coming
+**Multiple regions**: US+, Europe+, Australia, Singapore, Japan, India, more coming
 
-Adobe has a **dedicated team** managing clusters for multiple products
+<!-- Adobe has a **dedicated team** managing clusters for multiple products -->
 
 ----
 
@@ -110,7 +103,9 @@ Using init containers and (many) sidecars to apply division of concerns
 ---
 
 
-## Scale
+# Scale
+
+TODO update numbers
 
 17k+ environments
 
@@ -118,7 +113,7 @@ Using init containers and (many) sidecars to apply division of concerns
 
 6k+ namespaces
 
-Already doing progressive rollouts at the environment level
+Already doing progressive rollouts at the environment and namespace level
 
 ----
 
@@ -178,11 +173,11 @@ Using existing metrics from Prometheus
 
 10k reconciliations in average (up to 5k per cluster)
 
-Noticed the controller stuck some times
+(Noticed the controller stuck some times)
 
 ----
 
-![](argo-rollouts-grafana.png)
+<img height="100%" data-src="argo-rollouts-grafana.png">
 
 ----
 
@@ -192,9 +187,11 @@ Slow to avoid issues
 
 Watch for quotas as Deployments are scaled down and Rollouts up
 
+Dry run mode to look for issues
+
 ----
 
-# Reverting the Rollouts
+## Reverting the Rollouts
 
 Disabling Rollouts require scaling up the `Deployment` object
 
@@ -272,45 +269,35 @@ spec:
 
 ----
 
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: AnalysisTemplate
-metadata:
-  name: "rollout-success-rate"
-spec:
-  args:
-  - name: aem_service
-  metrics:
-  - name: success-rate
-    interval: 5m
-    # NOTE: prometheus queries return results in the form of a
-    # vector. So it is common to access the index 0 of the
-    # returned array to obtain the value
-    successCondition: |
-      len(result) == 0 || isNaN(result[0]) || result[0] < 0.1
-    failureLimit: 3
-```
+## Analysis Template
+
+Combining 6 metrics:
+
+Error ratio in stable vs canary
+
+Number of errors in canary
+
+Number of requests in both stable and canary
+
+Combine two deployments together
 
 ----
 
-```yaml
-provider:
-    prometheus:
-    address: |
-        http://prometheus-aem-prometheus-server.namespace.svc.cluster.local:80
-    query: |
-        request_error_ratio_5m{
-        pod_label_role="canary",
-        aem_tier=~"author|publish",
-        aem_service=~"{{args.aem_service}}"
-        }
-```
+## Analysis Template using AI
+
+Easily implemented using canary analysis jobs
+
+<img height="400px" data-src="let-chatgpt-do-it.webp">
 
 ----
+
+## The customer view
 
 Differentiating customer triggered vs internal
 
 Avoid confusing external users with no feedback
+
+Rolling back changes without user feedback can create confusion
 
 Be mindful of users who have strict requirements for fast deployments
 
@@ -386,17 +373,20 @@ Example:
 
 ----
 
-# Metrics
+## Metrics
 
 Figuring out the correct metrics
 
 Metrics need to account for `canary`/`stable` labels
 
-What happens with environments with low traffic?
+Recognize low-traffic environments
 
-Even broken environments that always fail canary
+Identify environments already experiencing errors
 
-Check errors in both author and publish deployments
+Check errors in multiple deployments if they work together
+
+<!-- Use dry-run mode until the suitable metrics are found -->
+
 
 ----
 
@@ -404,15 +394,17 @@ Check errors in both author and publish deployments
 
 ----
 
-# Steps
+## Steps
 
-Setting the steps correctly: short steps may not catch issues, not too short not too long
+Setting the steps correctly
 
-Long pauses can significantly increase deployment duration
+Short steps may not catch issues
+
+Long pauses or many steps can significantly increase deployment duration
 
 ----
 
-# False Positives / Negatives
+## False Positives / Negatives
 
 Review number of Rollouts that are not promoted
 
@@ -420,26 +412,27 @@ Fix and iterate
 
 ----
 
-# Handling Failures
+## Handling Failures
 
 Look for degraded rollouts: InvalidSpec, timeout (replicaset fails to be ready), error, abort
 
 ----
 
-# Costs
+## Costs
 
 Increase in cost for the added safety
 
 
-
 ---
+
+
+
 
 Progressive Delivery is a great idea
 
 Argo Rollouts is a great implementation
 
 Some things to iron out and prepare for
-
 
 ---
 
