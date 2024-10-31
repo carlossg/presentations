@@ -42,6 +42,8 @@ Roxana Balasoiu / Carlos Sanchez
 
 **Roxana / Software Developer Engineer**
 
+problem-solving enthusiast, cloud engineering
+
 [balasoiuroxana](https://github.com/balasoiuroxana) /
 [@balasoiuroxana](http://twitter.com/balasoiuroxana)
 
@@ -112,9 +114,9 @@ Using init containers and (many) sidecars to apply division of concerns
 
 17k+ environments
 
-100k+ `Deployments`
+200k+ `Deployments`
 
-6k+ namespaces
+10k+ namespaces
 
 Already doing progressive rollouts at the environment and namespace level
 
