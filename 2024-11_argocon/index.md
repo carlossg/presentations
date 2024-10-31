@@ -45,15 +45,18 @@ Roxana Balasoiu / Carlos Sanchez
 [balasoiuroxana](https://github.com/balasoiuroxana) /
 [@balasoiuroxana](http://twitter.com/balasoiuroxana)
 
+<br>
 
 
 **Carlos / Principal Scientist**
+
 
 OSS contributor, Jenkins Kubernetes plugin
 
 [csanchez.org](http://csanchez.org) / 
 [@csanchez](http://twitter.com/csanchez)
 
+<br>
 
 [Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
 
@@ -63,6 +66,8 @@ OSS contributor, Jenkins Kubernetes plugin
 # Adobe Experience Manager
 
 ----
+
+A Content and Digital Asset Management system
 
 An existing distributed Java OSGi application
 
@@ -104,8 +109,6 @@ Using init containers and (many) sidecars to apply division of concerns
 
 
 # Scale
-
-TODO update numbers
 
 17k+ environments
 
@@ -173,7 +176,6 @@ Using existing metrics from Prometheus
 
 10k reconciliations in average (up to 5k per cluster)
 
-(Noticed the controller stuck some times)
 
 ----
 
@@ -197,31 +199,6 @@ Disabling Rollouts require scaling up the `Deployment` object
 
 ----
 
-##### Reference Deployment From Rollout
-
-<div style="font-size: 0.6em">
-
-Instead of removing Deployment you can scale it down to zero and reference it from the Rollout resource:
-
-1. Create a Rollout resource.
-1. Reference an existing Deployment using `workloadRef` field.
-1. In the `workloadRef` field set the `scaleDown` attribute, which specifies how the Deployment should be scaled down. There are three options available:
-   * `never`: the Deployment is not scaled down
-   * `onsuccess`: the Deployment is scaled down after the Rollout becomes healthy
-   * `progressively`: as the Rollout is scaled up the Deployment is scaled down.
-
-</div>
-
-----
-
-## Migration
-
-![](argo-rollouts-pr.png)
-
-[argo-rollouts PR #3111](https://github.com/argoproj/argo-rollouts/pull/3111)
-
-----
-
 ## Migration
 
 `Rollout` requires changing runbooks, tooling and training
@@ -239,6 +216,7 @@ In the future may consider a Helm rollback
 
 ----
 
+<!--
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
@@ -254,7 +232,6 @@ spec:
     name: "{{ $fullName }}-publish"
 ```
 
-----
 
 ```yaml
   strategy:
@@ -266,8 +243,8 @@ spec:
         labels:
           role: canary
 ```
+-->
 
-----
 
 ## Analysis Template
 
@@ -331,9 +308,27 @@ More velocity
 
 Migration requires orchestration to avoid downtime
 
-Even using `workloadRef`
-
 A problem with 1000s of services
+
+Better with `workloadRef` and `scaleDown` attribute
+
+----
+
+# Challenges
+
+Scale `Deployment` down to zero and reference it from the `Rollout` with `workloadRef` field.
+
+`scaleDown` attribute: `never`, `onsuccess`, `progressively`
+
+</div>
+
+----
+
+## Migration
+
+![](argo-rollouts-pr.png)
+
+[argo-rollouts PR #3111](https://github.com/argoproj/argo-rollouts/pull/3111)
 
 
 ----
