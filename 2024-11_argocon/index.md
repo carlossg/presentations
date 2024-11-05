@@ -1,25 +1,3 @@
-<!-- 
-ArgoCon:
-Intro
-Scale
-How did we rolled it out 
-Watch out for quotas
-PR to auto downscale the previous one
-Differentiating customer triggered vs internal: confusing for external users with no feedback
-Figuring out the correct metrics: compare stable to canary, broken environments, low traffic environments
-Teaching engineers about Rollouts
-Setting the steps correctly: short steps may not catch issues, not too short not too long
-Immutable secrets/configmaps, old ones are deleted
-False positives, false negatives
-Controller stuck 
-Degraded rollouts: InvalidSpec, timeout (replicaset fails to be ready), error, abort
-Disabling it, requires manual scale up of Deployment
-Deployments with little traffic
-Increase in COGS 
--->
-
-
-
 <style>
 .container{
     display: flex;
@@ -47,20 +25,15 @@ problem-solving enthusiast, cloud engineering
 [balasoiuroxana](https://github.com/balasoiuroxana) /
 [@balasoiuroxana](http://twitter.com/balasoiuroxana)
 
-<br>
-
-
 **Carlos / Principal Scientist**
-
 
 OSS contributor, Jenkins Kubernetes plugin
 
 [csanchez.org](http://csanchez.org) / 
 [@csanchez](http://twitter.com/csanchez)
 
-<br>
 
-[Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
+**[Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)**
 
 ---
 
