@@ -26,6 +26,8 @@ Author of Jenkins Kubernetes plugin
 
 Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
+<img width="300" data-src="../assets/gde.png" alt="GDE logo">
+
 ---
 
 
@@ -458,6 +460,27 @@ Scale any container in Kubernetes based on events
 
 ---
 
+
+# CO2 Emissions
+
+----
+
+<img width="800" data-src="electricitymaps-eu.png">
+
+----
+
+<img width="800" data-src="electricitymaps-na.png">
+
+----
+
+
+Region optimization
+
+Cronjob optimization
+
+<small><a href="https://www.electricitymaps.com/">electricitymaps.com</a></small>
+
+---
 
 
 # Other Scalability Concerns
