@@ -138,33 +138,6 @@ React to the issues **automatically**
 
 ----
 
-### Kubernetes Service Architecture
-
-<img height="400px" data-src="../assets/k8s-loadbalancer.png">
-
-----
-
-### Kubernetes Ingress Architecture
-
-<img height="400px" data-src="../assets/k8s-ingress.png">
-
-
-----
-
-### Kubernetes Ingress
-
-Ingress controllers:
-
-* AWS
-* GCE
-* nginx
-* Ambassador
-* Istio Ingress
-* Traefik
-* HAProxy
-* ...
-
----
 
 ## Argo Rollouts
 
