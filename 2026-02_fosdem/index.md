@@ -212,29 +212,17 @@ AI Agents can automate the loop fixing the failures
 
 ----
 
-<div class="container">
-
-<div class="col">
-
 <img height="200px" data-src="welcome_our_robot_overlords.webp">
-
-</div>
-
-<div class="col">
-
-<img height="200px" style="vertical-align:middle" data-src="feedback-qr.png">
-
-</div>
-
-</div>
 
 <div>
 
 <small><a href="https://argoproj.github.io/rollouts/">argoproj.github.io/rollouts</a></small>
 <br>
-<small><a href="https://github.com/carlossg/rollouts-plugin-metric-ai">github.com/carlossg/rollouts-plugin-metric-ai</a></small>
+<small><a href="https://github.com/argoproj-labs/rollouts-plugin-metric-ai">github.com/argoproj-labs/rollouts-plugin-metric-ai</a></small>
 <br>
 <small><a href="https://github.com/carlossg/rollouts-demo">github.com/carlossg/rollouts-demo</a></small>
+<br>
+<small><a href="https://github.com/carlossg/kubernetes-agent">github.com/carlossg/kubernetes-agent</a></small>
 
 
 [csanchez.org](http://csanchez.org)
@@ -251,4 +239,4 @@ AI Agents can automate the loop fixing the failures
 </div> -->
 
 
-<a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a>
+<!-- <a href="http://adobe.com"><img width="300" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a> -->

@@ -26,7 +26,7 @@ Author of Jenkins Kubernetes plugin
 
 Long time OSS contributor at Jenkins, Apache Maven, Puppet,…
 
-<img width="300" data-src="../assets/gde.png" alt="GDE logo">
+<!-- <img width="300" data-src="../assets/gde.png" alt="GDE logo"> -->
 
 ---
 
@@ -303,6 +303,31 @@ Savings: 30-50%
 
 ![](cluster-autoscaler-bug.png)
 
+----
+
+# Karpenter
+
+Just-in-time Nodes for any Kubernetes Cluster
+
+[karpenter.sh](https://karpenter.sh/)
+
+----
+
+## Karpenter
+
+* Observing the aggregate resource requests of unscheduled pods
+* Direct interactions with the Cloud Provider (no node groups)
+* Selects best instance type for the pending pods (bin packing)
+* Creating a launch request for those instances
+
+----
+
+## Karpenter
+
+* Faster than Cluster Autoscaler (no groups/pools scan)
+* Reduces waste (bin packing)
+* Consolidates workloads (de-provisioning)
+
 ---
 
 
@@ -318,7 +343,7 @@ Allows scaling resources up and down for a deployment
 
 Requires restart of pods (automatic or on next start)
 
-In-place VPA alpha in 1.27
+In-place Resource Resizing (Alpha in 1.27, Stable in 1.32)
 
 ----
 
@@ -435,6 +460,58 @@ more like Function as a Service
 but JVM takes ~5 min to start
 
 Savings: 60-80%
+
+----
+
+## CRaC
+
+Coordinated Restore at Checkpoint
+
+[openjdk.org/projects/crac](https://openjdk.org/projects/crac/)
+
+Checkpoint the JVM when it is warmed up (memory dump)
+
+Restore it in milliseconds
+
+----
+
+## CRaC
+
+Enables "Scale to Zero" for Java applications
+
+Fast startup time allows handling requests almost instantly
+
+Support in Spring Boot 3.2+ and other frameworks
+
+----
+
+# Kubernetes Checkpoint / Restore
+
+Native support for container checkpointing
+
+----
+
+## Kubernetes Checkpoint/Restore
+
+*   **CRIU** (Checkpoint/Restore In Userspace) integration
+*   **Checkpoint API** (Alpha in 1.25, Beta in 1.30)
+*   Allows capturing the state of a running container to a file
+
+----
+
+## How it works
+
+*   POST request to Kubelet `/checkpoint/{namespace}/{pod}/{container}`
+*   Kubelet calls CRIU to freeze the process and dump memory/state
+*   Result is a `.tar` archive (checkpoint)
+
+----
+
+## Use Cases
+
+*   **Forensic Analysis**: Debug a running container's state offline without stopping it
+*   **Process Migration**: Move a long-running usage to another node
+*   **Fast Startup**: Restore from a pre-warmed checkpoint (similar to CRaC but safe for any process)
 
 ---
 
