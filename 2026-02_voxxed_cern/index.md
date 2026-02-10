@@ -47,7 +47,7 @@ A huge market of extension developers
 
 Running on **Azure**
 
-**50+ clusters** and growing
+**70 clusters** and growing
 
 **Multiple regions**: US+, Europe+, Australia, Singapore, Japan, India, more coming
 
@@ -62,16 +62,6 @@ Different requirements, different languages
 You build it you run it
 
 Using APIs or Kubernetes operator patterns
-
-----
-
-## AEM on Kubernetes
-
-Using namespaces to provide a scope
-
-* network isolation
-* quotas
-* permissions
 
 ----
 
@@ -93,7 +83,7 @@ Customers interact through Cloud Manager, a separate service with web UI and API
 
 200k+ `Deployments`
 
-10k+ namespaces
+18k+ namespaces
 
 ----
 
@@ -350,6 +340,8 @@ In-place Resource Resizing (Alpha in 1.27, Stable in 1.32)
 ## VPA
 
 Makes it slow to respond, can exhaust resources in busy nodes
+
+Increasing in place VPA can return `Deferred`, `Infeasible`
 
 ⚠️ Do not set VPA to auto if you don't want random pod restart
 
@@ -609,11 +601,9 @@ A lot of waste if you use big nodes and small pods
 
 From the application: tuning CPU, memory, GC
 
-From Kubernetes ecosystem: Cluster autoscaler, HPA, VPA, KEDA
+From Kubernetes ecosystem: Cluster autoscaler, Karpenter, HPA, VPA, KEDA
 
 At application and infrastructure levels
-
-A combination of them will help you optimize and reduce resources used
 
 
 ---
