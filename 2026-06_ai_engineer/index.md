@@ -20,11 +20,11 @@ Carlos Sanchez /
 
 Principal Scientist
 
-[Adobe Experience Manager Cloud Service](https://www.adobe.com/marketing/experience-manager/cloud-service.html)
+[Adobe Experience Manager](https://www.adobe.com/marketing/experience-manager)
 
 <!-- Author of Jenkins Kubernetes plugin -->
 
-Long time OSS contributor at Kubernetes,Jenkins, Apache Maven, Puppet,…
+Long time OSS contributor at Kubernetes, Jenkins, Apache Maven,…
 
 <!-- <img width="300" data-src="../assets/gde.png" alt="GDE logo"> -->
 
@@ -47,7 +47,9 @@ Pages personalize in real time based on user persona and queries
 
 **AEM Edge Delivery + a backend service** power the experience
 
-Combines Edge Delivery Services with a vendor-agnostic AI backend — Bedrock, Cerebras, SambaNova, Cloudflare, Vertex, and local models
+Combines Edge Delivery Services with an AI backend
+
+Cerebras, Bedrock, Cloudflare, Vertex, even local models
 
 ----
 
@@ -55,10 +57,9 @@ Combines Edge Delivery Services with a vendor-agnostic AI backend — Bedrock, C
 
 Personalization leverages rich content and custom blocks
 
-In the demo, we showcase **35 custom blocks** and a **300+ page content corpus** for deep personalization
+and the whole site as content corpus for deep personalization
 
----
-
+----
 
 ## Solving Static Site Limitations
 
@@ -107,23 +108,23 @@ Continuously evolving the personalization strategy based on analytics
 
 ----
 
-## Dynamic Frontend with Custom Blocks
+### Dynamic Frontend with Custom Blocks
 
 AEM Edge Delivery Services enables flexible layouts and real-time updates
 
 ----
 
-## AI-Powered Backend Integration
+### AI-Powered Backend Integration
 
-A service fronting any LLM — Bedrock, Cerebras, SambaNova, Vertex, or local — for deep personalization
+A service fronting any LLM — Cerebras, Bedrock, Vertex, local,... — for deep personalization
 
 Model evaluation customized to each site to validate performance and accuracy
 
 ----
 
-## Model Evaluation
+<img width="400" data-src="promptfoo-horizontal-logo.png">
 
-Using PromptFoo to evaluate different prompts against 50+ models and providers
+Evaluating different prompts against 50+ models and providers
 
 Accuracy and speed
 
@@ -131,108 +132,76 @@ Different sites may need different accuracy and speed requirements
 
 ----
 
-## Real-Time Personalization Engine
-
-Browsing and queries adapt content instantly to user personas
-
-* Morning Minimalist
-* Craft Barista
-* Traveller
-* Non-Barista
-* Office Manager
-* ...
+![](promptfoo.png)
 
 ----
 
-## Recommendations Adapt Instantly
+### Real-Time Personalization Engine
 
-Hero, product cards, blog feed, and navigation change based on persona
-
-Call-to-action and navigation links are tailored for each persona
+* Browsing and queries adapt content instantly to user personas
+* Hero, product cards, blog feed, and navigation change based on persona
+* Call-to-action and navigation links are tailored for each persona
 
 ----
 
 
-## "For You" Proactive Generation
+### "For You" Proactive Generation
 
-Passive Browsing Signals: Tracks page visits, scrolls, quiz answers, and product interactions
-
-Transforms user activity into a personalized natural-language query
-
-----
-
-## "For You" Proactive Generation
-
-Prefetched page appears as a navigation link for immediate viewing
-
-Re-triggers when user context changes, ensuring up-to-date personalization
-
----
-
-
-# Query Generation: Intent Mapping
+* Passive Browsing Signals: Tracks page visits, scrolls, quiz answers, and product interactions
+* Transforms user activity into a personalized natural-language query
+* Prefetched page appears as a navigation link for immediate viewing
+* Re-triggers when user context changes, ensuring up-to-date personalization
 
 ----
 
-## AI-Powered Page Creation
+### AI-Powered Page Creation
 
-Queries trigger dynamic, personalized pages
-
-Intent classification: Queries are mapped to **distinct intent types** and journey stages
-
-AI chooses relevant blocks and follow-up suggestions based on user needs
-
----
-
-
-# Block Palette: Dynamic Composition
+* Queries trigger dynamic, personalized pages
+* Intent classification: Queries are mapped to **distinct intent types** and journey stages
+* AI chooses relevant blocks and follow-up suggestions based on user needs
 
 ----
 
-## Intent-Driven Block Selection
+### Intent-Driven Block Selection
+
+* AI pages from a rich block palette to match user intent
+* Frontend blocks enable dynamic, personalized assembly
+* Block sequence adapts to each user's goals and journey stage
+* Includes products, guides, interactive tools, media, and utilities
 
 ----
 
-AI composes pages from a rich block palette to match user intent
 
-Frontend blocks enable dynamic, personalized page assembly
+### Content Corpus: Rich Grounding
 
-Block sequence adapts to each user's goals and journey stage
-
-Includes products, guides, interactive tools, media, and utilities
-
----
-
-
-# Content Corpus: Rich Grounding
+* Grounding on products, guides, experiences, blog, tools, and bundles
+* Direct product comparisons help users make informed decisions
+* Product pages are tailored for different user personas, ensuring relevant recommendations
 
 ----
 
-Grounding on products, guides, experiences, blog, tools, and bundles
+<!-- 
+### Streaming Experience: Real-Time Build
 
-Direct product comparisons help users make informed decisions
-
-Product pages are tailored for different user personas, ensuring relevant recommendations
-
----
-
-
-# Streaming Experience: Real-Time Build
-
-----
-
-Interactive Page Assembly: Recommendations and content blocks appear in real time as the page builds
-
-Reasoning, block content, and images stream to the browser step-by-step
-
-Users see the site adapt instantly — no single loading screen
-
----
+* Interactive Page Assembly: Recommendations and content blocks appear in real time as the page builds
+* Reasoning, block content, and images stream to the browser step-by-step
+* Users see the site adapt instantly — no single loading screen -->
 
 
-# Demo
+<img width="1200" data-src="architecture.png" alt="Architecture" style="background:white">
 
 <!-- <img width="400" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"> -->
+
+----
+
+<video controls data-autoplay loop>
+  <source src="arco-aiengineer.mp4" type="video/mp4">
+</video>
+
+----
+
+<video controls data-autoplay loop>
+  <source src="arco-googletv.mp4" type="video/mp4">
 
 ---
 
