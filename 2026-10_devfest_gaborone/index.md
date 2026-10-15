@@ -169,42 +169,6 @@ Ingress controllers:
 
 ---
 
-## Argo Rollouts
-
-<img height="500px" data-src="../assets/argo-icon-color-square.png">
-
-----
-
-## Argo Rollouts
-
-> provides advanced deployment capabilities such as blue-green, canary, canary analysis, experimentation, and progressive delivery features to Kubernetes.
-
-----
-
-## Argo Rollouts
-
-<img data-src="../assets/argo-rollout-architecture.png">
-
-----
-
-<!-- <img height="600px" data-src="../assets/argo-rollout-ui.png"> -->
-
-<img height="400px" data-src="feedback-loop-diagram1.png">
-
-----
-
-<img height="600px" data-src="conspiracy theory.png">
-
-----
-
-<img height="400px" data-src="feedback-loop-diagram2.png">
-
-----
-
-<img height="600px" data-src="ai_pet_family.png">
-
----
-
 # GitOps
 
 Git is the single source of truth
@@ -422,7 +386,9 @@ spec:
 
 # Demo
 
-[argo-rollouts-quarkus-demo](https://github.com/kdubois/argo-rollouts-quarkus-demo)
+----
+
+<!-- .slide: data-background-video="demo-antigravity-quarkus.mp4" data-background-size="contain" data-background-color="#000000" -->
 
 ---
 
@@ -462,15 +428,21 @@ AI agents can automate the loop by analyzing metrics and logs, and even proposin
 
 ## Resources
 
+Argo Rollouts Plugin for AI metrics
+
 [rollouts-plugin-metric-ai](https://github.com/argoproj-labs/rollouts-plugin-metric-ai)
+
+Demo app
 
 [argo-rollouts-quarkus-demo](https://github.com/kdubois/argo-rollouts-quarkus-demo)
 
-[kubernetes-aiops-agent](https://github.com/kdubois/kubernetes-aiops-agent)
+Antigravity SDK Agents
 
-[progressive-delivery](https://github.com/kdubois/progressive-delivery)
+[kubernetes-agents-antigravity](https://github.com/carlossg/kubernetes-agents-antigravity)
 
-[Quarkus LangChain4j workshop](https://quarkus.io/quarkus-workshop-langchain4j/)
+<!-- [kubernetes-aiops-agent](https://github.com/kdubois/kubernetes-aiops-agent) -->
+
+<!-- [progressive-delivery](https://github.com/kdubois/progressive-delivery) -->
 
 ---
 
@@ -489,7 +461,7 @@ AI agents can automate the loop by analyzing metrics and logs, and even proposin
 
 <div class="col">
 
-<img width="50%" data-src="../assets/blog-qr-code.png" alt="Carlos Sanchez's blog QR code">
+<img width="50%" data-src="../assets/instagram-qr-code.png" alt="Carlos Sanchez's instagram QR code">
 
 </div>
 </div>
