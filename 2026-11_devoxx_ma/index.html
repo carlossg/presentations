@@ -4,9 +4,9 @@
   <head>
     <meta charset="utf-8">
 
-    <title>The Agent Broke It, The Agent Fixed it</title>
+    <title>The Agent Broke It, the Agent Fixed It: Self-Healing Code Rollouts with Agentic AI</title>
 
-    <meta name="description" content="The Agent Broke It, The Agent Fixed it">
+    <meta name="description" content="The Agent Broke It, the Agent Fixed It: Self-Healing Code Rollouts with Agentic AI">
     <meta name="author" content="Carlos Sanchez">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -46,13 +46,24 @@
 
     <script>
 
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: false,
         progress: false,
         history: true,
         center: true,
+
+        // width: "60%", // for OBS
+        // width: "80%",
+        // height: "100%",
         margin: 0,
-        transition: 'none',
+
+        // using a clicker
+        navigationMode: 'linear',
+
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
       });
 
