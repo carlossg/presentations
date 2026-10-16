@@ -1,20 +1,4 @@
-<style>
-.container{
-    display: flex;
-}
-.col{
-    flex: 1;
-}
-.reveal pre{
-    font-size: 0.4em;
-    line-height: 1.2;
-}
-.reveal .slides pre code{
-    max-height: none;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-}
-</style>
+<!-- .slide: class="title-slide" -->
 
 ## The Agent Broke It, the Agent Fixed It
 
@@ -27,6 +11,8 @@ Carlos Sanchez /
 [@csanchez.org](https://bsky.app/profile/csanchez.org)
 
 ---
+
+<!-- .slide: class="bio-slide" -->
 
 Principal Scientist
 
@@ -47,6 +33,8 @@ Long time OSS contributor at Kubernetes, Jenkins, Apache Maven,...
 <img width="900" data-src="crowdstrike-remediation.png" alt="CrowdStrike remediation: template instances should have staged deployment, validation, and acceptance checks">
 
 ---
+
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
 
 # Progressive Delivery
 
@@ -77,6 +65,8 @@ AI Agents can automate the loop fixing the failures
 
 
 
+
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
 
 # Progressive Delivery Techniques
 
@@ -137,6 +127,8 @@ React to the issues **automatically**
 
 
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 # Progressive Delivery in Kubernetes
 
 ----
@@ -169,6 +161,8 @@ Ingress controllers:
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 # GitOps
 
 Git is the single source of truth
@@ -189,6 +183,8 @@ A big bang / all or nothing release
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 # Argo Rollouts
 
 ----
@@ -202,6 +198,8 @@ A big bang / all or nothing release
 <img width="1100" data-src="canary-traffic.png" alt="Argo Rollouts analyzes canary metrics and either rolls back or promotes the canary by increasing its weight">
 
 ----
+
+<!-- .slide: class="code-slide" -->
 
 ### Continuous analysis with Prometheus
 
@@ -230,6 +228,8 @@ spec:
 ```
 
 ---
+
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
 
 # AI-Powered Rollout Analysis
 
@@ -293,6 +293,8 @@ Clean vector line work, comic cel-shading, detailed technical schematic lines, s
 
 ----
 
+<!-- .slide: class="code-slide" -->
+
 ### Register the AI metric plugin
 
 ```yaml
@@ -309,6 +311,8 @@ spec:
 ```
 
 ----
+
+<!-- .slide: class="code-slide" -->
 
 ### Configure canary analysis
 
@@ -327,6 +331,8 @@ canary:
 ```
 
 ----
+
+<!-- .slide: class="code-slide" -->
 
 ### Let the AI agent evaluate the rollout
 
@@ -361,6 +367,8 @@ spec:
 
 ----
 
+<!-- .slide: class="code-slide" -->
+
 ### Give the agent the source repository
 
 ```yaml
@@ -383,6 +391,8 @@ spec:
 ```
 
 ---
+
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
 
 # Demo
 
@@ -412,6 +422,8 @@ Could have used Serverless MCP, an external code assistant for PR creation, asyn
 
 ---
 
+<!-- .slide: class="takeaways-slide" -->
+
 ## Takeaways
 
 Rolling out changes to all users at once is risky
@@ -425,6 +437,8 @@ AI agents can automate the loop by analyzing metrics and logs, and even proposin
 <img height="600" data-src="ai-takeaway.png" alt="An AI-powered helper supports the team">
 
 ---
+
+<!-- .slide: class="resources-slide" -->
 
 ## Resources
 
@@ -445,6 +459,8 @@ Antigravity SDK Agents
 <!-- [progressive-delivery](https://github.com/kdubois/progressive-delivery) -->
 
 ---
+
+<!-- .slide: class="contact-slide" -->
 
 <div class="container">
 

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../dist/reveal.css">
     <link rel="stylesheet" href="../dist/theme/white.css" id="theme">
     <link rel="stylesheet" href="../css/csanchez.css">
+    <link rel="stylesheet" href="../css/agentic-rollouts.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="../plugin/highlight/zenburn.css">
@@ -27,7 +28,7 @@
 
   </head>
 
-  <body>
+  <body class="rollout-deck rollout-deck--gaborone">
 
     <div class="reveal">
 
@@ -63,6 +64,7 @@
         navigationMode: 'linear',
 
         transition: 'none', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'none',
 
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
       });
