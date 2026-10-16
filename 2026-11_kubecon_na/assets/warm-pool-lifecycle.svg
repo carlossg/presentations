@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Agent-sandbox warm-pool and claim lifecycle</title>
+  <desc id="desc">A template defines prepared capacity. A claim triggers a controller to bind a ready sandbox. The pool replenishes with fresh workloads. Deleting the claim destroys the bound workload; no browser memory restore is implied.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#1473e6"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172b4d; font-size: 23px; }
+      .heading { font-size: 27px; font-weight: 700; }
+      .small { font-size: 20px; fill: #526171; }
+      .box { fill: #f0f6fd; stroke: #1473e6; stroke-width: 2; }
+      .line { fill: none; stroke: #1473e6; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="520" fill="#fff"/>
+  <rect class="box" x="20" y="35" width="285" height="155" rx="12"/>
+  <text x="162" y="79" text-anchor="middle" class="heading">SandboxTemplate</text>
+  <text x="162" y="120" text-anchor="middle">Image + pod spec</text>
+  <text x="162" y="154" text-anchor="middle" class="small">Probe, limits, runtime</text>
+  <rect class="box" x="415" y="35" width="365" height="155" rx="12"/>
+  <text x="597" y="79" text-anchor="middle" class="heading">SandboxWarmPool</text>
+  <rect x="440" y="105" width="90" height="50" rx="6" fill="#e8f5ed" stroke="#21834a"/>
+  <rect x="552" y="105" width="90" height="50" rx="6" fill="#e8f5ed" stroke="#21834a"/>
+  <rect x="664" y="105" width="90" height="50" rx="6" fill="#e8f5ed" stroke="#21834a"/>
+  <text x="485" y="137" text-anchor="middle" class="small">ready</text>
+  <text x="597" y="137" text-anchor="middle" class="small">ready</text>
+  <text x="709" y="137" text-anchor="middle" class="small">ready</text>
+  <path class="line" d="M305 115 H408"/>
+  <text x="357" y="96" text-anchor="middle" class="small">preboot</text>
+  <rect class="box" x="20" y="285" width="285" height="135" rx="12"/>
+  <text x="162" y="328" text-anchor="middle" class="heading">SandboxClaim</text>
+  <text x="162" y="368" text-anchor="middle">pw-alpha</text>
+  <text x="162" y="398" text-anchor="middle" class="small">warmPoolRef: playwright</text>
+  <rect class="box" x="415" y="285" width="365" height="135" rx="12"/>
+  <text x="597" y="330" text-anchor="middle" class="heading">Controller</text>
+  <text x="597" y="370" text-anchor="middle">Bind a prepared sandbox</text>
+  <text x="597" y="400" text-anchor="middle" class="small">Publish Ready + podIPs</text>
+  <rect x="890" y="285" width="290" height="135" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="1035" y="328" text-anchor="middle" class="heading">Bound sandbox</text>
+  <text x="1035" y="368" text-anchor="middle">Browser for alpha</text>
+  <text x="1035" y="398" text-anchor="middle" class="small">Sticky while alive</text>
+  <path class="line" d="M305 355 H408"/>
+  <text x="357" y="336" text-anchor="middle" class="small">request</text>
+  <path class="line" d="M780 355 H883"/>
+  <text x="835" y="336" text-anchor="middle" class="small">assign</text>
+  <path class="line" d="M780 115 H1035 V278"/>
+  <text x="1048" y="205" class="small">adopt</text>
+  <path class="line" d="M597 285 V197"/>
+  <text x="615" y="244" class="small">replenish fresh capacity</text>
+  <rect x="20" y="453" width="1160" height="50" rx="6" fill="#fff6e9"/>
+  <text x="600" y="485" text-anchor="middle" class="small">Delete claim -> destroy its workload. Next claim -> fresh browser, not restored memory.</text>
+</svg>

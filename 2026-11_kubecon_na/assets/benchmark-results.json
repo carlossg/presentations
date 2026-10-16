@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-16",
+  "versions": {
+    "agent-sandbox": "v1.0.7",
+    "isola": "v0.7.0",
+    "isola_chart": "0.7.0",
+    "karssandbox": "v0.1.26",
+    "substrate": "v0.5.0",
+    "playwright": "1.53.0",
+    "playwright_mcp": "0.0.29",
+    "node_major": 22,
+    "proxy_go": "1.27.2",
+    "proxy_architecture": "arm64",
+    "kind": "0.33.0"
+  },
+  "environment": {
+    "host": "macOS ARM64",
+    "docker_context": "colima",
+    "vm_cpus": 4,
+    "vm_memory_bytes": 8308359168,
+    "clusters": {
+      "playwright-proxy": "v1.35.0",
+      "kind": "v1.37.0"
+    },
+    "substrate_namespace": "pw-substrate-v050",
+    "substrate_template": "playwright-multiprocess",
+    "isola_gvisor_release": "20260622",
+    "substrate_gvisor_release": "20260907.0"
+  },
+  "methodology": {
+    "samples_per_scenario": 1,
+    "images_preloaded": true,
+    "independent_runs_overlapped": true,
+    "substrate_golden_snapshot": false,
+    "substrate_resume_snapshot_fidelity": "SNAPSHOT_FIDELITY_MEMORY",
+    "substrate_durable_snapshot_status": "SNAPSHOT_STORAGE_STATUS_COMPLETED",
+    "substrate_in_memory_marker_oracle": false,
+    "restore_means": {
+      "agent-sandbox": "delete/recreate",
+      "isola": "delete/recreate",
+      "karssandbox": "delete/recreate",
+      "substrate": "suspend, verify suspended, timed router-triggered resume"
+    }
+  },
+  "functional_tests": [
+    {"backend": "agent-sandbox", "surface": "native WebSocket and cross-pod browser fetch", "result": "PASS"},
+    {"backend": "agent-sandbox", "surface": "MCP initialize, 25 tools, browser navigation", "result": "PASS"},
+    {"backend": "isola", "surface": "distinct gVisor pods and cross-namespace browser fetch", "result": "PASS"},
+    {"backend": "substrate", "surface": "actor provisioning, browser fetch, memory suspend/resume", "result": "PASS"},
+    {
+      "backend": "karssandbox",
+      "surface": "WebSocket and loopback browser rendering",
+      "result": "PASS",
+      "target": "http://127.0.0.1:9222/",
+      "expected_text": "Running",
+      "observations": [
+        {"client": "alpha", "connect_ms": 144752, "newPage_ms": 30, "goto_ms": 11, "total_ms": 144793},
+        {"client": "beta", "connect_ms": 15037, "newPage_ms": 65, "goto_ms": 15, "total_ms": 15117}
+      ]
+    },
+    {"backend": "karssandbox", "surface": "cross-pod private ClusterIP browser fetch", "result": "FAIL", "error": "page.goto exceeded 30000ms with egress guard and private-address restrictions enabled"}
+  ],
+  "lifecycle_measurements": [
+    {"backend": "agent-sandbox", "scenario": "cold", "result": "PASS", "connect_ms": 560, "newPage_ms": 53, "goto_ms": 20, "total_ms": 633},
+    {"backend": "agent-sandbox", "scenario": "warm", "result": "PASS", "connect_ms": 432, "newPage_ms": 25, "goto_ms": 8, "total_ms": 465},
+    {"backend": "agent-sandbox", "scenario": "restore", "result": "PASS", "connect_ms": 532, "newPage_ms": 31, "goto_ms": 16, "total_ms": 579},
+    {"backend": "isola", "scenario": "cold", "result": "PASS", "connect_ms": 2856, "newPage_ms": 58, "goto_ms": 89, "total_ms": 3003},
+    {"backend": "isola", "scenario": "warm", "result": "PASS", "connect_ms": 32, "newPage_ms": 91, "goto_ms": 45, "total_ms": 168},
+    {"backend": "isola", "scenario": "restore", "result": "PASS", "connect_ms": 3346, "newPage_ms": 85, "goto_ms": 24, "total_ms": 3455},
+    {"backend": "substrate", "scenario": "cold", "result": "PASS", "connect_ms": 2065, "newPage_ms": 300, "goto_ms": 83, "total_ms": 2448},
+    {"backend": "substrate", "scenario": "warm", "result": "PASS", "connect_ms": 38, "newPage_ms": 157, "goto_ms": 86, "total_ms": 281},
+    {"backend": "substrate", "scenario": "restore", "result": "PASS", "connect_ms": 476, "newPage_ms": 361, "goto_ms": 93, "total_ms": 930},
+    {"backend": "karssandbox", "scenario": "cold", "result": "FAIL", "error": "private fixture navigation timed out"},
+    {"backend": "karssandbox", "scenario": "warm", "result": "FAIL", "error": "private fixture navigation timed out"},
+    {"backend": "karssandbox", "scenario": "restore", "result": "FAIL", "error": "private fixture navigation timed out"}
+  ]
+}
