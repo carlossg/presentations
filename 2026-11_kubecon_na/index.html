@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../dist/reveal.css">
     <link rel="stylesheet" href="../dist/theme/white.css" id="theme">
     <link rel="stylesheet" href="../css/csanchez.css">
+    <link rel="stylesheet" href="../css/agentic-rollouts.css">
     <link rel="stylesheet" href="presentation.css">
 
     <!-- Code syntax highlighting -->
@@ -28,7 +29,7 @@
 
   </head>
 
-  <body>
+  <body class="rollout-deck sandbox-deck">
 
     <div class="reveal">
 
@@ -55,6 +56,7 @@
         margin: 0,
         navigationMode: 'linear',
         transition: 'none',
+        backgroundTransition: 'none',
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
       });
 

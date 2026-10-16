@@ -1,77 +1,108 @@
-.reveal {
-  font-size: 36px;
+body.sandbox-deck {
+  --deck-accent: #1473e6;
+  --deck-tint: #f0f6fd;
+  --deck-border: #dbe2ea;
 }
 
-.reveal h2 {
-  font-size: 1.4em;
+.sandbox-deck .reveal h2 {
+  font-size: 1.5em;
 }
 
-.reveal h3 {
+.sandbox-deck .reveal h3 {
   font-size: 1.02em;
 }
 
-.reveal p,
-.reveal li {
+.sandbox-deck .reveal p {
+  margin-block: 20px;
+}
+
+.sandbox-deck .reveal li + li {
+  margin-top: 0.35em;
+}
+
+.sandbox-deck .reveal .chapter-slide .eyebrow {
+  color: #8fc4ff;
+}
+
+.sandbox-deck .reveal .chapter-slide h3 {
+  max-width: 760px;
+  color: #d7e4eb;
+  font-weight: 400;
   line-height: 1.35;
 }
 
-.reveal li + li {
-  margin-top: 0.25em;
+.sandbox-deck .reveal section:has(pre) h2 {
+  margin-bottom: 20px;
+  font-size: 1.35em;
 }
 
-.reveal pre {
-  width: 96%;
-  font-size: 0.43em;
+.sandbox-deck .reveal table {
+  width: 100%;
+  margin: 24px 0;
+  border-collapse: collapse;
+  font-size: 0.59em;
   line-height: 1.35;
-  box-shadow: none;
 }
 
-.reveal pre code {
-  max-height: none;
-  padding: 16px;
-  white-space: pre-wrap;
+.sandbox-deck .reveal table td,
+.sandbox-deck .reveal table th {
+  padding: 0.65em 0.6em;
+  border-bottom: 1px solid var(--deck-border);
+  vertical-align: top;
+}
+
+.sandbox-deck .reveal table th {
+  border-bottom: 2px solid var(--deck-accent);
+  color: var(--deck-accent);
+  font-weight: 600;
+}
+
+.sandbox-deck .reveal table tbody tr:nth-child(odd) {
+  background: #f5f8fb;
+}
+
+.sandbox-deck .reveal table tbody tr:last-child td {
+  border-bottom: 1px solid var(--deck-border);
+}
+
+.sandbox-deck .reveal :not(pre) > code {
+  padding: 0.1em 0.25em;
+  border-radius: 4px;
+  background: var(--deck-tint);
+  font-size: 0.88em;
   overflow-wrap: anywhere;
 }
 
-.reveal table {
-  width: 96%;
-  font-size: 0.61em;
-  line-height: 1.35;
-}
-
-.reveal table td,
-.reveal table th {
-  padding: 0.45em 0.5em;
-}
-
-.reveal .source {
+.sandbox-deck .reveal .source {
   margin-top: 1em;
   font-size: 0.39em;
   line-height: 1.4;
-  color: #5b6470;
+  color: var(--deck-muted);
 }
 
-.reveal .source a {
+.sandbox-deck .reveal .source a {
   overflow-wrap: anywhere;
 }
 
-.reveal .eyebrow {
-  color: #1473e6;
+.sandbox-deck .reveal .eyebrow {
+  color: var(--deck-accent);
   font-size: 0.55em;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.reveal .takeaway {
-  padding: 0.55em;
-  border-left: 6px solid #1473e6;
-  background: #f0f6fd;
+.sandbox-deck .reveal .takeaway {
+  box-sizing: border-box;
+  padding: 0.65em 0.8em;
+  border-left: 3px solid var(--deck-accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--deck-tint);
   font-size: 0.8em;
   text-align: left;
 }
 
-.reveal .cards {
+.sandbox-deck .reveal .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -79,31 +110,53 @@
   text-align: left;
 }
 
-.reveal .card {
-  padding: 18px;
-  border: 1px solid #dbe2ea;
-  border-top: 5px solid #1473e6;
+.sandbox-deck .reveal .card {
+  padding: 22px 18px;
+  border: 1px solid var(--deck-border);
+  border-top: 3px solid var(--deck-accent);
   border-radius: 6px;
+  background: #f5f8fb;
   font-size: 0.69em;
+  line-height: 1.45;
 }
 
-.reveal .card strong {
+.sandbox-deck .reveal .card strong {
   display: block;
   margin-bottom: 0.6em;
+  color: var(--deck-accent);
+  font-size: 1.15em;
 }
 
-.reveal .diagram {
+.sandbox-deck .reveal .diagram {
   display: block;
-  width: 94%;
+  width: 100%;
   height: auto;
   margin: 18px auto;
 }
 
-.reveal .compact {
+.sandbox-deck .reveal .compact {
   font-size: 0.76em;
 }
 
-.reveal .warning {
+.sandbox-deck .reveal .warning {
   border-left-color: #bc5400;
   background: #fff6e9;
+}
+
+.sandbox-deck .reveal .takeaways-slide h3 {
+  max-width: 34ch;
+  padding-left: 22px;
+  border-left: 3px solid var(--deck-accent);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.sandbox-deck .reveal .closing-slide > p {
+  font-size: 0.76em;
+  overflow-wrap: anywhere;
+}
+
+.sandbox-deck .reveal .closing-slide h3 {
+  margin-top: 36px;
+  color: var(--deck-accent);
 }

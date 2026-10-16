@@ -1,3 +1,5 @@
+<!-- .slide: class="title-slide" -->
+
 ## Running Secure Agents at Scale
 
 ### Kubernetes sandboxes, with Playwright as the workload
@@ -8,12 +10,12 @@ Carlos Sanchez /
 [csanchez.org](https://csanchez.org) /
 [@csanchez.org](https://bsky.app/profile/csanchez.org)
 
-<p class="compact">KubeCon + CloudNativeCon North America / November 11, 2026</p>
-
 Note:
 Suggested pacing: about 30 minutes, including 6-8 minutes for the demo, with questions afterward. This is a workload-driven comparison, not a claim that installing a sandbox controller makes an agent secure. The evidence snapshot is October 16, 2026. The appendix contains deployment and troubleshooting details.
 
 ----
+
+<!-- .slide: class="bio-slide" -->
 
 ## Carlos Sanchez
 
@@ -27,7 +29,7 @@ Kubernetes, Jenkins, Apache Maven, ...
 Note:
 Introduce the platform-engineering motivation: make browser tools available to agents without placing every browser process, credential, and failure mode inside the agent's own container.
 
----
+----
 
 ## Your agent needs a browser
 
@@ -42,7 +44,7 @@ A long-lived process tree.
 Note:
 A page can be untrusted even when the agent's task is legitimate. This talk is about containing the execution environment and its network access; it does not claim to solve prompt injection or decide which actions an agent should be authorized to take.
 
----
+----
 
 ## Why Playwright?
 
@@ -57,7 +59,7 @@ Note:
 The sandbox runs Node and Chromium; the labelled client pod runs the Playwright client. The browser must connect through the proxy, create a page, navigate, and return the expected target content. A successful WebSocket upgrade alone is insufficient.
 Source: playwright-k8s-sandbox/docs/blog/playwright-k8s-sandbox-proxy.md.
 
----
+----
 
 ## Three separate decisions
 
@@ -74,6 +76,8 @@ These are orthogonal axes. A namespace is useful for policy and resource organiz
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 <p class="eyebrow">01 / The options</p>
 
 # Same workload.<br>Different contracts.
@@ -81,7 +85,7 @@ These are orthogonal axes. A namespace is useful for policy and resource organiz
 Note:
 Start with the current, pinned integrations. Spend about six minutes on the landscape, then use agent-sandbox for the detailed walkthrough. Describe what this repository exercises, not every possible capability of each upstream project.
 
----
+----
 
 ## Four current integrations
 
@@ -97,7 +101,7 @@ Start with the current, pinned integrations. Spend about six minutes on the land
 Note:
 The agent-sandbox template does not set runtimeClassName, so the demo uses the cluster default, not a demonstrated gVisor or Kata configuration. KARS confidential/runtime extensions and Azure inference were not verified in this local run. Isola rootfs snapshot capabilities are not enabled by this adapter; do not generalize its delete/recreate behavior to every isola deployment.
 
----
+----
 
 ## agent-sandbox
 
@@ -113,7 +117,7 @@ The agent-sandbox template does not set runtimeClassName, so the demo uses the c
 Note:
 This is the main deep dive. The warm pool shifts startup work ahead of the request. A fresh claim can receive an already-running browser, but that is still a new logical session, not restoration of a previous tenant's memory. RuntimeClass support is a configuration option, not a performance result from this demo.
 
----
+----
 
 ## isola
 
@@ -129,7 +133,7 @@ This is the main deep dive. The warm pool shifts startup work ahead of the reque
 Note:
 The upgrade installed checksum-verified runsc and its shim inside kind and configured containerd. Creating a gvisor RuntimeClass object alone had not been enough. The passing fixture fetch used a narrowly scoped cross-namespace policy and a namespace-qualified target name. The adapter uses the default Delete termination policy, not rootfs snapshots.
 
----
+----
 
 ## substrate
 
@@ -147,7 +151,7 @@ The upgrade installed checksum-verified runsc and its shim inside kind and confi
 Note:
 The October run observed SUSPENDED, a completed durable MEMORY-fidelity snapshot, and a successful browser navigation after resume. No forced boot was used. It did not run an in-memory marker oracle, so do not claim arbitrary cookies, tabs, JavaScript heap, or application state were proven to survive. This proxy's idle reaper deletes actors; it does not automatically hibernate them.
 
----
+----
 
 ## Azure KARS
 
@@ -165,7 +169,7 @@ The October run observed SUSPENDED, a completed durable MEMORY-fidelity snapshot
 Note:
 The tested forward proxy rejects DNS answers resolving to private addresses. Adding another NetworkPolicy or domain allowlist did not override that check. Keep that limitation visible rather than disabling the guard to produce a green test. KARS inference, federation, signature verification, and confidential isolation were not tested. Namespace isolation is not a separate host-kernel boundary.
 
----
+----
 
 ## And OpenShell?
 
@@ -182,7 +186,7 @@ October pinned four-backend rerun**.
 Note:
 This is a statement about this repository's adapter, not a claim that every upstream OpenShell deployment has the same architecture or features as agent-sandbox. Do not reuse the older OpenShell measurements as current October results.
 
----
+----
 
 ## Choose by constraint
 
@@ -200,6 +204,8 @@ These are evaluation paths, not universal product recommendations. The exact too
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 <p class="eyebrow">02 / Inside agent-sandbox</p>
 
 # Separate the agent<br>from the browser
@@ -207,7 +213,7 @@ These are evaluation paths, not universal product recommendations. The exact too
 Note:
 About ten minutes for this section. Now follow one request through the actual repository implementation. The custom proxy is part of this application, not an upstream agent-sandbox component.
 
----
+----
 
 ## One endpoint, dedicated sandboxes
 
@@ -218,7 +224,7 @@ About ten minutes for this section. Now follow one request through the actual re
 Note:
 Point to the process boundary: the client controls a remote browser; it does not launch Chromium locally. The proxy identifies the client and provisions or reuses its sandbox. WS and MCP are separate listeners and browser-session paths, not two protocols connected to the same already-open browser. The fixture request originates in the sandbox.
 
----
+----
 
 ## Four objects to understand
 
@@ -234,7 +240,7 @@ Point to the process boundary: the client controls a remote browser; it does not
 Note:
 The extension resources in this repo use extensions.agents.x-k8s.io/v1beta1. Do not imply the Kubernetes API server forwards browser WebSockets. After resolving a ready claim to its adopted pod IP, the proxy dials that pod directly.
 
----
+----
 
 ## Define the browser workload
 
@@ -260,7 +266,7 @@ spec:
 Note:
 This is an excerpt, not the complete runnable manifest. The complete template configures NODE_PATH, the browser path, WS/MCP ports, Chromium flags, probes, and resource limits. Unmanaged disables the controller's network-policy management for this custom proxy; it is not an isolation guarantee. Explicit network policies and enforcement are production work, not something this field supplies.
 
----
+----
 
 ## Preboot a small pool
 
@@ -284,7 +290,7 @@ Note:
 The harness uses three prepared sandboxes for alpha, beta, and gamma. As sandboxes are claimed, the controller replenishes warm capacity, subject to node resources and scheduling. OnReplenish updates future replacements; do not promise that existing bound browsers are transparently updated.
 Source: test/playwright-warmpool.yaml.
 
----
+----
 
 ## Request one browser
 
@@ -307,7 +313,7 @@ spec:
 Note:
 The adapter uses GET-first and creates only if absent. It also stamps a qualified additionalPodMetadata label for identifying the sandbox workload. A second request for the same ID should reuse the existing claim, not allocate another browser. The managed label allows scoped listing and cleanup.
 
----
+----
 
 ## Claim, bind, replenish
 
@@ -318,7 +324,7 @@ The adapter uses GET-first and creates only if absent. It also stamps a qualifie
 Note:
 Follow the lower request path, then point to prebooted capacity above it. Wait for Ready=True and a nonempty status.sandbox.podIPs before routing. Once assigned, the session is sticky while alive. On claim deletion the bound workload is destroyed, and fresh capacity replenishes the pool. Do not describe deletion as returning a tenant's live browser to another tenant.
 
----
+----
 
 ## Ready means ready to use
 
@@ -339,7 +345,7 @@ Note:
 The adapter polls every 500ms. In this dual-port server, MCP starts first and its TCP listener is checked before chromium.launchServer binds 9222. Therefore the WS readiness probe is the later startup signal. It does not prove an arbitrary page is reachable; the subsequent fetch test proves that.
 Sources: internal/backend/sandboxclaim.go; test/playwright-substrate-server.js; test/playwright-sandboxtemplate.yaml.
 
----
+----
 
 ## How does the caller get its browser?
 
@@ -361,7 +367,7 @@ Same ID: same live sandbox. Different IDs: different sandboxes.
 Note:
 The proxy reads RemoteAddr and resolves the pod through an informer, with bounded API fallback. Unlabelled or unresolved callers are rejected. This assumes a trusted in-cluster network path that preserves source pod IPs. If tenants can choose another tenant's ID, the label scheme alone cannot isolate them: constrain ownership with admission, namespace/identity scoping, and authenticated ingress. Never expose it as an unauthenticated public browser endpoint.
 
----
+----
 
 ## Two protocol paths
 
@@ -379,7 +385,7 @@ Note:
 The public Service port stays the same. The proxy chooses the backend listener based on whether the request is a WebSocket upgrade. MCP's --isolated flag is a browser-context setting, not a substitute for a Kubernetes/runtime security boundary.
 Sources: test/playwright-substrate-server.js and test/playwright-scripts.yaml.
 
----
+----
 
 ## Playwright code stays familiar
 
@@ -408,7 +414,7 @@ try {
 Note:
 No chromium.launch here: the sandbox already owns the browser process. A positive response plus expected fixture content avoids treating an error page as success. The original fixture is whoami, but the component fetching it is real Chromium, not curl. The tests hold both client and browser at Playwright 1.53.0.
 
----
+----
 
 ## Inside the sandbox
 
@@ -431,7 +437,7 @@ The image contains Node, Playwright, and Chromium.
 Note:
 The displayed excerpt assumes the template supplies CHROMIUM_ARGS, as the real template does; the actual server validates/configures its environment and handles startup failures. The sandbox, rather than the agent pod, launches Chromium. The current harness disables Chromium's own sandbox flags; the next slide makes that limitation explicit.
 
----
+----
 
 ## Know the demo's security posture
 
@@ -445,7 +451,7 @@ The displayed excerpt assumes the template supplies CHROMIUM_ARGS, as the real t
 Note:
 These are intentionally visible limits from the actual manifest. Do not present this demo as a production security recommendation. Stronger runtime isolation, policy enforcement, tenant authentication, and a validated browser security configuration are separate tasks. A RuntimeClass object alone does not provide gVisor/Kata without a configured node runtime. This is an architecture discussion, not a completed security audit.
 
----
+----
 
 ## At scale, warm is not free
 
@@ -462,6 +468,8 @@ The arithmetic is three times the template's 250m CPU and 512Mi memory requests,
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 <p class="eyebrow">03 / Demo</p>
 
 # Playwright inside<br>agent-sandbox
@@ -471,7 +479,7 @@ The arithmetic is three times the template's 250m CPU and 512Mi memory requests,
 Note:
 Allow 6-8 minutes with the local cluster and images prepared. The following slides are an executable walkthrough, not a claim that a new cluster run was performed when this deck was authored. The dated result slides are an offline fallback, not a recording of the current live run.
 
----
+----
 
 ## Before going on stage
 
@@ -493,7 +501,7 @@ bash test/harness.sh e2e
 Note:
 The pinned commit is the source snapshot for this deck. Run setup and an e2e rehearsal before the session: e2e builds the slim image, deploys the fixture, configures the pool/proxy, and runs the three clients. The 2026-10-16 result used kind 0.33.0, a 4-CPU/7.7-GiB Colima VM, and Kubernetes 1.35 for this backend. Its kubectl 1.37 mismatch is a known reproduction caveat; use a supported client version.
 
----
+----
 
 ## Watch the claim, not just the pod
 
@@ -515,7 +523,7 @@ Alpha and beta drive WS. Gamma drives MCP.
 Note:
 Point out claim creation, readiness, and the controller replenishing prepared capacity. The harness may still take time to build/load images and wait for scheduling; do not promise the whole script completes in the subsecond connect time quoted for one client. A known-good rehearsal is essential.
 
----
+----
 
 ## Prove separate sandboxes
 
@@ -538,7 +546,7 @@ Expect **different sandbox names** and successful fixture fetches.
 Note:
 This is a key demo distinction. The Hostname returned by whoami identifies the target pod, not the browser sandbox. Distinct status.sandbox.name values establish the separate assignments; response validation establishes that each real browser can fetch the fixture. The harness asserts both rather than inferring isolation from a different HTTP body.
 
----
+----
 
 ## Show the MCP path too
 
@@ -557,7 +565,7 @@ Gamma must have a third, distinct sandbox.
 Note:
 Show gamma in the claim table beside alpha and beta. The pinned MCP 0.0.29 tool-list schema needs a documented compatibility workaround in the harness; navigation calls and expected response content are still checked. Do not claim a fully strict tools/list schema validation or an exhaustive MCP tool test.
 
----
+----
 
 ## Reuse is not restore
 
@@ -578,6 +586,8 @@ The script retains the name restore for compatibility. Narrate it as recreate fo
 
 ---
 
+<!-- .slide: class="chapter-slide" data-background-color="#18262d" -->
+
 <p class="eyebrow">04 / Evidence and limits</p>
 
 # What actually worked?
@@ -585,7 +595,7 @@ The script retains the name restore for compatibility. Narrate it as recreate fo
 Note:
 Use this section if the live demo is unavailable. These are dated source-repository observations, not fabricated live terminal output. Show the successes and the failure with the same level of visibility.
 
----
+----
 
 ## Test the browser, not the install
 
@@ -602,7 +612,7 @@ Use this section if the live demo is unavailable. These are dated source-reposit
 Note:
 Do not combine the two KARS rows into a single green status. Browser rendering against 127.0.0.1 does not prove the browser can reach a private ClusterIP. The guard remained enabled. The fixture scenario failed in cold, warm, and recreate runs.
 
----
+----
 
 ## Local lifecycle observations
 
@@ -621,7 +631,7 @@ Do not combine the two KARS rows into a single green status. Browser rendering a
 Note:
 Total includes connect, new page, and navigation. The final column intentionally labels different lifecycle operations. The older article used a larger 6-CPU/16-GiB environment, older versions, and a forced-boot substrate path; comparing those results as before/after speedups would be invalid. Warm-pool assignment is not a cold image pull or a brand-new cluster.
 
----
+----
 
 ## Be precise about the missing proof
 
@@ -635,7 +645,7 @@ Total includes connect, new page, and navigation. The final column intentionally
 Note:
 For substrate, add a JavaScript in-memory marker, a known open page, and assertions after suspension if those are real requirements. For performance, repeat runs with matched resources, runtime boundaries, cluster versions, and network paths, then report percentiles and errors. Keep guardrails enabled when evaluating compatibility.
 
----
+----
 
 ## Before calling it production-ready
 
@@ -650,7 +660,9 @@ For substrate, add a JavaScript in-memory marker, a known open page, and asserti
 Note:
 This is a deployment checklist, not a claim that this demo already implements all five controls. In particular, do not conflate the custom proxy's label routing with an authorization system, or its idle cleanup with a strict maximum session lifetime. A separate browser process prevents some shared-state accidents but does not by itself establish a hostile-code boundary.
 
----
+----
+
+<!-- .slide: class="takeaways-slide" -->
 
 ## Three things to take away
 
@@ -663,7 +675,9 @@ This is a deployment checklist, not a claim that this demo already implements al
 Note:
 Return to the opening question: what did the browser tool gain access to? Kubernetes gives us primitives to make the answer explicit, but a controller, runtime, and policy must be composed and tested. Agent-sandbox is a practical lifecycle building block, not the entire security architecture.
 
----
+----
+
+<!-- .slide: class="closing-slide" -->
 
 ## Try the workload. Read the evidence.
 
@@ -680,7 +694,7 @@ Carlos Sanchez / [csanchez.org](https://csanchez.org)
 Note:
 End of the main talk. The next slides are optional appendix material. Source snapshot: commit 5933817, feat: upgrade sandbox backends and document kind results. No new live-cluster test was performed during presentation authoring.
 
----
+----
 
 <p class="eyebrow">Appendix / Version scope</p>
 
@@ -699,7 +713,7 @@ End of the main talk. The next slides are optional appendix material. Source sna
 Note:
 The update compares this repository's previous integrations against these pins, not each project's immediately preceding upstream release. Previous KARS/substrate source checkouts and the old isola chart were not reliably recorded as deployed release pins.
 
----
+----
 
 <p class="eyebrow">Appendix / Runtime choice</p>
 
@@ -722,7 +736,7 @@ Kata uses a VM-based boundary.
 Note:
 This is a configuration illustration, not the measured agent-sandbox setup. Install the corresponding runtime and shim on nodes, configure containerd, and validate Chromium under the chosen runtime. Do not reuse the cluster-default benchmark timings for gVisor or Kata. The isola harness includes test/install-gvisor-kind.sh for its local gVisor installation.
 
----
+----
 
 <p class="eyebrow">Appendix / Troubleshooting</p>
 
@@ -741,7 +755,7 @@ This is a configuration illustration, not the measured agent-sandbox setup. Inst
 Note:
 The management port is 9090; health/readiness probes should not accidentally provision a browser. The data-plane Service is on 9000. Reading the claim's actual Ready condition is more useful than checking only a Deployment or pod phase.
 
----
+----
 
 <p class="eyebrow">Appendix / Reproduce other backends</p>
 
