@@ -394,6 +394,10 @@ spec:
           githubUrl: https://github.com/kdubois/argo-rollouts-quarkus-demo
 ```
 
+----
+
+<img width="1100" data-src="architecture.png" alt="Antigravity agent team on GKE: Argo Rollouts calls a lead orchestrator coordinating metrics, events, and sandboxed log analysts, with asynchronous remediation through GitHub and Jules">
+
 ---
 
 <!-- .slide: class="chapter-slide" data-background-color="#18262d" -->

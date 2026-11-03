@@ -3,3 +3,13 @@
 .reveal pre code {
   max-height: 600px;
 }
+
+.reveal .contact-slide .container {
+  display: flex;
+  align-items: center;
+}
+
+.reveal .contact-slide .col {
+  flex: 1;
+  min-width: 0;
+}
