@@ -662,6 +662,14 @@ This is a deployment checklist, not a claim that this demo already implements al
 
 ----
 
+<!-- .slide: class="closing-slide" -->
+
+## Try the workload. Read the evidence.
+
+[github.com/carlossg/playwright-k8s-sandbox](https://github.com/carlossg/playwright-k8s-sandbox)
+
+----
+
 <!-- .slide: class="takeaways-slide" -->
 
 ## Three things to take away
@@ -675,105 +683,29 @@ This is a deployment checklist, not a claim that this demo already implements al
 Note:
 Return to the opening question: what did the browser tool gain access to? Kubernetes gives us primitives to make the answer explicit, but a controller, runtime, and policy must be composed and tested. Agent-sandbox is a practical lifecycle building block, not the entire security architecture.
 
-----
+---
 
-<!-- .slide: class="closing-slide" -->
 
-## Try the workload. Read the evidence.
+<div class="container">
 
-[github.com/carlossg/playwright-k8s-sandbox](https://github.com/carlossg/playwright-k8s-sandbox)
+<div class="col">
 
-[Original comparison](https://github.com/carlossg/playwright-k8s-sandbox/blob/5933817/docs/blog/playwright-k8s-sandbox-proxy.md)
+[csanchez.org](http://csanchez.org)
 
-[October update and caveats](https://github.com/carlossg/playwright-k8s-sandbox/blob/5933817/docs/blog/sandbox-updates-2026-10.md)
+[twitter.com/csanchez](https://x.com/csanchez)<br>
+[bsky.app/profile/csanchez.org](https://bsky.app/profile/csanchez.org)
 
-Carlos Sanchez / [csanchez.org](https://csanchez.org)
+[github.com/carlossg](https://github.com/carlossg)
 
-### Questions?
+</div>
 
-Note:
-End of the main talk. The next slides are optional appendix material. Source snapshot: commit 5933817, feat: upgrade sandbox backends and document kind results. No new live-cluster test was performed during presentation authoring.
+<div class="col">
 
-----
+<img width="50%" data-src="../assets/blog-qr-code.png">
 
-<p class="eyebrow">Appendix / Version scope</p>
 
-## What was actually pinned?
+</div>
+</div>
 
-| Component | Tested version |
-|---|---|
-| agent-sandbox | v1.0.7 |
-| isola / chart | v0.7.0 / 0.7.0 |
-| Azure KARS | v0.1.26 |
-| substrate | v0.5.0 |
-| Playwright / MCP / Node | 1.53.0 / 0.0.29 / 22 |
 
-<p class="source">Checked October 16, 2026; not a claim about versions available on the conference date. <a href="https://github.com/carlossg/playwright-k8s-sandbox/blob/5933817/test/versions.env">Version pins</a></p>
-
-Note:
-The update compares this repository's previous integrations against these pins, not each project's immediately preceding upstream release. Previous KARS/substrate source checkouts and the old isola chart were not reliably recorded as deployed release pins.
-
-----
-
-<p class="eyebrow">Appendix / Runtime choice</p>
-
-## Same lifecycle, different boundary
-
-```yaml
-# SandboxTemplate excerpt; requires configured nodes:
-spec:
-  podTemplate:
-    spec:
-      runtimeClassName: gvisor
-```
-
-Standard containers share the host kernel.<br>
-gVisor interposes a userspace kernel.<br>
-Kata uses a VM-based boundary.
-
-<p class="takeaway warning">Selecting a RuntimeClass is not installing or validating its runtime.</p>
-
-Note:
-This is a configuration illustration, not the measured agent-sandbox setup. Install the corresponding runtime and shim on nodes, configure containerd, and validate Chromium under the chosen runtime. Do not reuse the cluster-default benchmark timings for gVisor or Kata. The isola harness includes test/install-gvisor-kind.sh for its local gVisor installation.
-
-----
-
-<p class="eyebrow">Appendix / Troubleshooting</p>
-
-## Follow the failed boundary
-
-| Symptom | Inspect |
-|---|---|
-| Caller rejected | Pod label ownership, preserved source IP, informer readiness |
-| Claim never ready | Controller conditions, template, scheduling, pool capacity |
-| WS connects; page fails | Browser logs, DNS, target readiness, enforced egress |
-| MCP fails; WS works | MCP process, 9223 routing, protocol/version compatibility |
-| Idle resource never reaped | Active WebSocket count, TTL, client cleanup |
-
-<p class="takeaway">Fix the narrow integration contract; do not disable the boundary to hide the failure.</p>
-
-Note:
-The management port is 9090; health/readiness probes should not accidentally provision a browser. The data-plane Service is on 9000. Reading the claim's actual Ready condition is more useful than checking only a Deployment or pod phase.
-
-----
-
-<p class="eyebrow">Appendix / Reproduce other backends</p>
-
-## Same browser, different backend
-
-```bash
-bash test/harness.sh up-isola
-bash test/harness.sh test isola
-
-bash test/harness.sh up-substrate
-SUBSTRATE_FLAVOUR=playwright bash test/harness.sh test substrate
-
-bash test/harness.sh up-kars
-bash test/harness.sh test kars
-# The original private fixture currently fails under enforced egress.
-```
-
-<p class="source">Run from the pinned source checkout. Substrate has additional prerequisites and its own cluster; follow <a href="https://github.com/carlossg/playwright-k8s-sandbox/blob/5933817/deploy/examples/substrate/README.md">the deployment guide</a>.</p>
-
-Note:
-Do not spin up every sample simultaneously in a small VM. The recorded substrate run used SUBSTRATE_NS=pw-substrate-v050 and SUBSTRATE_TEMPLATE_NAME=playwright-multiprocess; use fresh names when immutable template contents change. For timing, restart the proxy before suspension, not after, so startup reconciliation cannot pre-resume the actor outside the measured request.
+<a href="http://adobe.com"><img width="400" data-src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" alt="Adobe logo" style="background:white"></a>
