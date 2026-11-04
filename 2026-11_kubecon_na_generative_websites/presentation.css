@@ -1,0 +1,206 @@
+.reveal {
+  --r-main-font-size: 26px;
+  --r-heading-text-transform: none;
+  --r-heading-font-weight: 700;
+  --r-main-color: #111;
+  --r-heading-color: #111;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  box-sizing: border-box;
+  height: 810px;
+  padding: 55px 72px 80px;
+  border-left: 16px solid #eb1000;
+}
+
+.reveal .slides section::before {
+  position: absolute;
+  bottom: 24px;
+  left: 56px;
+  width: 76px;
+  height: 24px;
+  background: url("../assets/Adobe_Wordmark_RGB_Red_2024.svg") left center / contain no-repeat;
+  content: "";
+}
+
+.reveal .slides section::after {
+  position: absolute;
+  right: 72px;
+  bottom: 24px;
+  font-size: 11px;
+  content: "\00a9 2026 Adobe. All Rights Reserved.";
+}
+
+.reveal .slides section.confidential::after {
+  content: "\00a9 2026 Adobe. All Rights Reserved. Adobe Confidential.";
+}
+
+.reveal h2 {
+  margin: 0 0 65px;
+  font-size: 48px;
+  line-height: 1.12;
+}
+
+.reveal h3 {
+  margin: 0 0 14px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.reveal p,
+.reveal ul {
+  margin: 0 0 22px;
+  line-height: 1.3;
+}
+
+.reveal ul {
+  display: block;
+  margin-left: 24px;
+}
+
+.reveal li + li {
+  margin-top: 8px;
+}
+
+.reveal .columns {
+  display: grid;
+  gap: 48px;
+  align-items: start;
+}
+
+.reveal .columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reveal .columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reveal .columns-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.reveal .columns > div > :last-child {
+  margin-bottom: 0;
+}
+
+.reveal .icon {
+  display: block;
+  width: auto;
+  height: 135px;
+  margin: 0 0 32px;
+}
+
+.reveal .photo {
+  display: block;
+  width: 100%;
+  height: 260px;
+  margin: 0 0 28px;
+  object-fit: cover;
+}
+
+.reveal .icon-grid {
+  gap: 28px 64px;
+}
+
+.reveal .icon-grid .icon {
+  height: 110px;
+  margin-bottom: 18px;
+}
+
+.reveal .text-grid {
+  gap: 60px 64px;
+  padding-top: 60px;
+}
+
+.reveal .takeaways h3,
+.reveal .takeaways p {
+  font-size: 24px;
+}
+
+.reveal .takeaways .columns {
+  gap: 48px;
+  padding-top: 35px;
+}
+
+.reveal .slides section.split-slide {
+  padding-right: 792px;
+}
+
+.reveal .split-slide h2 {
+  margin-bottom: 40px;
+}
+
+.reveal .split-slide h3 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+.reveal .split-slide p,
+.reveal .split-slide ul {
+  margin-bottom: 22px;
+  font-size: 24px;
+}
+
+.reveal .split-slide .side-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 720px;
+  height: 810px;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+}
+
+.reveal .slides section.split-slide::after {
+  display: none;
+}
+
+.reveal .slides section.title-slide {
+  border: 0;
+  padding: 160px 72px 100px;
+}
+
+.reveal .title-slide h1 {
+  max-width: 930px;
+  color: #fff;
+  font-size: 88px;
+  line-height: 1.08;
+}
+
+.reveal .slides section.title-slide::before {
+  bottom: 60px;
+  left: 72px;
+  width: 140px;
+  height: 42px;
+  filter: brightness(0) invert(1);
+}
+
+.reveal .slides section.title-slide::after {
+  display: none;
+}
+
+.reveal .slides section.diagram-slide {
+  padding: 14px 36px 56px;
+}
+
+.reveal .diagram-slide p {
+  margin: 0;
+}
+
+.reveal .diagram-slide img {
+  display: block;
+  width: 100%;
+  height: 740px;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+}

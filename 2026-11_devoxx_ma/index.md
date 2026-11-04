@@ -10,8 +10,6 @@ Carlos Sanchez /
 [csanchez.org](http://csanchez.org) /
 [@csanchez.org](https://bsky.app/profile/csanchez.org)
 
-[Devoxx Morocco](https://devoxx.ma/) / November 4, 2026
-
 ---
 
 <!-- .slide: class="bio-slide" -->

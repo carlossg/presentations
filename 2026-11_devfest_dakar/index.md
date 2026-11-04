@@ -10,8 +10,6 @@ Carlos Sanchez /
 [csanchez.org](http://csanchez.org) /
 [@csanchez.org](https://bsky.app/profile/csanchez.org)
 
-[DevFest Dakar](https://gdg.community.dev/gdg-dakar/) / November 28, 2026
-
 ---
 
 <!-- .slide: class="bio-slide" -->
