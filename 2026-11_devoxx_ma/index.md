@@ -483,7 +483,14 @@ Antigravity SDK Agents
 
 <div class="col">
 
-<img width="50%" data-src="../assets/instagram-qr-code.png" alt="Carlos Sanchez's instagram QR code">
+<div class="container">
+<div class="col">
+
+<a href="https://m.devoxx.com/events/dvma26/talks/3963/the-agent-broke-it-the-agent-fixed-it"><img width="90%" data-src="talk-qr-code.png" alt="QR code to rate The Agent Broke It, the Agent Fixed It at Devoxx Morocco"></a>
+
+
+</div>
+</div>
 
 </div>
 </div>

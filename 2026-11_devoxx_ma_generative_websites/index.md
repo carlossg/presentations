@@ -232,8 +232,22 @@ Different sites may need different accuracy and speed requirements
 
 <div class="col">
 
-<img width="50%" data-src="../assets/instagram-qr-code.png" alt="Carlos Sanchez's instagram QR code">
+<div class="container">
+<div class="col">
 
+<img width="90%" data-src="../assets/instagram-qr-code.png" alt="Carlos Sanchez's instagram QR code">
+
+<small>Instagram</small>
+
+</div>
+<div class="col">
+
+<a href="https://m.devoxx.com/events/dvma26/talks/3962/agentic-sites-building-hyper-personalized-websites"><img width="90%" data-src="talk-qr-code.png" alt="QR code to rate Agentic Sites: Building Hyper Personalized Websites at Devoxx Morocco"></a>
+
+<small>[Rate this talk](https://m.devoxx.com/events/dvma26/talks/3962/agentic-sites-building-hyper-personalized-websites)</small>
+
+</div>
+</div>
 
 </div>
 </div>
