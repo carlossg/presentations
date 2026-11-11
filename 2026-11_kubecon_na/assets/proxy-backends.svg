@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" role="img" aria-labelledby="title desc">
+  <title id="title">One Playwright proxy, five backends and four adapter paths</title>
+  <desc id="desc">The proxy resolves a caller's source IP to its playwright-id, shares one in-flight Ensure per ID, and caches the ready endpoint. Agent-sandbox and OpenShell use the same SandboxClaim adapter with different pools, templates and images. Substrate uses the Actor API and atenet-router, KARS creates a namespace-scoped workload, and isola uses a Sandbox custom resource. Idle sessions with no live connections are deleted, not suspended.</desc>
+  <defs>
+    <marker id="control-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#1473e6"/>
+    </marker>
+    <marker id="data-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#21834a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172b4d; font-size: 22px; }
+      .heading { font-size: 25px; font-weight: 700; }
+      .small { font-size: 19px; fill: #526171; }
+      .box { fill: #f0f6fd; stroke: #1473e6; stroke-width: 2; }
+      .control { fill: none; stroke: #1473e6; stroke-width: 3; stroke-dasharray: 8 6; }
+      .branch { marker-end: url(#control-arrow); }
+      .data { fill: none; stroke: #21834a; stroke-width: 3; marker-end: url(#data-arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="580" fill="#fff"/>
+  <rect x="20" y="185" width="210" height="185" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="125" y="229" text-anchor="middle" class="heading">Agent pod</text>
+  <text x="125" y="273" text-anchor="middle">Playwright client</text>
+  <text x="125" y="316" text-anchor="middle" class="small">playwright-id: alpha</text>
+  <path class="data" d="M230 275 H308"/>
+  <text x="272" y="235" text-anchor="middle" class="small">HTTP</text>
+  <text x="272" y="258" text-anchor="middle" class="small">WS</text>
+
+  <rect class="box" x="315" y="95" width="390" height="360" rx="14"/>
+  <text x="510" y="140" text-anchor="middle" class="heading">Shared Playwright proxy</text>
+  <text x="510" y="192" text-anchor="middle">Source IP -&gt; playwright-id</text>
+  <text x="510" y="233" text-anchor="middle">One Ensure(id) in flight</text>
+  <text x="510" y="274" text-anchor="middle">Cache ready endpoint</text>
+  <path d="M340 302 H680" stroke="#dbe2ea" stroke-width="2"/>
+  <text x="510" y="337" text-anchor="middle">Idle TTL + zero live connections</text>
+  <text x="510" y="378" text-anchor="middle">Delete(id) + drop session</text>
+  <text x="510" y="424" text-anchor="middle" class="small">Idle reap is not memory suspend</text>
+
+  <path class="control" d="M705 275 H765 M765 80 V467"/>
+  <path class="control branch" d="M765 80 H818"/>
+  <path class="control branch" d="M765 210 H818"/>
+  <path class="control branch" d="M765 337 H818"/>
+  <path class="control branch" d="M765 467 H818"/>
+
+  <rect class="box" x="825" y="25" width="355" height="110" rx="12"/>
+  <text x="1002" y="59" text-anchor="middle" class="heading">agent-sandbox / OpenShell</text>
+  <text x="1002" y="93" text-anchor="middle">SandboxClaim -&gt; warm pod</text>
+  <text x="1002" y="121" text-anchor="middle" class="small">Pool + template + image select flavor</text>
+  <rect class="box" x="825" y="165" width="355" height="90" rx="12"/>
+  <text x="1002" y="200" text-anchor="middle" class="heading">substrate</text>
+  <text x="1002" y="235" text-anchor="middle">Actor API + atenet-router</text>
+  <rect class="box" x="825" y="290" width="355" height="95" rx="12"/>
+  <text x="1002" y="326" text-anchor="middle" class="heading">Azure KARS</text>
+  <text x="1002" y="361" text-anchor="middle">CR -&gt; namespace + pod</text>
+  <rect class="box" x="825" y="420" width="355" height="95" rx="12"/>
+  <text x="1002" y="456" text-anchor="middle" class="heading">isola</text>
+  <text x="1002" y="491" text-anchor="middle">Sandbox CR -&gt; gVisor pod</text>
+
+  <text x="600" y="545" text-anchor="middle" class="small">Dashed blue: backend provisioning (Ensure / Delete / List). Solid green: client HTTP / WS.</text>
+  <text x="600" y="573" text-anchor="middle" class="small">The proxy forwards browser traffic to the returned endpoint, not through the Kubernetes API.</text>
+</svg>

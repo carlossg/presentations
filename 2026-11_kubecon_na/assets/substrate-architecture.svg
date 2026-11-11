@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Substrate component architecture</title>
+  <desc id="desc">The Substrate API manages actors, templates, and worker assignments in PostgreSQL. Kubernetes and atecontroller provision worker pods from WorkerPool and SandboxConfig resources. Incoming actor traffic reaches atenet-router, which asks the API to resume or resolve an actor. The API coordinates atelet and ateworker to restore the sandbox. Traffic travels through atunnel to the actor. Object-store sidecars move snapshots between a local cache and durable storage.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#1473e6"/>
+    </marker>
+    <marker id="data-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#21834a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172b4d; font-size: 23px; }
+      .heading { font-size: 26px; font-weight: 700; }
+      .small { font-size: 20px; fill: #526171; }
+      .label { font-size: 19px; font-weight: 700; fill: #1473e6; }
+      .box { fill: #f0f6fd; stroke: #1473e6; stroke-width: 2; }
+      .control { fill: none; stroke: #1473e6; stroke-width: 3; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+      .data { fill: none; stroke: #21834a; stroke-width: 3; marker-end: url(#data-arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="600" fill="#fff"/>
+  <rect x="20" y="20" width="1160" height="185" rx="14" fill="#f8fafc" stroke="#dbe2ea" stroke-width="2"/>
+  <text x="40" y="51" class="label">SUBSTRATE CONTROL PLANE / ACTOR LIFECYCLE</text>
+  <rect class="box" x="40" y="75" width="235" height="100" rx="12"/>
+  <text x="157" y="116" text-anchor="middle" class="heading">API client / CLI</text>
+  <text x="157" y="152" text-anchor="middle" class="small">Actors + ActorTemplates</text>
+  <rect class="box" x="365" y="75" width="355" height="100" rx="12"/>
+  <text x="542" y="116" text-anchor="middle" class="heading">ate-api-server</text>
+  <text x="542" y="152" text-anchor="middle" class="small">Auth, placement, suspend / resume</text>
+  <rect class="box" x="850" y="75" width="300" height="100" rx="12"/>
+  <text x="1000" y="116" text-anchor="middle" class="heading">PostgreSQL</text>
+  <text x="1000" y="152" text-anchor="middle" class="small">Actor + assignment records</text>
+  <path class="control" d="M275 125 H358"/>
+  <path class="control" d="M720 125 H843"/>
+
+  <rect class="box" x="20" y="270" width="290" height="230" rx="12"/>
+  <text x="165" y="309" text-anchor="middle" class="heading">Kubernetes infra</text>
+  <text x="165" y="352" text-anchor="middle">WorkerPool</text>
+  <text x="165" y="385" text-anchor="middle">SandboxConfig</text>
+  <text x="165" y="429" text-anchor="middle" class="small">atecontroller reconciles</text>
+  <text x="165" y="458" text-anchor="middle" class="small">Deployments + worker pods</text>
+  <text x="165" y="486" text-anchor="middle" class="small">Not a pod per idle actor</text>
+  <path class="control" d="M310 290 H753"/>
+  <text x="419" y="275" text-anchor="middle" class="small">Pre-start pods</text>
+
+  <rect x="760" y="245" width="420" height="265" rx="14" fill="#f8fafc" stroke="#dbe2ea" stroke-width="2"/>
+  <text x="782" y="275" class="label">WORKER NODE</text>
+  <rect class="box" x="785" y="305" width="370" height="55" rx="10"/>
+  <text x="970" y="340" text-anchor="middle">atelet: node supervisor</text>
+  <rect x="785" y="400" width="370" height="85" rx="10" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="970" y="433" text-anchor="middle" class="heading">Worker pod</text>
+  <text x="970" y="465" text-anchor="middle" class="small">ateworker + atunnel + sandboxed actor</text>
+  <path class="control" d="M970 360 V393"/>
+  <path class="control" d="M720 155 H785 V220 H970 V298"/>
+  <text x="995" y="231" class="small">Run / restore</text>
+
+  <rect x="365" y="355" width="315" height="125" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="522" y="392" text-anchor="middle" class="heading">atenet-router</text>
+  <text x="522" y="430" text-anchor="middle">Incoming actor request</text>
+  <text x="522" y="461" text-anchor="middle" class="small">Resolve / wake on demand</text>
+  <path d="M542 355 V182" fill="none" stroke="#fff" stroke-width="10"/>
+  <path class="control" d="M542 355 V182"/>
+  <text x="554" y="319" class="small">Resume / resolve</text>
+  <path class="data" d="M680 443 H778"/>
+  <text x="722" y="487" text-anchor="middle" class="small">mTLS</text>
+  <text x="722" y="512" text-anchor="middle" class="small">CONNECT</text>
+
+  <rect x="365" y="545" width="790" height="40" rx="8" fill="#fff6e9"/>
+  <text x="760" y="572" text-anchor="middle" class="small">Snapshots: node-local cache + object-store sidecars + durable storage</text>
+  <text x="175" y="551" text-anchor="middle" class="small">Sandbox runtime:</text>
+  <text x="175" y="580" text-anchor="middle" class="small">gVisor or Kata microVM</text>
+</svg>

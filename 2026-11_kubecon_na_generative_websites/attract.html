@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A silent, one-minute loop introducing the Agentic Sites live demo: real content, AI-generated pages, and AEM Edge Delivery.">
+    <meta name="author" content="Carlos Sanchez">
+    <title>Agentic Sites / Live Demo</title>
+    <link rel="icon" href="../assets/Adobe_Wordmark_RGB_Red_2024.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="./attract.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <header class="attract-header" aria-label="Agentic Sites live demo">
+          <div class="brand-lockup">
+            <span class="live-badge"><span aria-hidden="true"></span>Live demo</span>
+            <span class="series-name">Agentic Sites</span>
+          </div>
+          <img class="adobe-logo" src="../assets/Adobe_Wordmark_RGB_Red_2024.svg" width="116" height="30" alt="Adobe">
+        </header>
+
+        <section data-markdown="./attract.md"></section>
+
+        <footer class="attract-footer">
+          <span>A website generated for you. Not another chatbot.</span>
+          <div class="footer-actions">
+            <span class="demo-invitation">Ask for a live demo <span aria-hidden="true">&nearr;</span></span>
+            <button id="loop-toggle" type="button" aria-pressed="false">Pause loop</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script>
+      Reveal.initialize({
+        width: 1440,
+        height: 810,
+        margin: 0,
+        center: false,
+        controls: false,
+        progress: false,
+        hash: false,
+        history: false,
+        slideNumber: false,
+        loop: true,
+        autoSlide: 8000,
+        autoSlideStoppable: false,
+        pause: false,
+        overview: false,
+        transition: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'fade',
+        transitionSpeed: 'fast',
+        backgroundTransition: 'none',
+        plugins: [RevealMarkdown]
+      });
+
+      const loopToggle = document.getElementById('loop-toggle');
+      loopToggle.addEventListener('click', () => {
+        Reveal.toggleAutoSlide(!Reveal.isAutoSliding());
+      });
+      function updateLoopButton() {
+        const paused = !Reveal.isAutoSliding();
+        loopToggle.textContent = paused ? 'Resume loop' : 'Pause loop';
+        loopToggle.setAttribute('aria-pressed', String(paused));
+      }
+      Reveal.on('autoslidepaused', updateLoopButton);
+      Reveal.on('autoslideresumed', updateLoopButton);
+    </script>
+  </body>
+</html>

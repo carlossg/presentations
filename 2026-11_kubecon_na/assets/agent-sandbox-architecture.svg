@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" role="img" aria-labelledby="title desc">
+  <title id="title">Agent-sandbox component architecture</title>
+  <desc id="desc">An operator or client submits Sandbox resources to the Kubernetes API. Core and extension controllers reconcile templates, warm pools, claims, and sandboxes into workload pods. Application traffic reaches the workload directly or through an application proxy or optional sandbox-router, not through the Kubernetes API. Isolation depends on the configured node runtime.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#1473e6"/>
+    </marker>
+    <marker id="data-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9Z" fill="#21834a"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172b4d; font-size: 23px; }
+      .heading { font-size: 26px; font-weight: 700; }
+      .small { font-size: 20px; fill: #526171; }
+      .label { font-size: 19px; font-weight: 700; fill: #1473e6; }
+      .box { fill: #f0f6fd; stroke: #1473e6; stroke-width: 2; }
+      .control { fill: none; stroke: #1473e6; stroke-width: 3; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+      .data { fill: none; stroke: #21834a; stroke-width: 3; marker-end: url(#data-arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="580" fill="#fff"/>
+  <rect x="20" y="20" width="1160" height="280" rx="14" fill="#f8fafc" stroke="#dbe2ea" stroke-width="2"/>
+  <text x="40" y="52" class="label">CONTROL PLANE / KUBERNETES API + RECONCILIATION</text>
+
+  <rect class="box" x="40" y="108" width="225" height="110" rx="12"/>
+  <text x="152" y="149" text-anchor="middle" class="heading">Operator / client</text>
+  <text x="152" y="187" text-anchor="middle" class="small">kubectl, SDK, app</text>
+
+  <rect class="box" x="345" y="75" width="360" height="200" rx="12"/>
+  <text x="525" y="112" text-anchor="middle" class="heading">Kubernetes resources</text>
+  <text x="525" y="153" text-anchor="middle">SandboxTemplate</text>
+  <text x="525" y="184" text-anchor="middle">SandboxWarmPool</text>
+  <text x="525" y="215" text-anchor="middle">SandboxClaim</text>
+  <text x="525" y="246" text-anchor="middle">Sandbox</text>
+
+  <rect class="box" x="820" y="108" width="330" height="130" rx="12"/>
+  <text x="985" y="149" text-anchor="middle" class="heading">Controllers</text>
+  <text x="985" y="186" text-anchor="middle">Core + extensions</text>
+  <text x="985" y="217" text-anchor="middle" class="small">Bind, refill, manage lifecycle</text>
+  <path class="control" d="M265 165 H338"/>
+  <text x="303" y="145" text-anchor="middle" class="small">apply</text>
+  <path class="control" d="M705 165 H813"/>
+  <text x="762" y="139" text-anchor="middle" class="small">watch /</text>
+  <text x="762" y="190" text-anchor="middle" class="small">reconcile</text>
+  <path class="control" d="M985 238 V353"/>
+  <text x="1003" y="330" class="small">manage pod</text>
+
+  <text x="40" y="337" class="label">DATA PLANE / APPLICATION TRAFFIC</text>
+  <rect x="20" y="375" width="225" height="110" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="132" y="419" text-anchor="middle" class="heading">Workload client</text>
+  <text x="132" y="457" text-anchor="middle" class="small">Agent or tool caller</text>
+  <rect x="320" y="375" width="305" height="110" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="472" y="413" text-anchor="middle" class="heading">Application endpoint</text>
+  <text x="472" y="448" text-anchor="middle" class="small">Direct, custom proxy,</text>
+  <text x="472" y="475" text-anchor="middle" class="small">or optional sandbox-router</text>
+  <rect x="700" y="360" width="480" height="150" rx="12" fill="#e8f5ed" stroke="#21834a" stroke-width="2"/>
+  <text x="940" y="397" text-anchor="middle" class="heading">Sandbox pod</text>
+  <text x="940" y="434" text-anchor="middle">Workload + optional persistent storage</text>
+  <text x="940" y="471" text-anchor="middle" class="small">Configured runtime: gVisor / Kata / default</text>
+  <text x="940" y="498" text-anchor="middle" class="small">RuntimeClass requires a configured node runtime</text>
+  <path class="data" d="M245 430 H313"/>
+  <path class="data" d="M625 430 H693"/>
+  <text x="600" y="557" text-anchor="middle" class="small">Dashed blue: lifecycle control. Solid green: workload traffic. The controller is not the isolation boundary.</text>
+</svg>

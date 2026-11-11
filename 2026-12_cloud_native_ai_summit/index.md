@@ -6,8 +6,6 @@ Carlos Sanchez /
 [csanchez.org](http://csanchez.org) /
 [@csanchez.org](https://bsky.app/profile/csanchez.org)
 
-[Cloud Native AI Summit - Europe](https://www.cloudnative.ai/events/paris) / December 1-3, 2026
-
 ----
 
 Principal Scientist
