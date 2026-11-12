@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff") format("woff");
+  src: url("../css/theme/fonts/source-sans-pro/source-sans-pro-regular.woff") format("woff");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff") format("woff");
+  src: url("../css/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff") format("woff");
 }
 
 :root {

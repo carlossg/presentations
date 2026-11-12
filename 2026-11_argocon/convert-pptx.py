@@ -348,7 +348,7 @@ def main():
     </div>
   </div>
   <script src="../dist/reveal.js"></script>
-  <script src="../plugin/notes/notes.js"></script>
+  <script src="../dist/plugin/notes.js"></script>
   <script>
     Reveal.initialize({{
       controls: true,

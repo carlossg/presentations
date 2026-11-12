@@ -133,7 +133,7 @@ async function main() {
           const context = canvas.getContext( '2d' );
           context.drawImage( image, 0, 0 );
           return context.getImageData( 0, 0, image.width, image.height ).data.some( ( channel, index ) => index % 4 !== 3 && channel < 180 );
-        }, logo.toString( 'base64' ) );
+        }, Buffer.from( logo ).toString( 'base64' ) );
         assert.equal( paintedLogo, true, 'Logo actually paints after keyboard navigation through the 3D slide stack' );
       }
     }
