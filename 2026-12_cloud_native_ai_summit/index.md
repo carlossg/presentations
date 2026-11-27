@@ -585,7 +585,7 @@ Fifteen lines, and none of it is prose. @SequenceAgent declares the order: the d
 
 Architecture
 
-![Antigravity agent team on GKE](assets/architecture.drawio.svg)
+![Antigravity agent team on GKE](assets/architecture.png)
 
 ---
 
