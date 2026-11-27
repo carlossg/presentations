@@ -1,0 +1,162 @@
+body.sandbox-deck {
+  --deck-accent: #1473e6;
+  --deck-tint: #f0f6fd;
+  --deck-border: #dbe2ea;
+}
+
+.sandbox-deck .reveal h2 {
+  font-size: 1.5em;
+}
+
+.sandbox-deck .reveal h3 {
+  font-size: 1.02em;
+}
+
+.sandbox-deck .reveal p {
+  margin-block: 20px;
+}
+
+.sandbox-deck .reveal li + li {
+  margin-top: 0.35em;
+}
+
+.sandbox-deck .reveal .chapter-slide .eyebrow {
+  color: #8fc4ff;
+}
+
+.sandbox-deck .reveal .chapter-slide h3 {
+  max-width: 760px;
+  color: #d7e4eb;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.sandbox-deck .reveal section:has(pre) h2 {
+  margin-bottom: 20px;
+  font-size: 1.35em;
+}
+
+.sandbox-deck .reveal table {
+  width: 100%;
+  margin: 24px 0;
+  border-collapse: collapse;
+  font-size: 0.59em;
+  line-height: 1.35;
+}
+
+.sandbox-deck .reveal table td,
+.sandbox-deck .reveal table th {
+  padding: 0.65em 0.6em;
+  border-bottom: 1px solid var(--deck-border);
+  vertical-align: top;
+}
+
+.sandbox-deck .reveal table th {
+  border-bottom: 2px solid var(--deck-accent);
+  color: var(--deck-accent);
+  font-weight: 600;
+}
+
+.sandbox-deck .reveal table tbody tr:nth-child(odd) {
+  background: #f5f8fb;
+}
+
+.sandbox-deck .reveal table tbody tr:last-child td {
+  border-bottom: 1px solid var(--deck-border);
+}
+
+.sandbox-deck .reveal :not(pre) > code {
+  padding: 0.1em 0.25em;
+  border-radius: 4px;
+  background: var(--deck-tint);
+  font-size: 0.88em;
+  overflow-wrap: anywhere;
+}
+
+.sandbox-deck .reveal .source {
+  margin-top: 1em;
+  font-size: 0.39em;
+  line-height: 1.4;
+  color: var(--deck-muted);
+}
+
+.sandbox-deck .reveal .source a {
+  overflow-wrap: anywhere;
+}
+
+.sandbox-deck .reveal .eyebrow {
+  color: var(--deck-accent);
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sandbox-deck .reveal .takeaway {
+  box-sizing: border-box;
+  padding: 0.65em 0.8em;
+  border-left: 3px solid var(--deck-accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--deck-tint);
+  font-size: 0.8em;
+  text-align: left;
+}
+
+.sandbox-deck .reveal .cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.sandbox-deck .reveal .card {
+  padding: 22px 18px;
+  border: 1px solid var(--deck-border);
+  border-top: 3px solid var(--deck-accent);
+  border-radius: 6px;
+  background: #f5f8fb;
+  font-size: 0.69em;
+  line-height: 1.45;
+}
+
+.sandbox-deck .reveal .card strong {
+  display: block;
+  margin-bottom: 0.6em;
+  color: var(--deck-accent);
+  font-size: 1.15em;
+}
+
+.sandbox-deck .reveal .diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 18px auto;
+}
+
+.sandbox-deck .reveal .compact {
+  font-size: 0.76em;
+}
+
+.sandbox-deck .reveal .warning {
+  border-left-color: #bc5400;
+  background: #fff6e9;
+}
+
+.sandbox-deck .reveal .takeaways-slide h3 {
+  max-width: 34ch;
+  padding-left: 22px;
+  border-left: 3px solid var(--deck-accent);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.sandbox-deck .reveal .closing-slide > p {
+  font-size: 0.76em;
+  overflow-wrap: anywhere;
+}
+
+.sandbox-deck .reveal .closing-slide h3 {
+  margin-top: 36px;
+  color: var(--deck-accent);
+}
