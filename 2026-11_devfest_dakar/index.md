@@ -394,7 +394,7 @@ spec:
 
 ----
 
-<img width="1100" data-src="architecture.png" alt="Antigravity agent team on GKE: Argo Rollouts calls a lead orchestrator coordinating metrics, events, and sandboxed log analysts, with asynchronous remediation through GitHub and a code agent">
+<img width="1100" data-src="architecture.drawio.svg" alt="Antigravity agent team on GKE: Argo Rollouts calls a lead orchestrator coordinating metrics, events, and log collectors, with asynchronous sandboxed remediation through GitHub">
 
 ---
 
