@@ -644,6 +644,8 @@ The Argo Rollouts metric provider that calls it
 
 Slides: speakerdeck.com/kdubois/the-agent-broke-it-the-agent-fixed-it-dot-pptx
 
+![Session feedback QR code](assets/feedback-qr.png)
+
 Note:
 Land the ask, then stop talking. Keep progressive delivery, add the step after it: something that reads the evidence and opens a fix. Everything on this slide is public, and the plugin is in argoproj-labs, so anyone can wire it into their own Rollouts install. Point at the QR once, ask for the feedback, and leave it up for questions.
 

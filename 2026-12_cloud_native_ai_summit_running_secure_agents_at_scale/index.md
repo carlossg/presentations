@@ -557,6 +557,13 @@ Return to the opening question: what did the browser tool gain access to? Kubern
 [github.com/carlossg](https://github.com/carlossg)
 
 </div>
+<div class="col" style="text-align: center;">
+
+<img width="240" data-src="feedback-qr.png" alt="Session feedback QR code">
+
+Session feedback
+
+</div>
 </div>
 
 
