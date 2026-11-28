@@ -5,8 +5,7 @@
      Serve from the repository root for presenter mode: npm start -- --port 8000.
      Source wording/data inconsistencies are intentionally not corrected.
      Browser text metrics, fallback fonts and shadow/arrow rendering may differ slightly.
-     Three misplaced backgrounds on slide 13 are aligned to reveal its third callout.
-     The live demo/recording referenced in notes is not embedded in the source PPTX. -->
+     Three misplaced backgrounds on slide 13 are aligned to reveal its third callout. -->
 
 <!-- Slide 1 -->
 
@@ -595,6 +594,12 @@ Demo time !!
 
 Note:
 Switch to the cluster here. Two lines on the picture, and only one of them moves: the canary holds stable until the rollout reaches sixty percent, then p95 climbs to five times the stable value while the success rate stays at ninety-nine and the logs stay clean. That is the whole point of the demo, so point at the flat part first and say it looks fine. Everything after that is the machine noticing what the logs did not. If the cluster misbehaves, fall back to the recorded clip.
+
+---
+
+<!-- Demo video -->
+
+<video controls data-autoplay src="assets/demo.mp4"></video>
 
 ---
 

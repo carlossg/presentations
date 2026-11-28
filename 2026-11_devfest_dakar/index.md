@@ -404,7 +404,7 @@ spec:
 
 ----
 
-<!-- .slide: data-background-video="demo-antigravity-quarkus.mp4" data-background-size="contain" data-background-color="#000000" -->
+<!-- .slide: data-background-video="demo.mp4" data-background-size="contain" data-background-color="#000000" -->
 
 ---
 
